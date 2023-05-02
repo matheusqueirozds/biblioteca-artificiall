@@ -1,4 +1,3 @@
-// index.js
 import React from "react";
 import Head from "next/head";
 import {
@@ -6,7 +5,6 @@ import {
 	ButtonsContainer,
 	HomeContainer,
 	Logo,
-	RadioOptions,
 } from "../styles/HomeStyles";
 import IndexHeader from "@/components/Header/IndexHeader";
 import IndexFooter from "@/components/Footer/IndexFooter";
