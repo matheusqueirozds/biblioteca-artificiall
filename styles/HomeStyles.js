@@ -17,22 +17,15 @@ export const Logo = styled.img`
 	margin-bottom: 2rem;
 `;
 
-export const RadioOptions = styled.div`
+export const ButtonsContainer = styled.div`
 	display: flex;
-	justify-content: center;
-	align-items: center;
-	margin-top: 1rem;
+	gap: 12px;
+`;
 
-	label {
-		font-size: 1rem;
-		display: flex;
-		align-items: center;
-		margin: 0 1rem;
-		cursor: pointer;
-	}
-
-	input[type="radio"] {
-		margin-right: 0.5rem;
-		cursor: pointer;
-	}
+export const Button = styled.button`
+	padding: 11px 16px;
+	color: #3c4043;
+	background-color: #f8f9fa;
+	font-size: 14px;
+	border-radius: 4px;
 `;

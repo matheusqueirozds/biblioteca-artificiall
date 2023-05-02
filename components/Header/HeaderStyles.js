@@ -21,22 +21,33 @@ export const Logo = styled.div`
 `;
 
 export const SearchBar = styled.div`
+	position: relative;
 	display: flex;
 	align-items: center;
 	width: 100%;
 	max-width: 600px;
-	padding: 1rem;
+	border: 1px solid #dfe1e5;
+	background-color: #fff;
+	transition: all 0.3s;
+	border-radius: 24px;
+
+	&:hover,
+	&:focus {
+		box-shadow: 0 1px 6px rgb(32 33 36 / 28%);
+		border-color: rgba(223, 225, 229, 0);
+	}
 `;
 
 export const SearchInput = styled.input`
-	position: relative;
 	font-size: inherit;
-	border: 1px solid #dfe1e5;
+	border: none;
 	border-radius: 5px;
-	background-color: #fff;
-	padding-left: calc(142px + 56px);
+	padding-left: calc(157px + 1rem);
 	height: 40px;
 	width: 100%;
+	outline: none;
+	background-color: none;
+	border-radius: 24px;
 `;
 
 export const AdvancedSearch = styled.div`
@@ -46,12 +57,13 @@ export const AdvancedSearch = styled.div`
 		appearance: none;
 		cursor: pointer;
 		font-size: 14px;
-		border: 1px solid #dfe1e5;
-		border-radius: 3px 0 0 3px;
+		border: none;
 		background-color: #f3f3f3;
-		padding: 0.5rem;
+		padding: 0.5rem 1rem;
 		padding-right: 1.5rem;
 		height: 40px;
+		border-radius: 24px 0 0 24px;
+		outline: none;
 	}
 
 	::after {
@@ -64,7 +76,7 @@ export const AdvancedSearch = styled.div`
 		background-size: contain;
 		width: 10px;
 		height: 10px;
-		top: 13px;
+		top: 15.5px;
 		right: 8px;
 		cursor: pointer;
 		pointer-events: none;
@@ -92,8 +104,8 @@ export const DarkModeToggle = styled.button`
 `;
 
 export const SearchIcon = styled.img`
-	position: relative;
-	right: 30px;
+	position: absolute;
+	right: 1rem;
 	width: 20px;
 	height: 20px;
 	cursor: pointer;

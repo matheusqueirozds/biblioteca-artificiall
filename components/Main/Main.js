@@ -24,7 +24,7 @@ export default function Main({ data, searchTerm }) {
 			if (activeCategory) {
 				setFilteredPrompts(activeCategory.prompts);
 			} else {
-				setActiveCategory(data.categories[0]);
+				setActiveCategory(data.midjourney.categories[0]);
 			}
 		}
 	}, [searchTerm, activeCategory]);
@@ -34,7 +34,9 @@ export default function Main({ data, searchTerm }) {
 		let promptsToFilter;
 
 		if (searchType === "advanced") {
-			promptsToFilter = data.categories.flatMap((category) => category.prompts);
+			promptsToFilter = data.midjourney.categories.flatMap(
+				(category) => category.prompts
+			);
 		} else {
 			promptsToFilter = activeCategory.prompts;
 		}
@@ -46,9 +48,9 @@ export default function Main({ data, searchTerm }) {
 	};
 
 	useEffect(() => {
-		if (data && data.categories) {
-			setCategories(data.categories);
-			setActiveCategory(data.categories[0]);
+		if (data && data.midjourney.categories) {
+			setCategories(data.midjourney.categories);
+			setActiveCategory(data.midjourney.categories[0]);
 		}
 	}, [data]);
 

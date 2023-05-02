@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import Main from "../components/Main/Main";
-import data from "../data.json";
+import data from "../midjourney.json";
 
 export default function Home({ data, searchTerm }) {
 	return (
