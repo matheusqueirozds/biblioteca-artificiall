@@ -6,20 +6,24 @@ import {
 	PromptsList,
 	Subcategory,
 } from "./MainStyles";
-import Prompt from "../Prompt/Prompt";
-import ImageModal from "../ImageModal/ImageModal";
+import Prompt from "@/components/Midjourney/Prompt/Prompt";
+import ImageModal from "@/components/Midjourney/ImageModal/ImageModal";
+import { useSearch } from "@/SearchContext";
 
-export default function Main({ data, searchTerm }) {
+export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 	const [categories, setCategories] = useState([]);
 	const [activeCategory, setActiveCategory] = useState(null);
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [modalImage, setModalImage] = useState({ url: "", alt: "" });
-
-	const [filteredPrompts, setFilteredPrompts] = useState([]);
+	const { searchTerm } = useSearch();
 
 	useEffect(() => {
 		if (searchTerm) {
-			filterPrompts(searchTerm);
+			const promptsToFilter = data.midjourney.categories.flatMap(
+				(category) => category.prompts
+			);
+			const filtered = filterPrompts(searchTerm, promptsToFilter);
+			setFilteredPrompts(filtered);
 		} else {
 			if (activeCategory) {
 				setFilteredPrompts(activeCategory.prompts);
@@ -29,9 +33,15 @@ export default function Main({ data, searchTerm }) {
 		}
 	}, [searchTerm, activeCategory]);
 
-	const filterPrompts = (term) => {
+	useEffect(() => {
+		if (data && data.midjourney.categories) {
+			setCategories(data.midjourney.categories);
+			setActiveCategory(data.midjourney.categories[0]);
+		}
+	}, [data]);
+
+	const filterPrompts = (term, promptsToFilter) => {
 		const searchType = document.getElementById("searchType").value;
-		let promptsToFilter;
 
 		if (searchType === "advanced") {
 			promptsToFilter = data.midjourney.categories.flatMap(
@@ -44,15 +54,8 @@ export default function Main({ data, searchTerm }) {
 		const filtered = promptsToFilter.filter((prompt) =>
 			prompt.prompt_text.toLowerCase().includes(term.toLowerCase())
 		);
-		setFilteredPrompts(filtered);
+		return filtered;
 	};
-
-	useEffect(() => {
-		if (data && data.midjourney.categories) {
-			setCategories(data.midjourney.categories);
-			setActiveCategory(data.midjourney.categories[0]);
-		}
-	}, [data]);
 
 	const handleCategoryClick = (category) => {
 		setActiveCategory(category);
@@ -99,6 +102,7 @@ export default function Main({ data, searchTerm }) {
 					))}
 				</ul>
 			</SideMenu>
+
 			<PromptsContainer>
 				{filteredPrompts.length === 0 ? (
 					<h2>Nenhum Prompt foi encontrado</h2>

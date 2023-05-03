@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
-import Main from "../components/Main/Main";
-import data from "../midjourney.json";
+import Main from "@/components/Midjourney/Main/Main";
+import data from "@/components/Midjourney/midjourney.json";
 
-export default function Home({ data, searchTerm }) {
+export default function Home({ data }) {
+	const [filteredPrompts, setFilteredPrompts] = useState([]);
+
 	return (
 		<>
 			<Head>
@@ -14,7 +16,11 @@ export default function Home({ data, searchTerm }) {
 				/>
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<Main data={data} searchTerm={searchTerm} />
+			<Main
+				data={data}
+				filteredPrompts={filteredPrompts}
+				setFilteredPrompts={setFilteredPrompts}
+			/>
 		</>
 	);
 }

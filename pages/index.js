@@ -1,23 +1,76 @@
 import React from "react";
 import Head from "next/head";
-import {
-	Button,
-	ButtonsContainer,
-	HomeContainer,
-	Logo,
-} from "../styles/HomeStyles";
-import IndexHeader from "@/components/Header/IndexHeader";
-import IndexFooter from "@/components/Footer/IndexFooter";
+import { ThemeProvider } from "styled-components";
+import { lightTheme, darkTheme } from "@/styles/theme";
+import { useSearch } from "@/SearchContext";
+import { useRouter } from "next/router";
 import {
 	AdvancedSearch,
 	SearchBar,
 	SearchIcon,
 	SearchInput,
-} from "@/components/Header/HeaderStyles";
-import { ThemeProvider } from "styled-components";
-import { lightTheme, darkTheme } from "../styles/theme";
+} from "@/components/Midjourney/Header/HeaderStyles";
+import {
+	Button,
+	ButtonsContainer,
+	HomeContainer,
+	Logo,
+} from "@/styles/HomeStyles";
+import IndexHeader from "@/components/Home/Header/IndexHeader";
+import IndexFooter from "@/components/Home/Footer/IndexFooter";
+import data from "@/components/Midjourney/midjourney.json";
+import Link from "next/link";
 
 export default function Home({ theme, toggleTheme }) {
+	const { searchTerm, handleSearch } = useSearch();
+	const router = useRouter();
+
+	const handleSearchInput = (e) => {
+		handleSearch(e.target.value);
+	};
+
+	const filterPrompts = (keyword) => {
+		if (!keyword) return;
+
+		const prompts = [];
+
+		data.midjourney.categories.forEach((category) => {
+			prompts.push(...category.prompts);
+		});
+
+		const filtered = prompts.filter((prompt) => {
+			const promptText = prompt.prompt_text || "";
+			const imageAlt = prompt.image_alt || "";
+
+			return (
+				promptText.toLowerCase().includes(keyword.toLowerCase()) ||
+				imageAlt.toLowerCase().includes(keyword.toLowerCase())
+			);
+		});
+	};
+
+	const handleButtonClick = () => {
+		if (searchTerm) {
+			filterPrompts(searchTerm);
+			const advancedSearchSelect = document.getElementById(
+				"advanced-search-select"
+			);
+			const selectedOption = advancedSearchSelect.value;
+
+			if (selectedOption === "midjourney") {
+				router.push("/midjourney");
+			} else if (selectedOption === "chatgpt") {
+				router.push("/chatgpt");
+			}
+		}
+	};
+
+	const handleKeyPress = (e) => {
+		if (e.key === "Enter") {
+			handleButtonClick();
+		}
+	};
+
 	return (
 		<>
 			<Head>
@@ -35,7 +88,10 @@ export default function Home({ theme, toggleTheme }) {
 						type="text"
 						placeholder="Pesquisar prompt..."
 						style={{ paddingLeft: "calc(101px + 1rem)" }}
+						onChange={handleSearchInput}
+						onKeyPress={handleKeyPress}
 					/>
+
 					<AdvancedSearch htmlFor="advanced-search-select">
 						<select id="advanced-search-select" name="advanced-search-select">
 							<option value="midjourney" selected>
@@ -49,8 +105,10 @@ export default function Home({ theme, toggleTheme }) {
 				</SearchBar>
 
 				<ButtonsContainer>
-					<Button>Pesquisar prompt</Button>
-					<Button>Ferramentas úteis</Button>
+					<Button onClick={handleButtonClick}>Pesquisar prompt</Button>
+					<Link href="/ferramentas-uteis">
+						<Button>Ferramentas úteis</Button>
+					</Link>
 				</ButtonsContainer>
 			</HomeContainer>
 			<IndexFooter />

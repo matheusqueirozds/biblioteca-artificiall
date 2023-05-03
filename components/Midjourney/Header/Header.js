@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
 	HeaderContainer,
 	Logo,
@@ -8,17 +8,21 @@ import {
 	NavMenu,
 	NavItem,
 	DarkModeToggle,
+	HamburgerMenu,
+	HamburgerCheckbox,
+	HamburgerSpan,
 } from "./HeaderStyles";
+import { useSearch } from "@/SearchContext";
 
 export default function Header({ toggleTheme, onSearch, onResetCategory }) {
-	const [searchTerm, setSearchTerm] = useState("");
+	const { searchTerm, handleSearch } = useSearch();
 
-	const handleSearch = (event) => {
-		setSearchTerm(event.target.value);
-		if (event.target.value === "") {
+	const handleInputChange = (e) => {
+		handleSearch(e.target.value);
+		if (e.target.value === "") {
 			onResetCategory();
 		} else {
-			onSearch(event.target.value);
+			onSearch(e.target.value);
 		}
 	};
 
@@ -30,7 +34,7 @@ export default function Header({ toggleTheme, onSearch, onResetCategory }) {
 					type="text"
 					placeholder="Escreva alguma palavra (em inglês)..."
 					value={searchTerm}
-					onChange={handleSearch}
+					onChange={handleInputChange}
 				/>
 				<AdvancedSearch>
 					<select id="searchType" name="searchType">
@@ -44,7 +48,7 @@ export default function Header({ toggleTheme, onSearch, onResetCategory }) {
 
 			<NavMenu>
 				<NavItem href="/midjourney">Midjourney</NavItem>
-				<NavItem href="/sobre-chatgpt">ChatGPT</NavItem>
+				<NavItem href="/chatgpt">ChatGPT</NavItem>
 			</NavMenu>
 			<DarkModeToggle onClick={toggleTheme}>Modo Escuro</DarkModeToggle>
 		</HeaderContainer>

@@ -110,3 +110,62 @@ export const SearchIcon = styled.img`
 	height: 20px;
 	cursor: pointer;
 `;
+
+export const HamburgerMenu = styled.label`
+	display: block;
+	position: relative;
+	cursor: pointer;
+	width: 50px;
+	height: 40px;
+`;
+
+export const HamburgerCheckbox = styled.input.attrs({
+	type: "checkbox",
+})`
+	-webkit-appearance: none;
+	display: none;
+	visibility: hidden;
+`;
+
+export const HamburgerSpan = styled.span`
+	position: absolute;
+	width: 45px;
+	height: 7px;
+	background: #f1faee;
+	border-radius: 100px;
+	display: inline-block;
+	transition: 0.3s ease;
+	left: 0;
+
+	&.top {
+		top: 0;
+	}
+
+	&.middle {
+		top: 17px;
+	}
+
+	&.bottom {
+		bottom: 0;
+	}
+
+	${HamburgerCheckbox}:checked ~ &.top {
+		transform: rotate(45deg);
+		transform-origin: top left;
+		width: 48px;
+		left: 5px;
+	}
+
+	${HamburgerCheckbox}:checked ~ &.bottom {
+		transform: rotate(-45deg);
+		transform-origin: top left;
+		width: 48px;
+		bottom: -1px;
+		box-shadow: 0 0 10px #495057;
+	}
+
+	${HamburgerCheckbox}:checked ~ &.middle {
+		transform: translateX(-20px);
+		opacity: 0;
+	}
+`;

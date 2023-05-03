@@ -1,6 +1,6 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-const widthHeader = "97px";
+const widthHeader = "74px";
 
 export const MainContainer = styled.main`
 	display: flex;
@@ -13,7 +13,6 @@ export const SideMenu = styled.aside`
 	top: ${widthHeader};
 	left: 0;
 	z-index: 998;
-	display: ${({ isHidden }) => (isHidden ? "none" : "block")};
 	width: 250px;
 	height: 100vh;
 	padding: 1rem 0;
