@@ -11,8 +11,12 @@ import {
 	HamburgerMenu,
 	HamburgerCheckbox,
 	HamburgerSpan,
+	RightContainer,
+	LeftContainer,
+	SearchIcon,
 } from "./HeaderStyles";
 import { useSearch } from "@/SearchContext";
+import Link from "next/link";
 
 export default function Header({ toggleTheme, onSearch, onResetCategory }) {
 	const { searchTerm, handleSearch } = useSearch();
@@ -28,29 +32,47 @@ export default function Header({ toggleTheme, onSearch, onResetCategory }) {
 
 	return (
 		<HeaderContainer>
-			<Logo>Biblioteca Artificiall</Logo>
-			<SearchBar>
-				<SearchInput
-					type="text"
-					placeholder="Escreva alguma palavra (em inglês)..."
-					value={searchTerm}
-					onChange={handleInputChange}
-				/>
-				<AdvancedSearch>
-					<select id="searchType" name="searchType">
-						<option value="advanced" selected>
-							Todas as categorias
-						</option>
-						<option value="simple">Categoria atual</option>
-					</select>
-				</AdvancedSearch>
-			</SearchBar>
+			<div>
+				<LeftContainer>
+					<Link href="/" style={{ textDecoration: "none", opacity: "1" }}>
+						<Logo src="./logo-head.webp" alt="Biblioteca Artificiall" />
+					</Link>
+					<SearchBar>
+						<SearchInput
+							type="text"
+							placeholder="Pesquisar prompt"
+							value={searchTerm}
+							onChange={handleInputChange}
+							style={{ paddingLeft: "calc(165px + 2.5rem)" }}
+						/>
+						<AdvancedSearch>
+							<select id="searchType" name="searchType">
+								<option value="advanced" selected>
+									Todas as categorias
+								</option>
+								<option value="simple">Categoria atual</option>
+							</select>
+						</AdvancedSearch>
 
-			<NavMenu>
-				<NavItem href="/midjourney">Midjourney</NavItem>
-				<NavItem href="/chatgpt">ChatGPT</NavItem>
-			</NavMenu>
-			<DarkModeToggle onClick={toggleTheme}>Modo Escuro</DarkModeToggle>
+						<SearchIcon
+							src="./search.svg"
+							alt="Ícone de pesquisa"
+							style={{ left: "11rem" }}
+						/>
+					</SearchBar>
+				</LeftContainer>
+
+				<RightContainer>
+					<NavMenu>
+						<Link href="/">
+							<NavItem>Página inicial</NavItem>
+						</Link>
+						<NavItem href="/midjourney">Midjourney</NavItem>
+						<NavItem href="/chatgpt">ChatGPT</NavItem>
+					</NavMenu>
+					<DarkModeToggle onClick={toggleTheme}>Modo Escuro</DarkModeToggle>
+				</RightContainer>
+			</div>
 		</HeaderContainer>
 	);
 }

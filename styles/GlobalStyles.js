@@ -11,7 +11,7 @@ const GlobalStyles = createGlobalStyle`
 
   body {
     font-family: 'Roboto', sans-serif;
-    background-color: ${({ theme }) => theme.bodyBackground};
+    background-color: #fff;
     color: ${({ theme }) => theme.bodyText};
     line-height: 1.6;
     ::-webkit-scrollbar{
@@ -25,13 +25,14 @@ const GlobalStyles = createGlobalStyle`
 
   a {
     text-decoration: none;
-    color: ${({ theme }) => theme.linkColor};
-    transition: color 0.3s;
-    opacity: .9;
+    color: inherit;
+    transition: all 0.3s;
+    opacity: .87;
 
 
 &:hover {
 opacity: 1;
+text-decoration:underline;
 }}
 
   button {

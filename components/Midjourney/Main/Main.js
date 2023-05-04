@@ -5,6 +5,7 @@ import {
 	PromptsContainer,
 	PromptsList,
 	Subcategory,
+	NoResultsContainer,
 } from "./MainStyles";
 import Prompt from "@/components/Midjourney/Prompt/Prompt";
 import ImageModal from "@/components/Midjourney/ImageModal/ImageModal";
@@ -105,7 +106,9 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 
 			<PromptsContainer>
 				{filteredPrompts.length === 0 ? (
-					<h2>Nenhum Prompt foi encontrado</h2>
+					<NoResultsContainer>
+						<h2>Nenhum Prompt foi encontrado</h2>
+					</NoResultsContainer>
 				) : (
 					Object.keys(subcategories).map((subcategory) => (
 						<Subcategory key={subcategory}>

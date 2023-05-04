@@ -17,9 +17,9 @@ import {
 	Logo,
 } from "@/styles/HomeStyles";
 import IndexHeader from "@/components/Home/Header/IndexHeader";
-import IndexFooter from "@/components/Home/Footer/IndexFooter";
 import data from "@/components/Midjourney/midjourney.json";
 import Link from "next/link";
+import Footer from "@/components/Global/Main/Footer/Footer";
 
 export default function Home({ theme, toggleTheme }) {
 	const { searchTerm, handleSearch } = useSearch();
@@ -86,8 +86,8 @@ export default function Home({ theme, toggleTheme }) {
 				<SearchBar style={{ marginBottom: "30px" }}>
 					<SearchInput
 						type="text"
-						placeholder="Pesquisar prompt..."
-						style={{ paddingLeft: "calc(101px + 1rem)" }}
+						title="Pesquisar"
+						style={{ paddingLeft: "calc(101px + 3.3rem)" }}
 						onChange={handleSearchInput}
 						onKeyPress={handleKeyPress}
 					/>
@@ -111,7 +111,7 @@ export default function Home({ theme, toggleTheme }) {
 					</Link>
 				</ButtonsContainer>
 			</HomeContainer>
-			<IndexFooter />
+			<Footer />
 		</>
 	);
 }

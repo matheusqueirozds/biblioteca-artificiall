@@ -8,7 +8,7 @@ export const PromptContainer = styled.li`
 	gap: 1rem;
 	align-items: center;
 	justify-content: space-between;
-	background-color: ${({ theme }) => theme.bodyBackground};
+	background-color: #fff;
 	color: ${({ theme }) => theme.bodyText};
 	border-radius: 8px;
 	padding: 1rem;
@@ -32,8 +32,23 @@ export const ButtonsWrapper = styled.div`
 export const Button = styled.button`
 	background-color: ${({ theme }) => theme.buttonColor};
 	color: ${({ theme }) => theme.buttonText};
+	background-color: transparent;
+	transition: all 0.3s;
+
+	&:nth-child(1) {
+		background-color: #4caf50;
+	}
+
+	&:nth-child(2) {
+		background-color: #ff5722;
+	}
+
+	&:nth-child(3) {
+		background-color: #2196f3;
+	}
 
 	&:nth-child(4) {
+		background-color: ${({ theme }) => theme.buttonColor};
 		width: 100%;
 	}
 `;
@@ -80,7 +95,7 @@ export const EditableText = styled.textarea`
 		border: 1px solid $primary-color;
 		border-radius: 3px;
 		padding: 0.5rem;
-		height: 8rem;
+		height: 105px;
 	}
 `;
 

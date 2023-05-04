@@ -18,10 +18,16 @@ export default function Prompt({ prompt, onViewImageClick }) {
 
 	const { prompt_text, image_url, image_alt } = prompt;
 	const [copyButtonText, setCopyButtonText] = useState("Copiar");
+	const [copyButtonColor, setCopyButtonColor] = useState("");
 	const [copyButtonBackgroundColor, setCopyButtonBackgroundColor] =
 		useState("");
 	const [translateButtonText, setTranslateButtonText] = useState("Traduzir");
+	const [translateButtonColor, setTranslateButtonColor] = useState("");
 	const [translateButtonBackgroundColor, setTranslateButtonBackgroundColor] =
+		useState("");
+	const [resetButtonText, setResetButtonText] = useState("Resetar texto");
+	const [resetButtonColor, setResetButtonColor] = useState("");
+	const [resetButtonBackgroundColor, setResetButtonBackgroundColor] =
 		useState("");
 	const [translated, setTranslated] = useState(false);
 	const [text, setText] = useState(editablePart);
@@ -29,28 +35,14 @@ export default function Prompt({ prompt, onViewImageClick }) {
 	const handleCopyClick = () => {
 		const fullText = nonEditablePart + text;
 		navigator.clipboard.writeText(fullText);
-		setCopyButtonText("Copiado");
-		setCopyButtonBackgroundColor("#4CAF50");
+		setCopyButtonText("Copiado!");
+		setCopyButtonColor("#FFFFFF");
+		setCopyButtonBackgroundColor("#81C784");
 		setTimeout(() => {
 			setCopyButtonText("Copiar");
+			setCopyButtonColor("");
 			setCopyButtonBackgroundColor("");
 		}, 2000);
-	};
-
-	const handleTranslateClick = async () => {
-		if (!translated) {
-			const translatedText = await translateText(text, "pt-BR");
-			setText(translatedText);
-			setTranslateButtonText("Desfazer tradução");
-			setTranslateButtonBackgroundColor("#e74c3c");
-			setTranslated(true);
-		} else {
-			const translatedText = await translateText(text, "en");
-			setText(translatedText);
-			setTranslateButtonText("Traduzir");
-			setTranslateButtonBackgroundColor("");
-			setTranslated(false);
-		}
 	};
 
 	const handleResetTextClick = () => {
@@ -58,6 +50,32 @@ export default function Prompt({ prompt, onViewImageClick }) {
 		setTranslateButtonText("Traduzir");
 		setTranslateButtonBackgroundColor("");
 		setTranslated(false);
+		setResetButtonText("Resetado!");
+		setResetButtonColor("#FFFFFF");
+		setResetButtonBackgroundColor("#FF8A65");
+		setTimeout(() => {
+			setResetButtonText("Resetar texto");
+			setResetButtonColor("");
+			setResetButtonBackgroundColor("");
+		}, 1000);
+	};
+
+	const handleTranslateClick = async () => {
+		if (!translated) {
+			const translatedText = await translateText(text, "pt-BR");
+			setText(translatedText);
+			setTranslateButtonText("Desfazer tradução");
+			setTranslateButtonColor("#FFFFFF");
+			setTranslateButtonBackgroundColor("#64B5F6");
+			setTranslated(true);
+		} else {
+			const translatedText = await translateText(text, "en");
+			setText(translatedText);
+			setTranslateButtonText("Traduzir");
+			setTranslateButtonColor("");
+			setTranslateButtonBackgroundColor("");
+			setTranslated(false);
+		}
 	};
 
 	const handleViewImageClick = () => {
@@ -98,18 +116,29 @@ export default function Prompt({ prompt, onViewImageClick }) {
 				<CopyButton
 					onClick={handleCopyClick}
 					backgroundColor={copyButtonBackgroundColor}
+					textColor={copyButtonColor}
 					text={copyButtonText}
 				/>
-				<ResetTextButton onClick={handleResetTextClick} />
+				<ResetTextButton
+					onClick={handleResetTextClick}
+					backgroundColor={resetButtonBackgroundColor}
+					textColor={resetButtonColor}
+					text={resetButtonText}
+				/>
 				<TranslateButton
 					onClick={handleTranslateClick}
 					backgroundColor={translateButtonBackgroundColor}
+					textColor={translateButtonColor}
 					text={translateButtonText}
 				/>
 			</ButtonsWrapper>
 			<TextAreaWrapper>
 				<NonEditableText>{nonEditablePart}</NonEditableText>
-				<EditableText value={text} onChange={handleTextChange} title="Clique aqui para editar o texto" />
+				<EditableText
+					value={text}
+					onChange={handleTextChange}
+					title="Clique aqui para editar o texto"
+				/>
 			</TextAreaWrapper>
 			<PromptImage
 				src={image_url}

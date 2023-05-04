@@ -19,7 +19,8 @@ export const Nav = styled.nav`
 `;
 
 export const NavLink = styled.a`
-	color: ${({ theme }) => theme.headerBackground};
+	font-size: 13px;
+	color: #000000;
 	margin-left: 1.5rem;
 	text-decoration: none;
 	display: flex;
@@ -27,16 +28,14 @@ export const NavLink = styled.a`
 	transition: all 0.3s;
 
 	&:hover {
-		text-decoration: underline;
 		transform: translateY(-3px);
 	}
 `;
 
 export const Icon = styled.img`
-	width: 24px;
-	height: 24px;
+	width: 20px;
+	height: 20px;
 	margin-right: 5px;
-	fill: ${({ theme }) => theme.headerBackground};
 `;
 
 export const DarkModeToggle = styled.button`

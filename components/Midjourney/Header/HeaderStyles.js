@@ -6,18 +6,26 @@ export const HeaderContainer = styled.header`
 	left: 0;
 	width: 100%;
 	z-index: 1000;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	padding: 1rem;
-	background-color: ${({ theme }) => theme.headerBackground};
-	color: ${({ theme }) => theme.headerText};
+	background-color: #ffffff;
+	color: #000;
+	border-bottom: 1px solid #dadce0;
+
+	div {
+		display: flex;
+	}
 `;
 
-export const Logo = styled.div`
-	font-size: 1.5rem;
-	font-weight: bold;
-	color: ${({ theme }) => theme.headerText};
+export const LeftContainer = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 2rem;
+	width: 100%;
+`;
+
+export const Logo = styled.img`
+	width: 64px;
+	border-radius: 50%;
 `;
 
 export const SearchBar = styled.div`
@@ -52,13 +60,14 @@ export const SearchInput = styled.input`
 
 export const AdvancedSearch = styled.div`
 	position: absolute;
+	left: 0;
 
 	select {
 		appearance: none;
 		cursor: pointer;
 		font-size: 14px;
 		border: none;
-		background-color: #f3f3f3;
+		background-color: #f2f2f2;
 		padding: 0.5rem 1rem;
 		padding-right: 1.5rem;
 		height: 40px;
@@ -83,6 +92,8 @@ export const AdvancedSearch = styled.div`
 	}
 `;
 
+export const RightContainer = styled(LeftContainer)``;
+
 export const NavMenu = styled.nav`
 	display: flex;
 	align-items: center;
@@ -105,67 +116,7 @@ export const DarkModeToggle = styled.button`
 
 export const SearchIcon = styled.img`
 	position: absolute;
-	right: 1rem;
-	width: 20px;
-	height: 20px;
-	cursor: pointer;
-`;
-
-export const HamburgerMenu = styled.label`
-	display: block;
-	position: relative;
-	cursor: pointer;
-	width: 50px;
-	height: 40px;
-`;
-
-export const HamburgerCheckbox = styled.input.attrs({
-	type: "checkbox",
-})`
-	-webkit-appearance: none;
-	display: none;
-	visibility: hidden;
-`;
-
-export const HamburgerSpan = styled.span`
-	position: absolute;
-	width: 45px;
-	height: 7px;
-	background: #f1faee;
-	border-radius: 100px;
-	display: inline-block;
-	transition: 0.3s ease;
-	left: 0;
-
-	&.top {
-		top: 0;
-	}
-
-	&.middle {
-		top: 17px;
-	}
-
-	&.bottom {
-		bottom: 0;
-	}
-
-	${HamburgerCheckbox}:checked ~ &.top {
-		transform: rotate(45deg);
-		transform-origin: top left;
-		width: 48px;
-		left: 5px;
-	}
-
-	${HamburgerCheckbox}:checked ~ &.bottom {
-		transform: rotate(-45deg);
-		transform-origin: top left;
-		width: 48px;
-		bottom: -1px;
-		box-shadow: 0 0 10px #495057;
-	}
-
-	${HamburgerCheckbox}:checked ~ &.middle {
-		transform: translateX(-20px);
-		opacity: 0;
-	}
+	left: 7.5rem;
+	width: 18px;
+	height: 18px;
 `;

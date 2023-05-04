@@ -4,7 +4,7 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "@/styles/theme";
 import GlobalStyles from "@/styles/GlobalStyles.js";
 import Header from "@/components/Midjourney/Header/Header";
-import Footer from "@/components/Midjourney/Footer/Footer";
+import Footer from "@/components/Global/Main/Footer/Footer";
 import IndexHeader from "@/components/Home/Header/IndexHeader";
 
 export default function MyApp({ Component, pageProps }) {
