@@ -14,7 +14,6 @@ export const HomeContainer = styled.div`
 
 export const Logo = styled.img`
 	width: 200px;
-	margin-bottom: 2rem;
 `;
 
 export const ButtonsContainer = styled.div`
