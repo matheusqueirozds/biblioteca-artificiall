@@ -17,7 +17,7 @@ export default function EmContrucao() {
 			<div>
 				<h1>Página em construção</h1>
 				<p>
-					Desculpe o transtorno, estamos trabalhando para melhorar esta página.
+					Esta página será atualizada em breve!
 				</p>
 			</div>
 		</Container>
