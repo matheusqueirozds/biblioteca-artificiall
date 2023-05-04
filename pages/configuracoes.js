@@ -18,7 +18,7 @@ export default function sobre({ theme, toggleTheme }) {
 			</ThemeProvider>
 
 			<AdditionalInfoContainer>
-				<Container />
+				<ContainerWrapper />
 				<BackToHome />
 			</AdditionalInfoContainer>
 
