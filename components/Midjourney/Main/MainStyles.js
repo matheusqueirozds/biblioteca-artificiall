@@ -24,6 +24,22 @@ export const SideMenu = styled.aside`
 		0 0.0625rem 0.125rem rgba(0, 0, 0, 0.24);
 	overflow-y: auto;
 
+	::-webkit-scrollbar {
+		display: none;
+		width: 6px;
+		background-color: transparent;
+		transition: all 0.3s;
+	}
+
+	&:hover::-webkit-scrollbar {
+		display: block;
+	}
+
+	::-webkit-scrollbar-thumb {
+		border-radius: 4px;
+		background-color: #dadce0;
+	}
+
 	h2 {
 		padding: 0 2rem;
 		margin-bottom: 1.125rem;
