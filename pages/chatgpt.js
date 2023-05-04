@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import Main from "@/components/Global/Main/EmContrucao";
+import Main from "@/components/Global/Main/AdditionalInfo";
 
 export default function SobreChatGPT() {
 	return (
@@ -11,7 +11,7 @@ export default function SobreChatGPT() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<h1>Sobre o ChatGPT</h1>
-			<Main/>
+			<Main />
 		</>
 	);
 }

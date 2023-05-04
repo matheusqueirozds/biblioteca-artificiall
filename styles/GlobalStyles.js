@@ -1,6 +1,11 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
+/* @font-face {
+    font-family: "Valorant";
+    src: url("/Valorant-Font.ttf") format("truetype");
+  } */
+
   *,
   *::before,
   *::after {
@@ -10,7 +15,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: 'Roboto', sans-serif;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background-color: #fff;
     color: ${({ theme }) => theme.bodyText};
     line-height: 1.6;
@@ -57,7 +62,14 @@ text-decoration:underline;
     height: auto;
   }
 
-  h1, h2, h3, h4, h5, h6, p {
+  h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 1rem;
+    color: #2c3357;
+    font-weight:600;
+  }
+
+
+  p {
     margin-bottom: 1rem;
   }
 `;

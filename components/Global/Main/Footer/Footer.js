@@ -19,7 +19,7 @@ const Footer = () => {
 							<li>Sobre</li>
 						</Link>
 						<Link href="/como-funciona">
-							<li>Como funciona a pesquisa</li>
+							<li>Como funciona a plataforma</li>
 						</Link>
 					</FooterList>
 				</LeftLinks>
