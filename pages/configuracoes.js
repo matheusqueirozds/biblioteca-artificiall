@@ -1,8 +1,7 @@
+import { Container } from "@/components/Global/Main/AdditionalInfo";
 import {
 	AdditionalInfoContainer,
 	BackToHome,
-	Container,
-	ContainerWrapper,
 } from "@/components/Global/Main/AdditionalInfo";
 import Footer from "@/components/Global/Main/Footer/Footer";
 import IndexHeader from "@/components/Home/Header/IndexHeader";
@@ -18,7 +17,7 @@ export default function sobre({ theme, toggleTheme }) {
 			</ThemeProvider>
 
 			<AdditionalInfoContainer>
-				<ContainerWrapper />
+				<Container />
 				<BackToHome />
 			</AdditionalInfoContainer>
 

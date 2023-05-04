@@ -1,6 +1,29 @@
-import ContainerWrapper from "@/components/Global/Main/AdditionalInfo";
+import { Container } from "@/components/Global/Main/AdditionalInfo";
+import {
+	AdditionalInfoContainer,
+	BackToHome,
+} from "@/components/Global/Main/AdditionalInfo";
+import Footer from "@/components/Global/Main/Footer/Footer";
+import IndexHeader from "@/components/Home/Header/IndexHeader";
+import { darkTheme, lightTheme } from "@/styles/theme";
 import React from "react";
+import { ThemeProvider } from "styled-components";
 
-export default function ferramentasUteis() {
-	return <ContainerWrapper />;
+export default function ferramentasUteis({ theme, toggleTheme }) {
+	return (
+		<>
+			<ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
+				<IndexHeader toggleTheme={toggleTheme} />
+			</ThemeProvider>
+
+			<AdditionalInfoContainer>
+				<Container />
+				<BackToHome />
+			</AdditionalInfoContainer>
+
+			<Footer />
+		</>
+	);
 }
+
+ferramentasUteis.noLayout = true;
