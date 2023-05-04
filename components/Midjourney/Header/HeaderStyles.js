@@ -6,7 +6,7 @@ export const HeaderContainer = styled.header`
 	left: 0;
 	width: 100%;
 	z-index: 1000;
-	background-color: #ffffff;
+	background-color: #fafafa;
 	color: #000;
 	border-bottom: 1px solid #dadce0;
 
@@ -92,7 +92,9 @@ export const AdvancedSearch = styled.div`
 	}
 `;
 
-export const RightContainer = styled(LeftContainer)``;
+export const RightContainer = styled(LeftContainer)`
+	color: #000;
+`;
 
 export const NavMenu = styled.nav`
 	display: flex;
@@ -103,14 +105,14 @@ export const NavItem = styled.a`
 	margin-right: 1rem;
 	background-color: transparent;
 	border: none;
-	color: ${({ theme }) => theme.headerText};
+	color: #000;
 	cursor: pointer;
 `;
 
 export const DarkModeToggle = styled.button`
 	background-color: transparent;
 	border: none;
-	color: ${({ theme }) => theme.headerText};
+	color: #000;
 	cursor: pointer;
 `;
 

@@ -8,9 +8,6 @@ import {
 	NavMenu,
 	NavItem,
 	DarkModeToggle,
-	HamburgerMenu,
-	HamburgerCheckbox,
-	HamburgerSpan,
 	RightContainer,
 	LeftContainer,
 	SearchIcon,
@@ -35,7 +32,7 @@ export default function Header({ toggleTheme, onSearch, onResetCategory }) {
 			<div>
 				<LeftContainer>
 					<Link href="/" style={{ textDecoration: "none", opacity: "1" }}>
-						<Logo src="./logo-head.webp" alt="Biblioteca Artificiall" />
+						<Logo src="./logo.webp" alt="Biblioteca Artificiall" />
 					</Link>
 					<SearchBar>
 						<SearchInput
