@@ -6,6 +6,8 @@ import {
 	PromptsList,
 	Subcategory,
 	NoResultsContainer,
+	ChevronButton,
+	CategoriesList,
 } from "./MainStyles";
 import Prompt from "@/components/Midjourney/Prompt/Prompt";
 import ImageModal from "@/components/Midjourney/ImageModal/ImageModal";
@@ -17,6 +19,8 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [modalImage, setModalImage] = useState({ url: "", alt: "" });
 	const { searchTerm } = useSearch();
+	const [sideMenuWidth, setSideMenuWidth] = useState(250);
+	const [collapsed, setCollapsed] = useState(false);
 
 	useEffect(() => {
 		if (searchTerm) {
@@ -67,6 +71,10 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 		setIsModalOpen(true);
 	};
 
+	const toggleSideMenu = () => {
+		setCollapsed(!collapsed);
+	};
+
 	if (!activeCategory) {
 		return <div>Carregando...</div>;
 	}
@@ -89,22 +97,42 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 
 	return (
 		<MainContainer>
-			<SideMenu>
-				<h2>Categorias</h2>
-				<ul>
-					{categories.map((category) => (
-						<li
-							key={category.name}
-							onClick={() => handleCategoryClick(category)}
-							className={category === activeCategory ? "active" : ""}
-						>
-							{category.name}
-						</li>
-					))}
-				</ul>
+			<SideMenu collapsed={collapsed}>
+				<ChevronButton onClick={toggleSideMenu}>
+					<div>
+						<img
+							src="/chevron-right.svg"
+							alt="Ver menu lateral"
+							title="Ver menu lateral"
+							style={{ display: collapsed ? "block" : "none" }}
+						/>
+						<img
+							src="/chevron-left.svg"
+							alt="Ocultar menu lateral"
+							title="Ocultar menu lateral"
+							style={{ display: collapsed ? "none" : "block" }}
+						/>
+					</div>
+				</ChevronButton>
+				{!collapsed && (
+					<>
+						<h2>Categorias</h2>
+						<CategoriesList>
+							{categories.map((category) => (
+								<li
+									key={category.name}
+									onClick={() => handleCategoryClick(category)}
+									className={category === activeCategory ? "active" : ""}
+								>
+									{category.name}
+								</li>
+							))}
+						</CategoriesList>
+					</>
+				)}
 			</SideMenu>
 
-			<PromptsContainer>
+			<PromptsContainer collapsed={collapsed}>
 				{filteredPrompts.length === 0 ? (
 					<NoResultsContainer>
 						<h2>Nenhum Prompt foi encontrado</h2>
