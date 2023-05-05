@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const HomeContainer = styled.div`
-	background-color: #ffffff;
+	background-color: #fff;
 	min-height: calc(100vh - 3rem);
 	display: flex;
 	justify-content: center;
@@ -9,6 +9,10 @@ export const HomeContainer = styled.div`
 	flex-direction: column;
 	padding: 2rem;
 	text-align: center;
+
+	@media screen and (max-width: 1024px) {
+		min-height: 80vh;
+	}
 `;
 
 export const Logo = styled.img`

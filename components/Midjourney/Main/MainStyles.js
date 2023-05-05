@@ -8,6 +8,10 @@ export const MainContainer = styled.main`
 	background-color: #fafafa;
 	color: #666;
 	padding-bottom: ${widthFooter};
+
+	@media screen and (max-width: 1024px) {
+		padding-bottom: 0;
+	}
 `;
 
 export const SideMenu = styled.aside`
@@ -35,6 +39,23 @@ export const SideMenu = styled.aside`
 		padding: 0 2rem;
 		margin-bottom: 1.125rem;
 	}
+
+	@media screen and (max-width: 1024px) {
+		display: flex;
+		align-items: center;
+		top: calc(${widthHeader} - 0.6rem);
+		height: auto;
+		padding: 0;
+		width: 100%;
+
+		h2 {
+			margin-bottom: 0;
+		}
+	}
+
+	@media screen and (max-width: 1024px) {
+		top: calc(${widthHeader} - 0.8rem);
+	}
 `;
 
 export const ChevronButton = styled.button`
@@ -44,6 +65,10 @@ export const ChevronButton = styled.button`
 	background-color: transparent;
 	border: none;
 	cursor: pointer;
+
+	@media screen and (max-width: 1024px) {
+		display: none;
+	}
 `;
 
 export const CategoriesList = styled.ul`
@@ -85,12 +110,25 @@ export const CategoriesList = styled.ul`
 		border-radius: 4px;
 		background-color: #dadce0;
 	}
+
+	@media screen and (max-width: 1024px) {
+		flex-direction: row;
+		max-height: auto;
+		overflow-x: auto;
+		overflow-y: hidden;
+		white-space: nowrap;
+
+		li {
+			display: inline-block;
+			padding: 1rem 2rem;
+		}
+	}
 `;
 
 export const PromptsContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	margin-top: calc(${widthHeader} + 1rem);
+	margin-top: calc(${widthHeader} + 1.9rem);
 	width: 100%;
 
 	${({ collapsed }) =>
@@ -103,6 +141,11 @@ export const PromptsContainer = styled.div`
 					margin-left: calc(250px + 1.5rem);
 					transition: all 0.3s ease;
 			  `}
+
+	@media screen and (max-width: 1024px) {
+		margin-top: calc(${widthHeader} + 5rem);
+		margin-left: 0;
+	}
 `;
 
 export const NoResultsContainer = styled.div`
@@ -135,12 +178,27 @@ export const PromptsList = styled.ul`
 	&::-webkit-scrollbar {
 		display: none;
 	}
+
+	@media screen and (max-width: 1024px) {
+		display: flex;
+		margin-right: 0;
+	}
 `;
 
 export const Subcategory = styled.div`
 	margin-bottom: 3rem;
 
 	h3 {
+		font-family: "Valorant", sans-serif;
+		font-size: 2rem;
+		text-align: center;
 		text-transform: uppercase;
+		margin-bottom: 0;
+	}
+
+	@media screen and (max-width: 1024px) {
+		h3 {
+			font-size: 1.5rem;
+		}
 	}
 `;

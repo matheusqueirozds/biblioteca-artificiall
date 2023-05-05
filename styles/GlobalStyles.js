@@ -1,10 +1,10 @@
 import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
-/* @font-face {
+@font-face {
     font-family: "Valorant";
     src: url("/Valorant-Font.ttf") format("truetype");
-  } */
+  }
 
   *,
   *::before,

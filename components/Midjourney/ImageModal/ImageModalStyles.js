@@ -19,8 +19,8 @@ export const ModalContent = styled.div`
 	background-color: #ffffff;
 	padding: 20px;
 	border-radius: 4px;
-	max-width: 90vh;
-	max-height: 90vw;
+	max-width: 90vw;
+	max-height: 90vh;
 	overflow: auto;
 	z-index: 1000;
 `;

@@ -44,6 +44,10 @@ export const SearchBar = styled.div`
 		box-shadow: 0 1px 6px rgb(32 33 36 / 28%);
 		border-color: rgba(223, 225, 229, 0);
 	}
+
+	@media screen and (max-width: 768px) {
+		max-width: 560px;
+	}
 `;
 
 export const SearchInput = styled.input`
