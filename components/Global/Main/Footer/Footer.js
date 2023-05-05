@@ -5,7 +5,6 @@ import {
 	FooterWrapper,
 	LeftLinks,
 	RightLinks,
-	TopContainer,
 } from "./FooterStyles";
 import Link from "next/link";
 

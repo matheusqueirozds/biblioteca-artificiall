@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const HomeContainer = styled.div`
 	background-color: #ffffff;
-	color: ${({ theme }) => theme.bodyText};
 	min-height: calc(100vh - 3rem);
 	display: flex;
 	justify-content: center;

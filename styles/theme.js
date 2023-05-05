@@ -7,7 +7,6 @@ const whiteColor = "#ffffff";
 const blackColor = "#000000";
 const lightGrey = "#f0f0f0";
 const darkGrey = "#1a1a1a";
-const translateButtonColor = "#e74c3c"
 
 const lightTheme = {
   headerBackground: primaryColor,

@@ -141,7 +141,7 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 					Object.keys(subcategories).map((subcategory) => (
 						<Subcategory key={subcategory}>
 							<h3>{subcategory}</h3>
-							<PromptsList>
+							<PromptsList collapsed={collapsed}>
 								{subcategories[subcategory].map((prompt) => (
 									<Prompt
 										key={`${prompt.id}-${prompt.prompt_text}`}

@@ -5,8 +5,8 @@ const widthFooter = "109px";
 
 export const MainContainer = styled.main`
 	display: flex;
-	background-color: #fff;
-	color: ${({ theme }) => theme.bodyText};
+	background-color: #fafafa;
+	color: #666;
 	padding-bottom: ${widthFooter};
 `;
 
@@ -18,7 +18,7 @@ export const SideMenu = styled.aside`
 	height: calc(93vh - ${widthFooter});
 	padding: 1rem 0;
 	background-color: #f2f2f2;
-	color: ${({ theme }) => theme.primaryColor};
+	color: #666;
 	box-shadow: 0 0.0625rem 0.1875rem rgba(0, 0, 0, 0.12),
 		0 0.0625rem 0.125rem rgba(0, 0, 0, 0.24);
 
@@ -56,8 +56,8 @@ export const CategoriesList = styled.ul`
 		padding: 1rem 2rem;
 
 		&.active {
-			background-color: ${({ theme }) => theme.buttonColor};
-			color: ${({ theme }) => theme.asideColor};
+			background-color: #3498db;
+			color: #fff;
 		}
 
 		&:hover,
@@ -114,15 +114,23 @@ export const NoResultsContainer = styled.div`
 `;
 
 export const PromptsList = styled.ul`
-	display: flex;
-	flex-wrap: wrap;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
 	gap: 20px;
-	background-color: #f2f2f2;
 	max-width: 100%;
 	border-radius: 20px;
 	padding: 20px;
 	overflow-y: auto;
 	margin-right: 1.5rem;
+
+	${({ collapsed }) =>
+		collapsed
+			? css`
+					grid-template-columns: repeat(4, 1fr);
+			  `
+			: css`
+					grid-template-columns: repeat(3, 1fr);
+			  `}
 
 	&::-webkit-scrollbar {
 		display: none;
