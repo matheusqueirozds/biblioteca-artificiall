@@ -8,6 +8,7 @@ export const MainContainer = styled.main`
 	background-color: #fafafa;
 	color: #666;
 	padding-bottom: ${widthFooter};
+	height: 100vh;
 
 	@media screen and (max-width: 1024px) {
 		padding-bottom: 0;
@@ -19,7 +20,7 @@ export const SideMenu = styled.aside`
 	top: ${widthHeader};
 	left: 0;
 	z-index: 998;
-	height: calc(93vh - ${widthFooter});
+	height: 100%;
 	padding: 1rem 0;
 	background-color: #f2f2f2;
 	color: #666;
