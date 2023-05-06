@@ -15,13 +15,13 @@ export const PromptContainer = styled.li`
 	border: 1px solid #eaeaea;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
 	transition: all 0.15s ease;
-	aspect-ratio: 4 / 4;
 
 	&:hover {
 		box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
 	}
 
 	@media screen and (max-width: 1024px) {
+		aspect-ratio: 4 / 4;
 		flex: 1;
 		max-width: 100%;
 	}

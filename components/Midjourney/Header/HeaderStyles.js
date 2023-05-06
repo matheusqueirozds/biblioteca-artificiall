@@ -96,10 +96,11 @@ export const SearchInput = styled.input`
 	@media screen and (max-width: 375px) {
 		height: 80px;
 		padding-left: 1rem;
+		padding-bottom: 2rem;
 
 		::placeholder {
 			position: absolute;
-			top: 0.8rem;
+			top: 1rem;
 		}
 	}
 `;
@@ -176,7 +177,6 @@ export const NavMenu = styled.nav`
 	display: flex;
 	align-items: center;
 	gap: 30px;
-	overflow-x: scroll;
 `;
 
 export const DarkModeToggle = styled.button`
