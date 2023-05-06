@@ -74,9 +74,47 @@ export default function Home({ theme, toggleTheme }) {
 	return (
 		<>
 			<Head>
-				<title>Biblioteca Artificiall</title>
-				<meta name="description" content="Página inicial do site" />
-				<link rel="icon" href="./favicon.ico" />
+				<meta charset="UTF-8" />
+				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+				<title>
+					Biblioteca Artificiall | Central de ideias para o Midjourney
+				</title>
+
+				{/* SEO meta tags  */}
+				<meta
+					name="description"
+					content="Encontre prompts criativos e inspiradores para o Midjourney."
+				/>
+				<meta
+					name="keywords"
+					content="prompts, escrita, Midjourney, criativo, inspiração"
+				/>
+				<meta name="robots" content="index, follow" />
+				<link
+					rel="canonical"
+					href="https://biblioteca-artificiall.vercel.app/"
+				/>
+				<meta property="og:title" content="Biblioteca Artificiall" />
+				<meta
+					property="og:description"
+					content="Encontre prompts criativos e inspiradores para o Midjourney."
+				/>
+				<meta property="og:image" content="/logo-head.webp" />
+				<meta
+					property="og:url"
+					content="https://biblioteca-artificiall.vercel.app/"
+				/>
+				<meta property="og:type" content="website" />
+				<meta property="og:locale" content="pt_BR" />
+				<meta name="twitter:card" content="summary_large_image" />
+				<meta name="twitter:title" content="Biblioteca Artificiall" />
+				<meta
+					name="twitter:description"
+					content="Encontre prompts criativos e inspiradores para o Midjourney."
+				/>
+				<meta name="twitter:image" content="/logo-head.webp" />
+				{/* Fim das SEO meta tags  */}
+				<link rel="icon" href="./favicon.ico" type="image/x-icon" />
 			</Head>
 			<ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
 				<IndexHeader toggleTheme={toggleTheme} />
@@ -111,7 +149,7 @@ export default function Home({ theme, toggleTheme }) {
 					</Link>
 				</ButtonsContainer>
 			</HomeContainer>
-			<Footer  />
+			<Footer />
 		</>
 	);
 }

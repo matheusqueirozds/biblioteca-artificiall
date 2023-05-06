@@ -1,38 +1,171 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<div align="center">
+  
+# Biblioteca Artificiall 🤖📚
+  
+Bem-vindo à Biblioteca Artificiall, o lugar perfeito para explorar o fascinante mundo da inteligência artificial! Este projeto é uma plataforma inovadora, desenvolvida com Next.js, que visa facilitar e otimizar o uso de ferramentas de IA, como ChatGPT e Midjourney. Reunimos uma extensa coleção de prompts para diversos propósitos, permitindo que você encontre rapidamente o que precisa para impulsionar seus projetos de IA. Vamos embarcar nessa aventura juntos? 🚀
+  
+  <img src="![Logotipo da Biblioteca Artificiall](./logo.webp)" width="300px" title="Logotipo da Biblioteca Artificiall"/>
+  
+<br>
+  
+[![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
+ 
+[Clique aqui](https://biblioteca-artificiall.vercel.app/) para acessar o deploy do projeto
 
-## Getting Started
+<p> Apoie os meus estudos, adquirindo os produtos da minha loja, feita para programadores! <a href="https://montink.com/nobugnogain">Clique aqui</a> para conferir.</p>
 
-First, run the development server:
+</div>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
+---
+
+<details>
+<summary><h2>🎓 Autor</h2></summary>
+
+<div align="center">
+  
+[Matheus Queiroz](https://github.com/matheusqueirozds)
+:-------------------------:
+ <a href="https://github.com/matheusqueirozds"><img src="https://avatars.githubusercontent.com/u/70871620?v=4" width="100px;" alt="Foto do Matheus Queiroz no GitHub"/></a>
+  
+</div>
+</details>
+
+---
+
+<details>
+<summary><h2>💡 Tecnologias <h2></summary>
+Este projeto foi desenvolvido com muito carinho e entusiasmo, utilizando as seguintes tecnologias incríveis:
+
+- [Next.js](https://nextjs.org/) v13.3.2 - A estrutura React que todos adoram! 💙
+- [React](https://reactjs.org/) v18.2.0 - A biblioteca que revolucionou o desenvolvimento web 🌟
+- [React DOM](https://reactjs.org/docs/react-dom.html) v18.2.0 - O companheiro inseparável do React 🤝
+- [Styled-components](https://styled-components.com/) v5.3.10 - Estilos incríveis com o poder do JavaScript! 💅
+- [Babel Plugin Styled-components](https://github.com/styled-components/babel-plugin-styled-components) v2.1.1 - Um plugin mágico para suas styled-components 🧙
+
+</details>
+
+---
+
+<details>
+<summary><h2>🛠 Instalação <h2></summary>
+Antes de começar, certifique-se de ter o Node.js e o npm instalados em seu computador. Siga os passos abaixo para instalar o projeto:
+
+1. Clone o repositório com um simples comando:
+
+```sh
+git clone https://github.com/username/biblioteca-artificiall.git
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Entre na pasta do projeto:
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+```sh
+cd biblioteca-artificiall
+```
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+3. Instale as dependências com o npm ou o yarn:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```sh
+npm install
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+ou
 
-## Learn More
+```sh
+yarn
+```
 
-To learn more about Next.js, take a look at the following resources:
+4. Iniciar servidor de desenvolvimento (modo diversão ativado! 🥳):
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```sh
+npm run dev
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+ou
 
-## Deploy on Vercel
+```sh
+yarn dev
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+5. Construir aplicação para produção (hora de ficar sério 😎):
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```sh
+npm run build
+```
+
+ou
+
+```sh
+yarn build
+```
+
+</details>
+
+---
+
+<details>
+<summary><h2>🧭 Como usar <h2></summary>
+Navegue pelo projeto e descubra uma ampla variedade de prompts e ferramentas úteis para impulsionar sua criatividade. Siga o caminho do "entusiasta da IA" e aproveite os recursos disponíveis. Afinal, "um pequeno passo para o homem, um salto gigante para a inteligência artificial". 🌕🚀
+</details>
+
+---
+
+<details>
+<summary><h2>🏗 Estrutura do projeto <h2></summary>
+
+A estrutura de pastas do projeto é como um castelo bem organizado:
+
+```
+biblioteca-artificiall
+├── components
+│   ├── ChatGPT
+│   ├── Global
+│   ├── Home
+│   └── Midjourney
+├── node_modules
+├── pages
+├────── api
+│   ├── chatgpt.js
+│   ├── como-funciona.js
+│   ├── configuracoes.js
+│   ├── ferramentas-uteis.js
+│   ├── index.js
+│   ├── midjourney.js
+│   ├── parceiros.js
+│   ├── privacidade.js
+│   ├── sobre.js
+│   ├── termos.js
+│   ├── _app.js
+│   └── _document.js
+├── public
+├── styles
+├── .babelrc
+├── .gitignore
+├── jsconfig.json
+├── next.config.js
+├── package-lock.json
+├── package.json
+├── README.md
+└── SearchContext.js
+```
+
+</details>
+
+---
+
+<details>
+<summary><h2>🔖 Licença <h2></summary>
+Este projeto está licenciado sob a Licença MIT - consulte o arquivo [LICENSE](LICENSE) para obter detalhes. Isso significa que você pode usar, copiar, modificar, mesclar, publicar, distribuir, sublicenciar e/ou vender cópias do software sem nenhum problema! Apenas lembre-se de incluir o aviso de direitos autorais em todas as cópias ou partes substanciais do software. 📄
+
+</details>
+
+---
+
+<details>
+<summary><h2>💌 Contato <h2></summary>
+Se você tiver alguma dúvida, sugestão ou quiser contribuir com este projeto, fique à vontade para entrar em contato comigo. Lembre-se, "juntos somos mais fortes"! 💪
+
+- E-mail: contato@matheusqueirozds.dev
+
+Obrigado por visitar nossa Biblioteca Artificiall! Esperamos que você encontre o que procura e que sua jornada pela IA seja incrível. Que a força esteja com você! 🌌🚀
+
+</details>
