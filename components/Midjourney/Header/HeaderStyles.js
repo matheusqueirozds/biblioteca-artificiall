@@ -9,18 +9,33 @@ export const HeaderContainer = styled.header`
 	background-color: #fafafa;
 	color: #000;
 	border-bottom: 1px solid #dadce0;
+`;
 
-	div {
-		display: flex;
+export const HeaderWrapper = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+
+	@media screen and (max-width: 1024px) {
+		flex-direction: column;
+		gap: 0;
 	}
 `;
 
 export const LeftContainer = styled.div`
 	display: flex;
 	align-items: center;
-	justify-content: center;
 	gap: 2rem;
-	width: 100%;
+
+	@media screen and (max-width: 1024px) {
+		padding: 1rem 1rem 0 1rem;
+	}
+
+	@media screen and (max-width: 480px) {
+		flex-direction: column;
+		gap: 0;
+		padding: 0;
+	}
 `;
 
 export const Logo = styled.img`
@@ -32,8 +47,6 @@ export const SearchBar = styled.div`
 	position: relative;
 	display: flex;
 	align-items: center;
-	width: 100%;
-	max-width: 600px;
 	border: 1px solid #dfe1e5;
 	background-color: #fff;
 	transition: all 0.3s;
@@ -48,6 +61,11 @@ export const SearchBar = styled.div`
 	@media screen and (max-width: 768px) {
 		max-width: 560px;
 	}
+
+	@media screen and (max-width: 480px) {
+		width: 100%;
+		max-width: 600px;
+	}
 `;
 
 export const SearchInput = styled.input`
@@ -60,6 +78,11 @@ export const SearchInput = styled.input`
 	outline: none;
 	background-color: none;
 	border-radius: 24px;
+	width: 600px;
+
+	@media screen and (max-width: 480px) {
+		width: auto;
+	}
 `;
 
 export const AdvancedSearch = styled.div`
@@ -96,21 +119,23 @@ export const AdvancedSearch = styled.div`
 	}
 `;
 
-export const RightContainer = styled(LeftContainer)`
-	color: #000;
+export const RightContainer = styled.div`
+	display: flex;
+	gap: 30px;
+
+	@media screen and (max-width: 1024px) {
+		padding: 0.25rem 1rem 1rem;
+	}
+
+	@media screen and (max-width: 480px) {
+		padding: 1rem;
+	}
 `;
 
 export const NavMenu = styled.nav`
 	display: flex;
 	align-items: center;
-`;
-
-export const NavItem = styled.a`
-	margin-right: 1rem;
-	background-color: transparent;
-	border: none;
-	color: #000;
-	cursor: pointer;
+	gap: 30px;
 `;
 
 export const DarkModeToggle = styled.button`

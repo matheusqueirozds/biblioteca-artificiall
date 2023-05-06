@@ -8,7 +8,7 @@ export const MainContainer = styled.main`
 	background-color: #fafafa;
 	color: #666;
 	padding-bottom: ${widthFooter};
-	height: 100vh;
+	height: 100%;
 
 	@media screen and (max-width: 1024px) {
 		padding-bottom: 0;
@@ -44,7 +44,7 @@ export const SideMenu = styled.aside`
 	@media screen and (max-width: 1024px) {
 		display: flex;
 		align-items: center;
-		top: calc(${widthHeader} - 0.6rem);
+		top: calc(140px - 0.6rem);
 		height: auto;
 		padding: 0;
 		width: 100%;
@@ -55,7 +55,11 @@ export const SideMenu = styled.aside`
 	}
 
 	@media screen and (max-width: 1024px) {
-		top: calc(${widthHeader} - 0.8rem);
+		top: calc(140px - 0.8rem);
+	}
+
+	@media screen and (max-width: 480px) {
+		top: calc(178px - 0.8rem);
 	}
 `;
 
@@ -123,6 +127,10 @@ export const CategoriesList = styled.ul`
 			display: inline-block;
 			padding: 1rem 2rem;
 		}
+
+		&:hover::-webkit-scrollbar {
+			display: none;
+		}
 	}
 `;
 
@@ -144,8 +152,12 @@ export const PromptsContainer = styled.div`
 			  `}
 
 	@media screen and (max-width: 1024px) {
-		margin-top: calc(${widthHeader} + 5rem);
+		margin-top: calc(140px + 5rem);
 		margin-left: 0;
+	}
+
+	@media screen and (max-width: 480px) {
+		margin-top: calc(178px + 5rem);
 	}
 `;
 

@@ -6,11 +6,11 @@ import {
 	SearchInput,
 	AdvancedSearch,
 	NavMenu,
-	NavItem,
 	DarkModeToggle,
 	RightContainer,
 	LeftContainer,
 	SearchIcon,
+	HeaderWrapper,
 } from "./HeaderStyles";
 import { useSearch } from "@/SearchContext";
 import Link from "next/link";
@@ -29,7 +29,7 @@ export default function Header({ toggleTheme, onSearch, onResetCategory }) {
 
 	return (
 		<HeaderContainer>
-			<div>
+			<HeaderWrapper>
 				<LeftContainer>
 					<Link href="/" style={{ textDecoration: "none", opacity: "1" }}>
 						<Logo src="./logo.webp" alt="Biblioteca Artificiall" />
@@ -61,15 +61,14 @@ export default function Header({ toggleTheme, onSearch, onResetCategory }) {
 
 				<RightContainer>
 					<NavMenu>
-						<Link href="/">
-							<NavItem>Página inicial</NavItem>
-						</Link>
-						<NavItem href="/midjourney">Midjourney</NavItem>
-						<NavItem href="/chatgpt">ChatGPT</NavItem>
+						<Link href="/">Página inicial</Link>
+						<Link href="/midjourney">Midjourney</Link>
+						<Link href="/chatgpt">ChatGPT</Link>
 					</NavMenu>
+
 					<DarkModeToggle onClick={toggleTheme}>Modo Escuro</DarkModeToggle>
 				</RightContainer>
-			</div>
+			</HeaderWrapper>
 		</HeaderContainer>
 	);
 }
