@@ -39,6 +39,7 @@ export const LeftContainer = styled.div`
 		flex-direction: column;
 		gap: 0;
 		padding: 0;
+		width: 100%;
 	}
 
 	@media screen and (max-width: 375px) {
@@ -59,6 +60,7 @@ export const SearchBar = styled.div`
 	background-color: #fff;
 	transition: all 0.3s;
 	border-radius: 24px;
+	width: calc(100% - 2rem);
 
 	&:hover,
 	&:focus {
@@ -70,10 +72,8 @@ export const SearchBar = styled.div`
 		max-width: 560px;
 	}
 
-	@media screen and (max-width: 375px) {
-		width: calc(375px - 2rem);
+	@media screen and (max-width: 480px) {
 		max-width: 100%;
-		border-radius: 12px;
 	}
 `;
 
@@ -85,23 +85,11 @@ export const SearchInput = styled.input`
 	height: 40px;
 	width: 100%;
 	outline: none;
-	background-color: none;
 	border-radius: 24px;
 	width: 600px;
 
-	@media screen and (max-width: 480px) {
-		width: auto;
-	}
-
-	@media screen and (max-width: 375px) {
-		height: 80px;
-		padding-left: 1rem;
-		padding-bottom: 2rem;
-
-		::placeholder {
-			position: absolute;
-			top: 1rem;
-		}
+	@media screen and (max-width: 768px) {
+		width: 100%;
 	}
 `;
 
@@ -137,20 +125,6 @@ export const AdvancedSearch = styled.div`
 		cursor: pointer;
 		pointer-events: none;
 	}
-
-	@media screen and (max-width: 375px) {
-		top: 40px;
-		width: 100%;
-
-		select {
-			width: 100%;
-			border-radius: 0 0 12px 12px;
-		}
-
-		::after {
-			right: 16px;
-		}
-	}
 `;
 
 export const RightContainer = styled.div`
@@ -164,12 +138,6 @@ export const RightContainer = styled.div`
 
 	@media screen and (max-width: 480px) {
 		padding: 1rem;
-	}
-
-	@media screen and (max-width: 375px) {
-		gap: 0;
-		padding-top: 1rem;
-		padding-bottom: 0;
 	}
 `;
 
@@ -191,9 +159,4 @@ export const SearchIcon = styled.img`
 	left: 7.5rem;
 	width: 18px;
 	height: 18px;
-
-	@media screen and (max-width: 375px) {
-		top: 0.8rem;
-		margin-left: 135px;
-	}
 `;
