@@ -1,4 +1,3 @@
-// components/Header/IndexHeaderStyles.js
 import styled from "styled-components";
 
 export const IndexHeaderContainer = styled.header`

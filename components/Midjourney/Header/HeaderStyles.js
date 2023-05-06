@@ -20,6 +20,10 @@ export const HeaderWrapper = styled.div`
 		flex-direction: column;
 		gap: 0;
 	}
+
+	@media screen and (max-width: 375px) {
+		flex-direction: column-reverse;
+	}
 `;
 
 export const LeftContainer = styled.div`
@@ -35,6 +39,10 @@ export const LeftContainer = styled.div`
 		flex-direction: column;
 		gap: 0;
 		padding: 0;
+	}
+
+	@media screen and (max-width: 375px) {
+		padding-bottom: 1rem;
 	}
 `;
 
@@ -62,9 +70,10 @@ export const SearchBar = styled.div`
 		max-width: 560px;
 	}
 
-	@media screen and (max-width: 480px) {
-		width: 100%;
-		max-width: 600px;
+	@media screen and (max-width: 375px) {
+		width: calc(375px - 2rem);
+		max-width: 100%;
+		border-radius: 12px;
 	}
 `;
 
@@ -72,7 +81,7 @@ export const SearchInput = styled.input`
 	font-size: inherit;
 	border: none;
 	border-radius: 5px;
-	padding-left: calc(157px + 1rem);
+	padding-left: calc(165px + 2.5rem);
 	height: 40px;
 	width: 100%;
 	outline: none;
@@ -82,6 +91,16 @@ export const SearchInput = styled.input`
 
 	@media screen and (max-width: 480px) {
 		width: auto;
+	}
+
+	@media screen and (max-width: 375px) {
+		height: 80px;
+		padding-left: 1rem;
+
+		::placeholder {
+			position: absolute;
+			top: 0.8rem;
+		}
 	}
 `;
 
@@ -117,10 +136,25 @@ export const AdvancedSearch = styled.div`
 		cursor: pointer;
 		pointer-events: none;
 	}
+
+	@media screen and (max-width: 375px) {
+		top: 40px;
+		width: 100%;
+
+		select {
+			width: 100%;
+			border-radius: 0 0 12px 12px;
+		}
+
+		::after {
+			right: 16px;
+		}
+	}
 `;
 
 export const RightContainer = styled.div`
 	display: flex;
+	justify-content: space-between;
 	gap: 30px;
 
 	@media screen and (max-width: 1024px) {
@@ -130,12 +164,19 @@ export const RightContainer = styled.div`
 	@media screen and (max-width: 480px) {
 		padding: 1rem;
 	}
+
+	@media screen and (max-width: 375px) {
+		gap: 0;
+		padding-top: 1rem;
+		padding-bottom: 0;
+	}
 `;
 
 export const NavMenu = styled.nav`
 	display: flex;
 	align-items: center;
 	gap: 30px;
+	overflow-x: scroll;
 `;
 
 export const DarkModeToggle = styled.button`
@@ -150,4 +191,9 @@ export const SearchIcon = styled.img`
 	left: 7.5rem;
 	width: 18px;
 	height: 18px;
+
+	@media screen and (max-width: 375px) {
+		top: 0.8rem;
+		margin-left: 135px;
+	}
 `;

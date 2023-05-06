@@ -40,7 +40,7 @@ export default function Header({ toggleTheme, onSearch, onResetCategory }) {
 							placeholder="Pesquisar prompt"
 							value={searchTerm}
 							onChange={handleInputChange}
-							style={{ paddingLeft: "calc(165px + 2.5rem)" }}
+							
 						/>
 						<AdvancedSearch>
 							<select id="searchType" name="searchType">
@@ -61,12 +61,11 @@ export default function Header({ toggleTheme, onSearch, onResetCategory }) {
 
 				<RightContainer>
 					<NavMenu>
-						<Link href="/">Página inicial</Link>
+						<Link href="/">Início</Link>
 						<Link href="/midjourney">Midjourney</Link>
 						<Link href="/chatgpt">ChatGPT</Link>
+						<DarkModeToggle onClick={toggleTheme}>🌙</DarkModeToggle>
 					</NavMenu>
-
-					<DarkModeToggle onClick={toggleTheme}>Modo Escuro</DarkModeToggle>
 				</RightContainer>
 			</HeaderWrapper>
 		</HeaderContainer>

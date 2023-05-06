@@ -9,7 +9,7 @@ import {
 	SearchBar,
 	SearchIcon,
 	SearchInput,
-} from "@/components/Midjourney/Header/HeaderStyles";
+} from "@/components/Home/Main/IndexMainStyles";
 import {
 	Button,
 	ButtonsContainer,
@@ -111,7 +111,7 @@ export default function Home({ theme, toggleTheme }) {
 					</Link>
 				</ButtonsContainer>
 			</HomeContainer>
-			<Footer />
+			<Footer  />
 		</>
 	);
 }

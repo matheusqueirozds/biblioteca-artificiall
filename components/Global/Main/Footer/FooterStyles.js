@@ -31,7 +31,6 @@ export const FooterContainer = styled.div`
 		padding-bottom: 0;
 	}
 
-
 	@media screen and (max-width: 480px) {
 		justify-content: center;
 		padding: 10px 20px;

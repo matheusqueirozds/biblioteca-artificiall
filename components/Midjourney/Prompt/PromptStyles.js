@@ -8,24 +8,22 @@ export const PromptContainer = styled.li`
 	justify-content: space-between;
 	padding: 24px;
 	height: 480px;
-	min-width: 314px;
+	width: 100%;
 	color: #888;
 	background: #fff;
 	border-radius: 8px;
 	border: 1px solid #eaeaea;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
 	transition: all 0.15s ease;
+	aspect-ratio: 4 / 4;
 
 	&:hover {
 		box-shadow: 0 7px 14px rgba(0, 0, 0, 0.1);
 	}
 
-	@media screen and (max-width: 768px) {
-		min-width: 355px;
-	}
-
-	@media screen and (max-width: 480px) {
-		min-width: 460px;
+	@media screen and (max-width: 1024px) {
+		flex: 1;
+		max-width: 100%;
 	}
 `;
 

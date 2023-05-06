@@ -44,7 +44,7 @@ export const SideMenu = styled.aside`
 	@media screen and (max-width: 1024px) {
 		display: flex;
 		align-items: center;
-		top: calc(140px - 0.6rem);
+		top: calc(140px - 0.8rem);
 		height: auto;
 		padding: 0;
 		width: 100%;
@@ -52,14 +52,23 @@ export const SideMenu = styled.aside`
 		h2 {
 			margin-bottom: 0;
 		}
-	}
 
-	@media screen and (max-width: 1024px) {
-		top: calc(140px - 0.8rem);
+		${({ collapsed }) =>
+			collapsed
+				? css`
+						width: 100%;
+				  `
+				: css`
+						width: 100%;
+				  `}
 	}
 
 	@media screen and (max-width: 480px) {
 		top: calc(178px - 0.8rem);
+	}
+
+	@media screen and (max-width: 375px) {
+		top: calc(218px - 0.8rem);
 	}
 `;
 
@@ -159,6 +168,10 @@ export const PromptsContainer = styled.div`
 	@media screen and (max-width: 480px) {
 		margin-top: calc(178px + 5rem);
 	}
+
+	@media screen and (max-width: 480px) {
+		margin-top: calc(218px + 5rem);
+	}
 `;
 
 export const NoResultsContainer = styled.div`
@@ -167,6 +180,12 @@ export const NoResultsContainer = styled.div`
 	justify-content: center;
 	height: calc(100vh - ${widthHeader} - ${widthFooter});
 	width: 100%;
+	overflow: hidden;
+
+	@media screen and (max-width: 1024px) {
+		align-items: normal;
+		height: calc(100vh - 182px - 91px);
+	}
 `;
 
 export const PromptsList = styled.ul`

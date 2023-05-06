@@ -11,7 +11,7 @@ export const HomeContainer = styled.div`
 	text-align: center;
 
 	@media screen and (max-width: 1024px) {
-		min-height: 80vh;
+		min-height:88.5vh;
 	}
 `;
 
