@@ -13,8 +13,6 @@ Bem-vindo à Biblioteca Artificiall, o lugar perfeito para explorar o fascinante
  
 [Clique aqui](https://biblioteca-artificiall.vercel.app/) para acessar o deploy do projeto
 
-<p> Apoie os meus estudos, adquirindo os produtos da minha loja, feita para programadores! <a href="https://montink.com/nobugnogain">Clique aqui</a> para conferir.</p>
-
 </div>
 
 ---
