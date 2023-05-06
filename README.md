@@ -3,9 +3,10 @@
 # Biblioteca Artificiall 🤖📚
   
 Bem-vindo à Biblioteca Artificiall, o lugar perfeito para explorar o fascinante mundo da inteligência artificial! Este projeto é uma plataforma inovadora, desenvolvida com Next.js, que visa facilitar e otimizar o uso de ferramentas de IA, como ChatGPT e Midjourney. Reunimos uma extensa coleção de prompts para diversos propósitos, permitindo que você encontre rapidamente o que precisa para impulsionar seus projetos de IA. Vamos embarcar nessa aventura juntos? 🚀
-  
-  <img src="![Logotipo da Biblioteca Artificiall](./logo.webp)" width="300px" title="Logotipo da Biblioteca Artificiall"/>
-  
+
+
+  <img src="https://media.discordapp.net/attachments/1094158542610636880/1104267625263009833/logo-head.webp?width=655&height=655" width="200px" title="Logotipo da Biblioteca Artificiall"/>
+
 <br>
   
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://choosealicense.com/licenses/mit/)
