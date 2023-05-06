@@ -7,32 +7,55 @@ export const AdditionalInfoContainer = styled.div`
 	flex-direction: column;
 	gap: 0.5rem;
 	position: relative;
-	top: calc(55px + 4rem);
+	top: calc(3.4375rem + 4rem);
 	margin: 0 auto;
-	max-width: 1170px;
+	max-width: 73.125rem;
 	padding: 1rem;
-	padding-bottom: calc(109px + 4rem);
+	padding-bottom: calc(6.8125rem + 4rem);
+	color: #473c41;
 
 	h1 {
-		font-size: 54px;
+		font-size: 3.375rem;
 	}
 
 	h2 {
-		font-size: 36px;
-	}
-
-	h4 {
-		font-size: 21, 6px;
+		font-size: 2.25rem;
 	}
 
 	p {
-		font-size: 18px;
+		font-size: 1.125rem;
 	}
 
 	a {
 		display: flex;
 		gap: 0.5rem;
 		margin-top: 2rem;
+	}
+
+	@media screen and (max-width: 64rem) {
+		max-width: 60.75rem;
+	}
+
+	@media screen and (max-width: 48rem) {
+		max-width: 47rem;
+
+		h1 {
+			font-size: 2.7rem;
+		}
+
+		h2 {
+			font-size: 2.025rem;
+		}
+	}
+
+	@media screen and (max-width: 30rem) {
+		h1 {
+			font-size: 2.3625rem;
+		}
+
+		h2 {
+			font-size: 1.8rem;
+		}
 	}
 `;
 
