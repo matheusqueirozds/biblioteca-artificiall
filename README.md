@@ -153,7 +153,7 @@ biblioteca-artificiall
 
 <details>
 <summary><h2>🔖 Licença <h2></summary>
-Este projeto está licenciado sob a Licença MIT - consulte o arquivo [LICENSE](LICENSE) para obter detalhes. Isso significa que você pode usar, copiar, modificar, mesclar, publicar, distribuir, sublicenciar e/ou vender cópias do software sem nenhum problema! Apenas lembre-se de incluir o aviso de direitos autorais em todas as cópias ou partes substanciais do software. 📄
+Este projeto está licenciado sob a Licença MIT - consulte o arquivo [LICENSE](LICENSE.md) para obter detalhes. Isso significa que você pode usar, copiar, modificar, mesclar, publicar, distribuir, sublicenciar e/ou vender cópias do software sem nenhum problema! Apenas lembre-se de incluir o aviso de direitos autorais em todas as cópias ou partes substanciais do software. 📄
 
 </details>
 
