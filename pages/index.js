@@ -21,7 +21,13 @@ import data from "@/data/midjourney.json";
 import Link from "next/link";
 import Footer from "@/components/Global/Main/Footer/Footer";
 
-// Componente principal da página Home
+/**
+ * Componente principal da página Home
+ * @param {Object} props - Propriedades do componente
+ * @param {string} props.theme - Tema atual (light ou dark)
+ * @param {Function} props.toggleTheme - Função para alternar o tema
+ * @returns {React.Component}
+ */
 export default function Home({ theme, toggleTheme }) {
 	// Utilizando o contexto de pesquisa
 	const { searchTerm, handleSearch } = useSearch();
@@ -88,7 +94,7 @@ export default function Home({ theme, toggleTheme }) {
 	return (
 		<>
 			<Head>
-				<meta charset="UTF-8" />
+				<meta charSet="UTF-8" />
 				<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 				<title>
 					Biblioteca Artificiall | Central de ideias para o Midjourney
@@ -127,7 +133,7 @@ export default function Home({ theme, toggleTheme }) {
 					content="Encontre prompts criativos e inspiradores para o Midjourney."
 				/>
 				<meta name="twitter:image" content="/logo-head.webp" />
-				{/* Fim das SEO meta tags  */}
+				{/* Fim das SEO meta tags */}
 				<link rel="icon" href="./favicon.ico" type="image/x-icon" />
 			</Head>
 			<ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
@@ -139,16 +145,17 @@ export default function Home({ theme, toggleTheme }) {
 					<SearchInput
 						type="text"
 						title="Pesquisar"
+						aria-label="Campo de pesquisa"
 						style={{ paddingLeft: "calc(101px + 3.3rem)" }}
 						onChange={handleSearchInput}
 						onKeyPress={handleKeyPress}
 					/>
-
 					<AdvancedSearch htmlFor="advanced-search-select">
 						<select
 							ref={advancedSearchSelectRef}
 							id="advanced-search-select"
 							name="advanced-search-select"
+							aria-label="Selecione o tipo de pesquisa"
 							defaultValue="midjourney"
 						>
 							<option value="midjourney">Midjourney</option>
@@ -159,9 +166,11 @@ export default function Home({ theme, toggleTheme }) {
 				</SearchBar>
 
 				<ButtonsContainer>
-					<Button onClick={handleButtonClick}>Pesquisar prompt</Button>
+					<Button onClick={handleButtonClick} aria-label="Pesquisar prompt">
+						Pesquisar prompt
+					</Button>
 					<Link href="/ferramentas-uteis">
-						<Button>Ferramentas úteis</Button>
+						<Button aria-label="Ferramentas úteis">Ferramentas úteis</Button>
 					</Link>
 				</ButtonsContainer>
 			</HomeContainer>

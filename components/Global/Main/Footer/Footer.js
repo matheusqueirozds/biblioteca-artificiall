@@ -9,31 +9,44 @@ import {
 } from "./FooterStyles";
 import Link from "next/link";
 
+// Componente do rodapé
 const Footer = () => {
 	return (
 		<FooterWrapper>
 			<FooterContainer>
 				<LeftLinks>
+					{/* Links à esquerda no rodapé */}
 					<FooterList>
-						<Link href="/sobre">
-							<li>Sobre</li>
-						</Link>
-						<Link href="/como-funciona">
-							<li>Como funciona a plataforma</li>
-						</Link>
+						<li>
+							<Link href="/sobre">
+								<span>Sobre</span>
+							</Link>
+						</li>
+						<li>
+							<Link href="/como-funciona">
+								<span>Como funciona a plataforma</span>
+							</Link>
+						</li>
 					</FooterList>
 				</LeftLinks>
 				<RightLinks>
+					{/* Links à direita no rodapé */}
 					<FooterList>
-						<Link href="/privacidade">
-							<li>Privacidade</li>
-						</Link>
-						<Link href="/termos">
-							<li>Termos</li>
-						</Link>
-						<Link href="/configuracoes">
-							<li>Configurações</li>
-						</Link>
+						<li>
+							<Link href="/privacidade">
+								<span>Privacidade</span>
+							</Link>
+						</li>
+						<li>
+							<Link href="/termos">
+								<span>Termos</span>
+							</Link>
+						</li>
+						<li>
+							<Link href="/configuracoes">
+								<span>Configurações</span>
+							</Link>
+						</li>
 					</FooterList>
 				</RightLinks>
 			</FooterContainer>
@@ -42,7 +55,12 @@ const Footer = () => {
 				<FooterCopy>
 					© 2023 <Link href="/">Biblioteca Artificiall</Link>. Todos os direitos
 					reservados. Desenvolvido por{" "}
-					<Link href="https://matheusqueirozds.dev" target="_blank">
+					<Link
+						href="https://matheusqueirozds.dev"
+						target="_blank"
+						rel="noopener noreferrer"
+						passHref
+					>
 						Matheus Queiroz.
 					</Link>
 				</FooterCopy>

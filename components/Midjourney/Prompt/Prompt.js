@@ -11,12 +11,16 @@ import CopyButton from "./CopyButton";
 import TranslateButton from "./TranslateButton";
 import ResetTextButton from "./ResetTextButton";
 import ViewImageButton from "./ViewImageButton";
+import { translateText } from "./translationHelper";
 
+// Componente que representa um prompt e suas ações relacionadas
 export default function Prompt({ prompt, onViewImageClick }) {
 	const nonEditablePart = "/imagine prompt: ";
 	const editablePart = prompt.prompt_text.substring(nonEditablePart.length);
 
-	const { prompt_text, image_url, image_alt } = prompt;
+	const { image_url, image_alt } = prompt;
+
+	// Estados locais para gerenciar os textos, cores e estados dos botões
 	const [copyButtonText, setCopyButtonText] = useState("Copiar");
 	const [copyButtonColor, setCopyButtonColor] = useState("");
 	const [copyButtonBackgroundColor, setCopyButtonBackgroundColor] =
@@ -29,9 +33,14 @@ export default function Prompt({ prompt, onViewImageClick }) {
 	const [resetButtonColor, setResetButtonColor] = useState("");
 	const [resetButtonBackgroundColor, setResetButtonBackgroundColor] =
 		useState("");
+
+	// Estado local para armazenar se o texto foi traduzido
 	const [translated, setTranslated] = useState(false);
+
+	// Estado local para armazenar o texto editável
 	const [text, setText] = useState(editablePart);
 
+	// Função para lidar com a ação de copiar o texto
 	const handleCopyClick = () => {
 		const fullText = nonEditablePart + text;
 		navigator.clipboard.writeText(fullText);
@@ -45,6 +54,7 @@ export default function Prompt({ prompt, onViewImageClick }) {
 		}, 2000);
 	};
 
+	// Função para lidar com a ação de resetar o texto
 	const handleResetTextClick = () => {
 		setText(editablePart);
 		setTranslateButtonText("Traduzir");
@@ -60,6 +70,7 @@ export default function Prompt({ prompt, onViewImageClick }) {
 		}, 1000);
 	};
 
+	// Função para lidar com a ação de traduzir o texto
 	const handleTranslateClick = async () => {
 		if (!translated) {
 			const translatedText = await translateText(text, "pt-BR");
@@ -78,33 +89,12 @@ export default function Prompt({ prompt, onViewImageClick }) {
 		}
 	};
 
+	// Função para lidar com a ação de visualizar a imagem
 	const handleViewImageClick = () => {
 		onViewImageClick(image_url, image_alt);
 	};
 
-	const translateText = async (text, targetLanguage) => {
-		const maxChunkSize = 200;
-		const textChunks = [];
-
-		for (let i = 0; i < text.length; i += maxChunkSize) {
-			textChunks.push(text.slice(i, i + maxChunkSize));
-		}
-
-		const translatedChunks = await Promise.all(
-			textChunks.map(async (chunk) => {
-				const response = await fetch(
-					`https://translate.googleapis.com/translate_a/single?client=gtx&sl=auto&tl=${targetLanguage}&dt=t&q=${encodeURIComponent(
-						chunk
-					)}`
-				);
-				const data = await response.json();
-				return data[0][0][0];
-			})
-		);
-
-		return translatedChunks.join("");
-	};
-
+	// Função para lidar com a mudança no texto editável
 	const handleTextChange = (e) => {
 		const newValue = e.target.value;
 		setText(newValue);

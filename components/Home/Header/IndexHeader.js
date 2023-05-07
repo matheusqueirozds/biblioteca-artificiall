@@ -7,7 +7,7 @@ import {
 	DarkModeToggle,
 } from "./IndexHeaderStyles";
 
-// Componente para o cabeçalho da página inicial
+// Componente do cabeçalho da página inicial
 const IndexHeader = ({ toggleTheme }) => {
 	return (
 		<IndexHeaderContainer>
@@ -25,7 +25,7 @@ const IndexHeader = ({ toggleTheme }) => {
 						width={20}
 						height={20}
 					/>
-					Instagram
+					<span>Instagram</span>
 				</NavLink>
 				{/* Link para o Discord */}
 				<NavLink
@@ -40,11 +40,13 @@ const IndexHeader = ({ toggleTheme }) => {
 						width={20}
 						height={20}
 					/>
-					Discord
+					<span>Discord</span>
 				</NavLink>
 			</Nav>
 			{/* Botão para alternar o tema entre claro e escuro */}
-			<DarkModeToggle onClick={toggleTheme}>Modo Escuro</DarkModeToggle>
+			<DarkModeToggle onClick={toggleTheme} aria-label="Alternar modo escuro">
+				Modo Escuro
+			</DarkModeToggle>
 		</IndexHeaderContainer>
 	);
 };

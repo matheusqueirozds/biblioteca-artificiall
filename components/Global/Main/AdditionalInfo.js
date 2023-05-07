@@ -2,6 +2,7 @@ import Link from "next/link";
 import React from "react";
 import styled from "styled-components";
 
+// Estilização do container adicional
 export const AdditionalInfoContainer = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -59,12 +60,15 @@ export const AdditionalInfoContainer = styled.div`
 	}
 `;
 
+// Estilização do wrapper do container
 export const ContainerWrapper = styled.div`
 	text-align: center;
 `;
 
-const TextContainer = styled.div``;
+// Estilização do container de texto
+export const TextContainer = styled.div``;
 
+// Componente de informações adicionais
 export default function AdditionalInfo({ titulo, subtitulo, paragrafo }) {
 	return (
 		<TextContainer>
@@ -75,15 +79,17 @@ export default function AdditionalInfo({ titulo, subtitulo, paragrafo }) {
 	);
 }
 
+// Componente para retornar à página inicial
 export function BackToHome() {
 	return (
 		<Link href="/">
-			<img src="/arrow-back.svg" alt="" />
+			<img src="/arrow-back.svg" alt="Voltar" />
 			<span>Voltar para a página inicial</span>
 		</Link>
 	);
 }
 
+// Componente de container genérico
 export function Container() {
 	return (
 		<ContainerWrapper>
