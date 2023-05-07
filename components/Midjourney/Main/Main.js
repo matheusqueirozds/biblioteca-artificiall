@@ -3,16 +3,16 @@ import {
 	MainContainer,
 	SideMenu,
 	PromptsContainer,
-	PromptsList,
-	Subcategory,
 	NoResultsContainer,
 	ChevronButton,
 	CategoriesList,
 } from "./MainStyles";
-import Prompt from "@/components/Midjourney/Prompt/Prompt";
 import ImageModal from "@/components/Midjourney/ImageModal/ImageModal";
 import { useSearch } from "@/SearchContext";
 import Image from "next/image";
+import CategoryItem from "./CategoryItem";
+import SubcategoryItem from "./SubcategoryItem";
+import { NO_RESULTS_MESSAGE } from "./constants";
 
 export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 	const [categories, setCategories] = useState([]);
@@ -130,13 +130,11 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 						<h2>Categorias</h2>
 						<CategoriesList>
 							{categories.map((category) => (
-								<li
-									key={category.name}
+								<CategoryItem
+									category={category}
+									active={category === activeCategory}
 									onClick={() => handleCategoryClick(category)}
-									className={category === activeCategory ? "active" : ""}
-								>
-									{category.name}
-								</li>
+								/>
 							))}
 						</CategoriesList>
 					</>
@@ -146,22 +144,16 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 			<PromptsContainer collapsed={collapsed}>
 				{filteredPrompts.length === 0 ? (
 					<NoResultsContainer>
-						<h2>Nenhum Prompt foi encontrado</h2>
+						<h2>{NO_RESULTS_MESSAGE}</h2>
 					</NoResultsContainer>
 				) : (
 					Object.keys(subcategories).map((subcategory) => (
-						<Subcategory key={subcategory}>
-							<h3>{subcategory}</h3>
-							<PromptsList collapsed={collapsed}>
-								{subcategories[subcategory].map((prompt) => (
-									<Prompt
-										key={`${prompt.id}-${prompt.prompt_text}`}
-										prompt={prompt}
-										onViewImageClick={handleViewImageClick}
-									/>
-								))}
-							</PromptsList>
-						</Subcategory>
+						<SubcategoryItem
+							subcategory={subcategory}
+							subcategories={subcategories}
+							handleViewImageClick={handleViewImageClick}
+							collapsed={collapsed}
+						/>
 					))
 				)}
 			</PromptsContainer>
