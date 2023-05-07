@@ -44,8 +44,12 @@ const ImageModal = ({ isOpen, onClose, imageUrl, imageAlt }) => {
 				<h2 id="image-modal-title" style={{ display: "none" }}>
 					Visualização de imagem
 				</h2>
-				<CloseButton onClick={onClose} aria-label="Fechar">
-					&times;
+				<CloseButton
+					onClick={onClose}
+					aria-label="Fechar"
+					title="Aperte Esc para sair"
+				>
+					Esc
 				</CloseButton>
 				<Image src={imageUrl} alt={imageAlt} />
 			</ModalContent>

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const IndexContainer = styled.div`
 	background-color: #fff;
-	min-height: calc(100vh - 3rem);
+	min-height: calc(100vh - 174px);
 	display: flex;
 	justify-content: center;
 	align-items: center;

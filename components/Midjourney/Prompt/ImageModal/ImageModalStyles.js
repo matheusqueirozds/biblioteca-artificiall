@@ -27,14 +27,15 @@ export const ModalContent = styled.div`
 
 export const CloseButton = styled.button`
 	position: absolute;
-	top: 3px;
-	right: 1px;
+	top: 10px;
+	right: 10px;
 	background: none;
 	border: none;
+	font-family: monospace;
 	font-size: 1.5rem;
 	background-color: #e74c3c;
-	border-radius: 50%;
-	width: 40px;
+	color: #fff;
+	width: max-content;
 	height: 40px;
 `;
 

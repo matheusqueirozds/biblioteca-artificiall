@@ -6,7 +6,12 @@ import {
 } from "./IndexMainStyles";
 import Image from "next/image";
 import Link from "next/link";
-import { AdvancedSearch, SearchBar, SearchInput } from "../IndexSearchBar/IndexSearchBarStyles";
+import {
+	AdvancedSearch,
+	SearchBar,
+	SearchInput,
+} from "../IndexSearchBar/IndexSearchBarStyles";
+import IndexSearchBar from "../IndexSearchBar/IndexSearchBar";
 
 export default function IndexMain({
 	handleSearchInput,
@@ -22,36 +27,11 @@ export default function IndexMain({
 				width={200}
 				height={200}
 			/>
-			<SearchBar style={{ marginBottom: "30px" }}>
-				<SearchInput
-					type="text"
-					title="Pesquisar"
-					aria-label="Campo de pesquisa"
-					style={{ paddingLeft: "calc(101px + 3.3rem)" }}
-					onChange={handleSearchInput}
-					onKeyPress={handleKeyPress}
-				/>
-				<AdvancedSearch htmlFor="advanced-search-select">
-					<select
-						ref={advancedSearchSelectRef}
-						id="advanced-search-select"
-						name="advanced-search-select"
-						aria-label="Selecione o tipo de pesquisa"
-						defaultValue="midjourney"
-					>
-						<option value="midjourney">Midjourney</option>
-						<option value="chatgpt">ChatGPT</option>
-					</select>
-				</AdvancedSearch>
-
-				<Image
-					src="/search.svg"
-					alt="Ícone de pesquisa"
-					width={18}
-					height={18}
-					style={{ position: "absolute", left: "7.5rem" }}
-				/>
-			</SearchBar>
+			<IndexSearchBar
+				handleSearchInput={handleSearchInput}
+				handleKeyPress={handleKeyPress}
+				advancedSearchSelectRef={advancedSearchSelectRef}
+			/>
 
 			<IndexButtonsContainer>
 				<IndexButton onClick={handleButtonClick} aria-label="Pesquisar prompt">

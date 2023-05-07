@@ -63,6 +63,28 @@ export const SearchBarWrapper = styled.div`
 		border-color: rgba(223, 225, 229, 0);
 	}
 
+	img {
+		position: absolute;
+		left: 11rem;
+	}
+
+	span {
+		position: absolute;
+		right: 1rem;
+		font-family: monospace;
+		background-color: inherit;
+		color: #ccc;
+		padding: 0.125rem 0.625rem;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+
+		&:hover {
+			color: #aaa;
+			border-color: #aaa;
+			background-color: #f4f4f4;
+		}
+	}
+
 	@media screen and (max-width: 768px) {
 		max-width: 560px;
 	}

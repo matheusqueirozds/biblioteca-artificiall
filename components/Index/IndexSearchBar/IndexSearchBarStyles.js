@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SearchBar = styled.div`
+export const IndexSearchBarWrapper = styled.div`
 	position: relative;
 	display: flex;
 	align-items: center;
@@ -8,6 +8,7 @@ export const SearchBar = styled.div`
 	background-color: #fff;
 	transition: all 0.3s;
 	border-radius: 24px;
+	margin-bottom: 30px;
 
 	&:hover,
 	&:focus {
@@ -15,29 +16,50 @@ export const SearchBar = styled.div`
 		border-color: rgba(223, 225, 229, 0);
 	}
 
+	img {
+		position: absolute;
+		left: 7.5rem;
+	}
+
+	span {
+		position: absolute;
+		right: 1rem;
+		font-family: monospace;
+		background-color: inherit;
+		color: #ccc;
+		padding: 0.125rem 0.625rem;
+		border: 1px solid #ccc;
+		border-radius: 4px;
+
+		&:hover {
+			color: #aaa;
+			border-color: #aaa;
+			background-color: #f4f4f4;
+		}
+	}
+
 	@media screen and (max-width: 768px) {
-		max-width: 560px;
+		width: 100%;
 	}
 `;
 
-export const SearchInput = styled.input`
+export const IndexSearchInput = styled.input`
 	font-size: inherit;
 	border: none;
 	border-radius: 5px;
-	padding-left: calc(165px + 2.5rem);
+	padding-left: calc(101px + 3.3rem);
 	height: 40px;
-	width: 100%;
 	outline: none;
 	background-color: none;
 	border-radius: 24px;
-	width: 600px;
+	width: 560px;
 
-	@media screen and (max-width: 480px) {
-		width: auto;
+	@media screen and (max-width: 768px) {
+		width: 100%;
 	}
 `;
 
-export const AdvancedSearch = styled.div`
+export const IndexAdvancedSearch = styled.div`
 	position: absolute;
 	left: 0;
 
