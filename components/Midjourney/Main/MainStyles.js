@@ -13,6 +13,7 @@ export const MainContainer = styled.main`
 	color: #666;
 	padding-bottom: ${widthFooter};
 	height: 100vh;
+ margin-bottom: 10rem;
 
 	@media screen and (max-width: 1024px) {
 		padding-bottom: 0;
