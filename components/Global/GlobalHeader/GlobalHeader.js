@@ -50,7 +50,7 @@ export default function GlobalHeader({ toggleTheme }) {
 					width={18}
 					height={18}
 					alt="Ativar o modo escuro"
-					title="Ativar o modo escuro"
+					title="Ativar o modo escuro (em breve)"
 				/>
 			</DarkModeToggle>
 		</GlobalHeaderContainer>

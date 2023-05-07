@@ -56,7 +56,7 @@ export default function Header({ toggleTheme, onSearch, onResetCategory }) {
 								width={20}
 								height={20}
 								alt="Ativar o modo escuro"
-								title="Ativar o modo escuro"
+								title="Ativar o modo escuro (em breve)"
 							/>
 						</DarkModeToggle>
 					</NavMenu>
