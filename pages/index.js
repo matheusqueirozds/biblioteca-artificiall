@@ -1,4 +1,3 @@
-// Importando as dependências necessárias
 import React, { useRef, useCallback } from "react";
 import Head from "next/head";
 import { ThemeProvider } from "styled-components";
@@ -18,7 +17,7 @@ import {
 	Logo,
 } from "@/styles/HomeStyles";
 import IndexHeader from "@/components/Home/Header/IndexHeader";
-import data from "@/components/Midjourney/midjourney.json";
+import data from "@/data/midjourney.json";
 import Link from "next/link";
 import Footer from "@/components/Global/Main/Footer/Footer";
 

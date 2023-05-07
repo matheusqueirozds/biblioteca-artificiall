@@ -10,6 +10,10 @@ export const IndexHeaderContainer = styled.header`
 	justify-content: flex-end;
 	align-items: center;
 	background-color: #fff;
+
+	img {
+		margin-right: 5px;
+	}
 `;
 
 export const Nav = styled.nav`
@@ -29,12 +33,6 @@ export const NavLink = styled.a`
 	&:hover {
 		transform: translateY(-3px);
 	}
-`;
-
-export const Icon = styled.img`
-	width: 20px;
-	height: 20px;
-	margin-right: 5px;
 `;
 
 export const DarkModeToggle = styled.button`
