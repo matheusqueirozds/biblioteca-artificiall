@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import {
-	IndexHeaderContainer,
+	GlobalHeaderContainer,
 	Nav,
 	DarkModeToggle,
 } from "./GlobalHeaderStyles";
@@ -10,7 +10,7 @@ import Link from "next/link";
 // Componente do cabeçalho da página inicial
 export default function GlobalHeader({ toggleTheme }) {
 	return (
-		<IndexHeaderContainer>
+		<GlobalHeaderContainer>
 			<Nav>
 				{/* Link para o Instagram */}
 				<Link
@@ -53,6 +53,6 @@ export default function GlobalHeader({ toggleTheme }) {
 					title="Ativar o modo escuro"
 				/>
 			</DarkModeToggle>
-		</IndexHeaderContainer>
+		</GlobalHeaderContainer>
 	);
 }

@@ -4,8 +4,8 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "@/styles/theme";
 import GlobalStyles from "@/styles/GlobalStyles.js";
 import Header from "@/components/Midjourney/Header/Header";
-import Footer from "@/components/Global/GlobalFooter/GlobalFooter";
-import IndexHeader from "@/components/Global/GlobalHeader/GlobalHeader";
+import GlobalFooter from "@/components/Global/GlobalFooter/GlobalFooter";
+import GlobalHeader from "@/components/Global/GlobalHeader/GlobalHeader";
 
 export default function MyApp({ Component, pageProps }) {
 	const [theme, setTheme] = useState("light");
@@ -40,7 +40,7 @@ export default function MyApp({ Component, pageProps }) {
 						onResetCategory={resetCategory}
 					/>
 				) : (
-					<IndexHeader toggleTheme={toggleTheme} />
+					<GlobalHeader toggleTheme={toggleTheme} />
 				)}
 				<Component
 					{...pageProps}
@@ -48,7 +48,7 @@ export default function MyApp({ Component, pageProps }) {
 					theme={theme}
 					toggleTheme={toggleTheme}
 				/>
-				{!Component.noLayout && <Footer />}
+				{!Component.noLayout && <GlobalFooter />}
 			</ThemeProvider>
 		</SearchProvider>
 	);

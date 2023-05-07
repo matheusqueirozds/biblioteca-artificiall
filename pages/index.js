@@ -4,8 +4,8 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "@/styles/theme";
 import { useSearch } from "@/SearchContext";
 import { useRouter } from "next/router";
-import IndexHeader from "@/components/Global/GlobalHeader/GlobalHeader";
-import Footer from "@/components/Global/GlobalFooter/GlobalFooter";
+import GlobalHeader from "@/components/Global/GlobalHeader/GlobalHeader";
+import GlobalFooter from "@/components/Global/GlobalFooter/GlobalFooter";
 import data from "@/data/midjourney.json";
 import IndexMain from "@/components/Index/IndexMain/IndexMain";
 
@@ -118,15 +118,17 @@ export default function Home({ theme, toggleTheme }) {
 				<link rel="icon" href="./favicon.ico" type="image/x-icon" />
 			</Head>
 			<ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-				<IndexHeader toggleTheme={toggleTheme} />
+				<GlobalHeader toggleTheme={toggleTheme} />
 			</ThemeProvider>
+
 			<IndexMain
 				handleSearchInput={handleSearchInput}
 				handleKeyPress={handleKeyPress}
 				advancedSearchSelectRef={advancedSearchSelectRef}
 				handleButtonClick={handleButtonClick}
 			/>
-			<Footer />
+
+			<GlobalFooter />
 		</>
 	);
 }

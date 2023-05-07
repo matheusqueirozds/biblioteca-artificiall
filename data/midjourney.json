@@ -1,10 +1,10 @@
 {
 	"midjourney": {
 		"daily_prompt": {
-			"prompt_subcategories": "Exemplo de categoria",
-			"prompt_text": "/exemplo de prompt do dia",
-			"image_url": "https://example.com/image.jpg",
-			"image_alt": "Descrição da imagem"
+			"prompt_subcategories": "Action Figures",
+			"prompt_text": "/imagine prompt: Full-body portraits in 3D, shot straight ahead. A cartoon boy is walking in a downtown area, a few cute birds and butterflies circle around him, his shoes are covered with mud, the overall color is soft, gradient color, Unreal Engine 5 subsurface scattering, Pixar style, Disney style, 8k, the picture is well lit, large production --v 5.1 --ar 2:2 --s 600",
+			"image_url": "https://media.discordapp.net/attachments/1094158542610636880/1104773485269631076/WhatsApp_Image_2023-05-06_at_10.54.57.jpg?width=655&height=655",
+			"image_alt": "Imagem de uma miniatura de Saber do anime Fate/Stay Night"
 		},
 		"categories": [
 			{

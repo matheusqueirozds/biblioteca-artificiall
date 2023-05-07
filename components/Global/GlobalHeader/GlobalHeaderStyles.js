@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const IndexHeaderContainer = styled.header`
+export const GlobalHeaderContainer = styled.header`
 	position: absolute;
 	top: 0;
 	right: 0;

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
 	IndexButton,
 	IndexButtonsContainer,
@@ -6,12 +6,10 @@ import {
 } from "./IndexMainStyles";
 import Image from "next/image";
 import Link from "next/link";
-import {
-	AdvancedSearch,
-	SearchBar,
-	SearchInput,
-} from "../IndexSearchBar/IndexSearchBarStyles";
 import IndexSearchBar from "../IndexSearchBar/IndexSearchBar";
+import DailyPrompt from "../../Global/DailyPrompt/DailyPrompt";
+import data from "@/data/midjourney.json";
+import ImageModal from "@/components/Midjourney/Prompt/ImageModal/ImageModal";
 
 export default function IndexMain({
 	handleSearchInput,
@@ -19,6 +17,23 @@ export default function IndexMain({
 	advancedSearchSelectRef,
 	handleButtonClick,
 }) {
+	// Função para lidar com a ação de visualizar a imagem
+	const handleViewImageClick = (imageUrl, imageAlt) => {
+		setModalImage({ url: imageUrl, alt: imageAlt });
+		setIsModalOpen(true);
+	};
+
+	const [showDailyPrompt, setShowDailyPrompt] = useState(false);
+
+	const toggleDailyPrompt = () => {
+		setShowDailyPrompt(!showDailyPrompt);
+	};
+
+	const dailyPrompt = data.midjourney.daily_prompt;
+
+	const [isModalOpen, setIsModalOpen] = useState(false);
+	const [modalImage, setModalImage] = useState({ url: "", alt: "" });
+
 	return (
 		<IndexContainer>
 			<Image
@@ -32,17 +47,46 @@ export default function IndexMain({
 				handleKeyPress={handleKeyPress}
 				advancedSearchSelectRef={advancedSearchSelectRef}
 			/>
-
 			<IndexButtonsContainer>
-				<IndexButton onClick={handleButtonClick} aria-label="Pesquisar prompt">
-					Pesquisar prompt
-				</IndexButton>
-				<Link href="/ferramentas-uteis">
-					<IndexButton aria-label="Ferramentas úteis">
-						Ferramentas úteis
+				<div>
+					<IndexButton
+						onClick={handleButtonClick}
+						aria-label="Pesquisar prompt"
+					>
+						Pesquisar prompt
 					</IndexButton>
-				</Link>
+					<Link href="/ferramentas-uteis" style={{ opacity: "1" }}>
+						<IndexButton aria-label="Ferramentas úteis">
+							Ferramentas úteis
+						</IndexButton>
+					</Link>
+				</div>
+
+				<IndexButton
+					onClick={toggleDailyPrompt}
+					aria-label={
+						showDailyPrompt ? "Fechar prompt do dia" : "Mostrar prompt do dia"
+					}
+					className="dailyPrompt"
+					showDailyPrompt={showDailyPrompt}
+				>
+					{showDailyPrompt ? "Fechar prompt do dia" : "Mostrar prompt do dia"}
+				</IndexButton>
 			</IndexButtonsContainer>
+
+			{showDailyPrompt && (
+				<DailyPrompt
+					prompt={dailyPrompt}
+					onViewImageClick={handleViewImageClick}
+				/>
+			)}
+
+			<ImageModal
+				isOpen={isModalOpen}
+				onClose={() => setIsModalOpen(false)}
+				imageUrl={modalImage.url}
+				imageAlt={modalImage.alt}
+			/>
 		</IndexContainer>
 	);
 }

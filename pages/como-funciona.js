@@ -1,5 +1,5 @@
-import Footer from "@/components/Global/GlobalFooter/GlobalFooter";
-import IndexHeader from "@/components/Global/GlobalHeader/GlobalHeader";
+import GlobalFooter from "@/components/Global/GlobalFooter/GlobalFooter";
+import GlobalHeader from "@/components/Global/GlobalHeader/GlobalHeader";
 import { darkTheme, lightTheme } from "@/styles/theme";
 import React from "react";
 import { ThemeProvider } from "styled-components";
@@ -12,7 +12,7 @@ export default function comoFunciona({ theme, toggleTheme }) {
 	return (
 		<>
 			<ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
-				<IndexHeader toggleTheme={toggleTheme} />
+				<GlobalHeader toggleTheme={toggleTheme} />
 			</ThemeProvider>
 
 			<AdditionalInfoContainer>
@@ -34,7 +34,7 @@ export default function comoFunciona({ theme, toggleTheme }) {
 				<BackToHome />
 			</AdditionalInfoContainer>
 
-			<Footer />
+			<GlobalFooter />
 		</>
 	);
 }
