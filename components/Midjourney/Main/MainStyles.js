@@ -12,11 +12,15 @@ export const MainContainer = styled.main`
 	background-color: #fafafa;
 	color: #666;
 	padding-bottom: ${widthFooter};
-	height: 100%;
+	height: 100vh;
  margin-bottom: 10rem;
 
 	@media screen and (max-width: 1024px) {
 		padding-bottom: 0;
+
+	@media screen and (max-width: 768px) {
+
+  height: 100%;
 	}
 `;
 
