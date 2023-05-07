@@ -7,7 +7,6 @@ import { useRouter } from "next/router";
 import {
 	AdvancedSearch,
 	SearchBar,
-	SearchIcon,
 	SearchInput,
 } from "@/components/Home/Main/IndexMainStyles";
 import {
@@ -20,6 +19,7 @@ import IndexHeader from "@/components/Home/Header/IndexHeader";
 import data from "@/data/midjourney.json";
 import Link from "next/link";
 import Footer from "@/components/Global/Main/Footer/Footer";
+import Image from "next/image";
 
 /**
  * Componente principal da página Home
@@ -140,7 +140,12 @@ export default function Home({ theme, toggleTheme }) {
 				<IndexHeader toggleTheme={toggleTheme} />
 			</ThemeProvider>
 			<HomeContainer>
-				<Logo src="./logo.webp" alt="Biblioteca Artificiall" />
+				<Image
+					src="/logo.webp"
+					alt="Biblioteca Artificiall"
+					width={200}
+					height={200}
+				/>
 				<SearchBar style={{ marginBottom: "30px" }}>
 					<SearchInput
 						type="text"
@@ -162,7 +167,14 @@ export default function Home({ theme, toggleTheme }) {
 							<option value="chatgpt">ChatGPT</option>
 						</select>
 					</AdvancedSearch>
-					<SearchIcon src="./search.svg" alt="Ícone de pesquisa" />
+
+					<Image
+						src="/search.svg"
+						alt="Ícone de pesquisa"
+						width={18}
+						height={18}
+						style={{ position: "absolute", left: "7.5rem" }}
+					/>
 				</SearchBar>
 
 				<ButtonsContainer>

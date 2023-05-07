@@ -70,10 +70,3 @@ export const AdvancedSearch = styled.div`
 		pointer-events: none;
 	}
 `;
-
-export const SearchIcon = styled.img`
-	position: absolute;
-	left: 7.5rem;
-	width: 18px;
-	height: 18px;
-`;

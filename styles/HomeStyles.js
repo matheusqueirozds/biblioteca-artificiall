@@ -11,12 +11,8 @@ export const HomeContainer = styled.div`
 	text-align: center;
 
 	@media screen and (max-width: 1024px) {
-		min-height:88.5vh;
+		min-height: 88.5vh;
 	}
-`;
-
-export const Logo = styled.img`
-	width: 200px;
 `;
 
 export const ButtonsContainer = styled.div`
