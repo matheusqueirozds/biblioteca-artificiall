@@ -1,4 +1,5 @@
-import React from "react";
+// Importando as dependências necessárias
+import React, { useRef, useCallback } from "react";
 import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "@/styles/theme";
@@ -21,15 +22,27 @@ import data from "@/components/Midjourney/midjourney.json";
 import Link from "next/link";
 import Footer from "@/components/Global/Main/Footer/Footer";
 
+// Componente principal da página Home
 export default function Home({ theme, toggleTheme }) {
+	// Utilizando o contexto de pesquisa
 	const { searchTerm, handleSearch } = useSearch();
+
+	// Utilizando o hook de roteamento
 	const router = useRouter();
 
-	const handleSearchInput = (e) => {
-		handleSearch(e.target.value);
-	};
+	// Utilizando useRef para acessar o elemento select
+	const advancedSearchSelectRef = useRef();
 
-	const filterPrompts = (keyword) => {
+	// Função para lidar com a entrada de pesquisa
+	const handleSearchInput = useCallback(
+		({ target: { value } }) => {
+			handleSearch(value);
+		},
+		[handleSearch]
+	);
+
+	// Função para filtrar os prompts com base na palavra-chave
+	const filterPrompts = useCallback((keyword) => {
 		if (!keyword) return;
 
 		const prompts = [];
@@ -47,15 +60,13 @@ export default function Home({ theme, toggleTheme }) {
 				imageAlt.toLowerCase().includes(keyword.toLowerCase())
 			);
 		});
-	};
+	}, []);
 
-	const handleButtonClick = () => {
+	// Função para lidar com o clique do botão de pesquisa
+	const handleButtonClick = useCallback(() => {
 		if (searchTerm) {
 			filterPrompts(searchTerm);
-			const advancedSearchSelect = document.getElementById(
-				"advanced-search-select"
-			);
-			const selectedOption = advancedSearchSelect.value;
+			const selectedOption = advancedSearchSelectRef.current.value;
 
 			if (selectedOption === "midjourney") {
 				router.push("/midjourney");
@@ -63,13 +74,17 @@ export default function Home({ theme, toggleTheme }) {
 				router.push("/chatgpt");
 			}
 		}
-	};
+	}, [searchTerm, router, filterPrompts]);
 
-	const handleKeyPress = (e) => {
-		if (e.key === "Enter") {
-			handleButtonClick();
-		}
-	};
+	// Função para lidar com a tecla Enter na entrada de pesquisa
+	const handleKeyPress = useCallback(
+		(e) => {
+			if (e.key === "Enter") {
+				handleButtonClick();
+			}
+		},
+		[handleButtonClick]
+	);
 
 	return (
 		<>
@@ -131,14 +146,16 @@ export default function Home({ theme, toggleTheme }) {
 					/>
 
 					<AdvancedSearch htmlFor="advanced-search-select">
-						<select id="advanced-search-select" name="advanced-search-select">
-							<option value="midjourney" selected>
-								Midjourney
-							</option>
+						<select
+							ref={advancedSearchSelectRef}
+							id="advanced-search-select"
+							name="advanced-search-select"
+							defaultValue="midjourney"
+						>
+							<option value="midjourney">Midjourney</option>
 							<option value="chatgpt">ChatGPT</option>
 						</select>
 					</AdvancedSearch>
-
 					<SearchIcon src="./search.svg" alt="Ícone de pesquisa" />
 				</SearchBar>
 
@@ -153,5 +170,4 @@ export default function Home({ theme, toggleTheme }) {
 		</>
 	);
 }
-
 Home.noLayout = true;

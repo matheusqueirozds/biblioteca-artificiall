@@ -3,7 +3,9 @@ import Head from "next/head";
 import Main from "@/components/Midjourney/Main/Main";
 import data from "@/components/Midjourney/midjourney.json";
 
-export default function Home({ data }) {
+// Componente principal da página Midjourney
+export default function Midjourney({ data }) {
+	// Estado local para armazenar os prompts filtrados
 	const [filteredPrompts, setFilteredPrompts] = useState([]);
 
 	return (
@@ -25,6 +27,7 @@ export default function Home({ data }) {
 	);
 }
 
+// Função para obter dados estáticos durante a construção do site
 export async function getStaticProps() {
 	return {
 		props: {
