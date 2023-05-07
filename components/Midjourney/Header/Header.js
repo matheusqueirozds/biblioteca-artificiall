@@ -8,7 +8,6 @@ import {
 	DarkModeToggle,
 	RightContainer,
 	LeftContainer,
-	SearchIcon,
 	HeaderWrapper,
 } from "./HeaderStyles";
 import { useSearch } from "@/SearchContext";

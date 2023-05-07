@@ -13,7 +13,6 @@ import {
 	Button,
 	ButtonsContainer,
 	HomeContainer,
-	Logo,
 } from "@/styles/HomeStyles";
 import IndexHeader from "@/components/Home/Header/IndexHeader";
 import data from "@/data/midjourney.json";
@@ -154,6 +153,7 @@ export default function Home({ theme, toggleTheme }) {
 						style={{ paddingLeft: "calc(101px + 3.3rem)" }}
 						onChange={handleSearchInput}
 						onKeyPress={handleKeyPress}
+						
 					/>
 					<AdvancedSearch htmlFor="advanced-search-select">
 						<select
