@@ -23,6 +23,14 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 	const [collapsed, setCollapsed] = useState(false);
 
 	useEffect(() => {
+		if (data && data.midjourney.categories) {
+			setCategories(data.midjourney.categories);
+			setActiveCategory(data.midjourney.categories[0]);
+		}
+	}, [data]);
+
+	// Atualiza os prompts filtrados com base no termo de pesquisa ou na categoria ativa
+	useEffect(() => {
 		if (searchTerm) {
 			const promptsToFilter = data.midjourney.categories.flatMap(
 				(category) => category.prompts
@@ -38,13 +46,7 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 		}
 	}, [searchTerm, activeCategory]);
 
-	useEffect(() => {
-		if (data && data.midjourney.categories) {
-			setCategories(data.midjourney.categories);
-			setActiveCategory(data.midjourney.categories[0]);
-		}
-	}, [data]);
-
+	// Filtra os prompts com base no termo de pesquisa
 	const filterPrompts = (term, promptsToFilter) => {
 		const searchType = document.getElementById("searchType").value;
 
@@ -62,15 +64,18 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 		return filtered;
 	};
 
+	// Alterna a categoria ativa
 	const handleCategoryClick = (category) => {
 		setActiveCategory(category);
 	};
 
+	// Abre o modal da imagem
 	const handleViewImageClick = (imageUrl, imageAlt) => {
 		setModalImage({ url: imageUrl, alt: imageAlt });
 		setIsModalOpen(true);
 	};
 
+	// Alterna o estado do menu lateral
 	const toggleSideMenu = () => {
 		setCollapsed(!collapsed);
 	};
@@ -79,6 +84,7 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 		return <div>Carregando...</div>;
 	}
 
+	// Obtém as subcategorias dos prompts filtrados
 	const getSubcategories = () => {
 		const subcategories = {};
 		const prompts = filteredPrompts;
@@ -98,25 +104,26 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 	return (
 		<MainContainer>
 			<SideMenu collapsed={collapsed}>
-				<ChevronButton onClick={toggleSideMenu}>
-					<div>
-						<Image
-							src="/chevron-right.svg"
-							alt="Ver menu lateral"
-							title="Ver menu lateral"
-							width={24}
-							height={24}
-							style={{ display: collapsed ? "block" : "none" }}
-						/>
-						<Image
-							src="/chevron-left.svg"
-							alt="Ocultar menu lateral"
-							title="Ocultar menu lateral"
-							width={24}
-							height={24}
-							style={{ display: collapsed ? "none" : "block" }}
-						/>
-					</div>
+				<ChevronButton
+					onClick={toggleSideMenu}
+					title="Alterar visibilidade do menu lateral"
+				>
+					<Image
+						src="/chevron-right.svg"
+						alt="Ver menu lateral"
+						title="Ver menu lateral"
+						width={24}
+						height={24}
+						style={{ display: collapsed ? "block" : "none" }}
+					/>
+					<Image
+						src="/chevron-left.svg"
+						alt="Ocultar menu lateral"
+						title="Ocultar menu lateral"
+						width={24}
+						height={24}
+						style={{ display: collapsed ? "none" : "block" }}
+					/>
 				</ChevronButton>
 				{!collapsed && (
 					<>

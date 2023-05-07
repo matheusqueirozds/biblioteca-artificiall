@@ -12,7 +12,6 @@ import TranslateButton from "./TranslateButton";
 import ResetTextButton from "./ResetTextButton";
 import ViewImageButton from "./ViewImageButton";
 import { translateText } from "./translationHelper";
-import Image from "next/image";
 
 // Componente que representa um prompt e suas ações relacionadas
 export default function Prompt({ prompt, onViewImageClick }) {
@@ -22,18 +21,21 @@ export default function Prompt({ prompt, onViewImageClick }) {
 	const { image_url, image_alt } = prompt;
 
 	// Estados locais para gerenciar os textos, cores e estados dos botões
-	const [copyButtonText, setCopyButtonText] = useState("Copiar");
-	const [copyButtonColor, setCopyButtonColor] = useState("");
-	const [copyButtonBackgroundColor, setCopyButtonBackgroundColor] =
-		useState("");
-	const [translateButtonText, setTranslateButtonText] = useState("Traduzir");
-	const [translateButtonColor, setTranslateButtonColor] = useState("");
-	const [translateButtonBackgroundColor, setTranslateButtonBackgroundColor] =
-		useState("");
-	const [resetButtonText, setResetButtonText] = useState("Resetar texto");
-	const [resetButtonColor, setResetButtonColor] = useState("");
-	const [resetButtonBackgroundColor, setResetButtonBackgroundColor] =
-		useState("");
+	const [copyButton, setCopyButton] = useState({
+		text: "Copiar",
+		color: "",
+		backgroundColor: "",
+	});
+	const [translateButton, setTranslateButton] = useState({
+		text: "Traduzir",
+		color: "",
+		backgroundColor: "",
+	});
+	const [resetButton, setResetButton] = useState({
+		text: "Resetar texto",
+		color: "",
+		backgroundColor: "",
+	});
 
 	// Estado local para armazenar se o texto foi traduzido
 	const [translated, setTranslated] = useState(false);
@@ -45,29 +47,40 @@ export default function Prompt({ prompt, onViewImageClick }) {
 	const handleCopyClick = () => {
 		const fullText = nonEditablePart + text;
 		navigator.clipboard.writeText(fullText);
-		setCopyButtonText("Copiado!");
-		setCopyButtonColor("#FFFFFF");
-		setCopyButtonBackgroundColor("#81C784");
+		setCopyButton({
+			text: "Copiado!",
+			color: "#FFFFFF",
+			backgroundColor: "#81C784",
+		});
 		setTimeout(() => {
-			setCopyButtonText("Copiar");
-			setCopyButtonColor("");
-			setCopyButtonBackgroundColor("");
+			setCopyButton({
+				text: "Copiar",
+				color: "",
+				backgroundColor: "",
+			});
 		}, 2000);
 	};
 
 	// Função para lidar com a ação de resetar o texto
 	const handleResetTextClick = () => {
 		setText(editablePart);
-		setTranslateButtonText("Traduzir");
-		setTranslateButtonBackgroundColor("");
+		setTranslateButton({
+			text: "Traduzir",
+			color: "",
+			backgroundColor: "",
+		});
 		setTranslated(false);
-		setResetButtonText("Resetado!");
-		setResetButtonColor("#FFFFFF");
-		setResetButtonBackgroundColor("#FF8A65");
+		setResetButton({
+			text: "Resetado!",
+			color: "#FFFFFF",
+			backgroundColor: "#FF8A65",
+		});
 		setTimeout(() => {
-			setResetButtonText("Resetar texto");
-			setResetButtonColor("");
-			setResetButtonBackgroundColor("");
+			setResetButton({
+				text: "Resetar texto",
+				color: "",
+				backgroundColor: "",
+			});
 		}, 1000);
 	};
 
@@ -76,16 +89,20 @@ export default function Prompt({ prompt, onViewImageClick }) {
 		if (!translated) {
 			const translatedText = await translateText(text, "pt-BR");
 			setText(translatedText);
-			setTranslateButtonText("Desfazer tradução");
-			setTranslateButtonColor("#FFFFFF");
-			setTranslateButtonBackgroundColor("#64B5F6");
+			setTranslateButton({
+				text: "Desfazer tradução",
+				color: "#FFFFFF",
+				backgroundColor: "#64B5F6",
+			});
 			setTranslated(true);
 		} else {
 			const translatedText = await translateText(text, "en");
 			setText(translatedText);
-			setTranslateButtonText("Traduzir");
-			setTranslateButtonColor("");
-			setTranslateButtonBackgroundColor("");
+			setTranslateButton({
+				text: "Traduzir",
+				color: "",
+				backgroundColor: "",
+			});
 			setTranslated(false);
 		}
 	};
@@ -106,21 +123,21 @@ export default function Prompt({ prompt, onViewImageClick }) {
 			<ButtonsWrapper>
 				<CopyButton
 					onClick={handleCopyClick}
-					backgroundColor={copyButtonBackgroundColor}
-					textColor={copyButtonColor}
-					text={copyButtonText}
+					backgroundColor={copyButton.backgroundColor}
+					textColor={copyButton.color}
+					text={copyButton.text}
 				/>
 				<ResetTextButton
 					onClick={handleResetTextClick}
-					backgroundColor={resetButtonBackgroundColor}
-					textColor={resetButtonColor}
-					text={resetButtonText}
+					backgroundColor={resetButton.backgroundColor}
+					textColor={resetButton.color}
+					text={resetButton.text}
 				/>
 				<TranslateButton
 					onClick={handleTranslateClick}
-					backgroundColor={translateButtonBackgroundColor}
-					textColor={translateButtonColor}
-					text={translateButtonText}
+					backgroundColor={translateButton.backgroundColor}
+					textColor={translateButton.color}
+					text={translateButton.text}
 				/>
 			</ButtonsWrapper>
 			<TextAreaWrapper>
@@ -136,7 +153,6 @@ export default function Prompt({ prompt, onViewImageClick }) {
 				alt={image_alt}
 				onClick={handleViewImageClick}
 			/>
-
 			<ViewImageButton onClick={handleViewImageClick} />
 		</PromptContainer>
 	);
