@@ -12,7 +12,7 @@ export const MainContainer = styled.main`
 	background-color: #fafafa;
 	color: #666;
 	padding-bottom: ${widthFooter};
-	height: 100vh;
+	height: 100%;
  margin-bottom: 10rem;
 
 	@media screen and (max-width: 1024px) {
