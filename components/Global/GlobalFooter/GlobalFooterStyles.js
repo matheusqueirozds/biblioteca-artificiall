@@ -14,6 +14,7 @@ export const FooterWrapper = styled.footer`
 	@media screen and (max-width: 1024px) {
 		position: relative;
   z-index: 0;
+  bottom: 0;
 	}
 `;
 
