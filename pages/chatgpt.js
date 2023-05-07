@@ -1,6 +1,6 @@
 import React from "react";
 import Head from "next/head";
-import { Container } from "@/components/Global/Main/AdditionalInfo";
+import { Container } from "@/components/Global/GlobalMain/AdditionalInfo";
 
 export default function ChatGPT() {
 	return (

@@ -6,11 +6,11 @@ import {
 	FooterWrapper,
 	LeftLinks,
 	RightLinks,
-} from "./FooterStyles";
+} from "./GlobalFooterStyles";
 import Link from "next/link";
 
 // Componente do rodapé
-const Footer = () => {
+export default function GlobalFooter() {
 	return (
 		<FooterWrapper>
 			<FooterContainer>
@@ -57,6 +57,4 @@ const Footer = () => {
 			</FooterContainer>
 		</FooterWrapper>
 	);
-};
-
-export default Footer;
+}

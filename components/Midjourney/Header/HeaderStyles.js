@@ -47,7 +47,7 @@ export const LeftContainer = styled.div`
 	}
 `;
 
-export const SearchBar = styled.div`
+export const SearchBarWrapper = styled.div`
 	position: relative;
 	display: flex;
 	align-items: center;

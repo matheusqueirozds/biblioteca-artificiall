@@ -1,10 +1,10 @@
-import { Container } from "@/components/Global/Main/AdditionalInfo";
+import { Container } from "@/components/Global/GlobalMain/AdditionalInfo";
 import {
 	AdditionalInfoContainer,
 	BackToHome,
-} from "@/components/Global/Main/AdditionalInfo";
-import Footer from "@/components/Global/Main/Footer/Footer";
-import IndexHeader from "@/components/Home/Header/IndexHeader";
+} from "@/components/Global/GlobalMain/AdditionalInfo";
+import Footer from "@/components/Global/GlobalFooter/GlobalFooter";
+import IndexHeader from "@/components/Global/GlobalHeader/GlobalHeader";
 import { darkTheme, lightTheme } from "@/styles/theme";
 import React from "react";
 import { ThemeProvider } from "styled-components";

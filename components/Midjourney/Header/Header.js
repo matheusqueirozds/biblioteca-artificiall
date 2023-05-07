@@ -1,9 +1,6 @@
 import React from "react";
 import {
 	HeaderContainer,
-	SearchBar,
-	SearchInput,
-	AdvancedSearch,
 	NavMenu,
 	DarkModeToggle,
 	RightContainer,
@@ -13,6 +10,7 @@ import {
 import { useSearch } from "@/SearchContext";
 import Link from "next/link";
 import Image from "next/image";
+import SearchBar from "./HeaderSearchBar";
 
 export default function Header({ toggleTheme, onSearch, onResetCategory }) {
 	const { searchTerm, handleSearch } = useSearch();
@@ -38,30 +36,10 @@ export default function Header({ toggleTheme, onSearch, onResetCategory }) {
 							height={64}
 						/>
 					</Link>
-					<SearchBar>
-						<SearchInput
-							type="text"
-							placeholder="Pesquisar prompt"
-							value={searchTerm}
-							onChange={handleInputChange}
-						/>
-						<AdvancedSearch>
-							<select id="searchType" name="searchType">
-								<option value="advanced" selected>
-									Todas as categorias
-								</option>
-								<option value="simple">Categoria atual</option>
-							</select>
-						</AdvancedSearch>
-
-						<Image
-							src="/search.svg"
-							alt="Ícone de pesquisa"
-							width={18}
-							height={18}
-							style={{ position: "absolute", left: "11rem" }}
-						/>
-					</SearchBar>
+					<SearchBar
+						searchTerm={searchTerm}
+						handleInputChange={handleInputChange}
+					/>
 				</LeftContainer>
 
 				<RightContainer>

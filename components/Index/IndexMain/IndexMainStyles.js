@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const HomeContainer = styled.div`
+export const IndexContainer = styled.div`
 	background-color: #fff;
 	min-height: calc(100vh - 3rem);
 	display: flex;
@@ -15,12 +15,12 @@ export const HomeContainer = styled.div`
 	}
 `;
 
-export const ButtonsContainer = styled.div`
+export const IndexButtonsContainer = styled.div`
 	display: flex;
 	gap: 12px;
 `;
 
-export const Button = styled.button`
+export const IndexButton = styled.button`
 	padding: 11px 16px;
 	color: #3c4043;
 	background-color: #f8f9fa;

@@ -1,10 +1,14 @@
 import React from "react";
 import Image from "next/image";
-import { IndexHeaderContainer, Nav, DarkModeToggle } from "./IndexHeaderStyles";
+import {
+	IndexHeaderContainer,
+	Nav,
+	DarkModeToggle,
+} from "./GlobalHeaderStyles";
 import Link from "next/link";
 
 // Componente do cabeçalho da página inicial
-const IndexHeader = ({ toggleTheme }) => {
+export default function GlobalHeader({ toggleTheme }) {
 	return (
 		<IndexHeaderContainer>
 			<Nav>
@@ -51,6 +55,4 @@ const IndexHeader = ({ toggleTheme }) => {
 			</DarkModeToggle>
 		</IndexHeaderContainer>
 	);
-};
-
-export default IndexHeader;
+}

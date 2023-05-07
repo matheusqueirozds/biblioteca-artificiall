@@ -1,12 +1,12 @@
-import Footer from "@/components/Global/Main/Footer/Footer";
-import IndexHeader from "@/components/Home/Header/IndexHeader";
+import Footer from "@/components/Global/GlobalFooter/GlobalFooter";
+import IndexHeader from "@/components/Global/GlobalHeader/GlobalHeader";
 import { darkTheme, lightTheme } from "@/styles/theme";
 import React from "react";
 import { ThemeProvider } from "styled-components";
 import AdditionalInfo, {
 	AdditionalInfoContainer,
 	BackToHome,
-} from "@/components/Global/Main/AdditionalInfo";
+} from "@/components/Global/GlobalMain/AdditionalInfo";
 
 export default function termos({ theme, toggleTheme }) {
 	return (

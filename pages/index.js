@@ -4,29 +4,11 @@ import { ThemeProvider } from "styled-components";
 import { lightTheme, darkTheme } from "@/styles/theme";
 import { useSearch } from "@/SearchContext";
 import { useRouter } from "next/router";
-import {
-	AdvancedSearch,
-	SearchBar,
-	SearchInput,
-} from "@/components/Home/Main/IndexMainStyles";
-import {
-	Button,
-	ButtonsContainer,
-	HomeContainer,
-} from "@/styles/HomeStyles";
-import IndexHeader from "@/components/Home/Header/IndexHeader";
+import IndexHeader from "@/components/Global/GlobalHeader/GlobalHeader";
+import Footer from "@/components/Global/GlobalFooter/GlobalFooter";
 import data from "@/data/midjourney.json";
-import Link from "next/link";
-import Footer from "@/components/Global/Main/Footer/Footer";
-import Image from "next/image";
+import IndexMain from "@/components/Index/IndexMain/IndexMain";
 
-/**
- * Componente principal da página Home
- * @param {Object} props - Propriedades do componente
- * @param {string} props.theme - Tema atual (light ou dark)
- * @param {Function} props.toggleTheme - Função para alternar o tema
- * @returns {React.Component}
- */
 export default function Home({ theme, toggleTheme }) {
 	// Utilizando o contexto de pesquisa
 	const { searchTerm, handleSearch } = useSearch();
@@ -138,54 +120,12 @@ export default function Home({ theme, toggleTheme }) {
 			<ThemeProvider theme={theme === "light" ? lightTheme : darkTheme}>
 				<IndexHeader toggleTheme={toggleTheme} />
 			</ThemeProvider>
-			<HomeContainer>
-				<Image
-					src="/logo.webp"
-					alt="Biblioteca Artificiall"
-					width={200}
-					height={200}
-				/>
-				<SearchBar style={{ marginBottom: "30px" }}>
-					<SearchInput
-						type="text"
-						title="Pesquisar"
-						aria-label="Campo de pesquisa"
-						style={{ paddingLeft: "calc(101px + 3.3rem)" }}
-						onChange={handleSearchInput}
-						onKeyPress={handleKeyPress}
-						
-					/>
-					<AdvancedSearch htmlFor="advanced-search-select">
-						<select
-							ref={advancedSearchSelectRef}
-							id="advanced-search-select"
-							name="advanced-search-select"
-							aria-label="Selecione o tipo de pesquisa"
-							defaultValue="midjourney"
-						>
-							<option value="midjourney">Midjourney</option>
-							<option value="chatgpt">ChatGPT</option>
-						</select>
-					</AdvancedSearch>
-
-					<Image
-						src="/search.svg"
-						alt="Ícone de pesquisa"
-						width={18}
-						height={18}
-						style={{ position: "absolute", left: "7.5rem" }}
-					/>
-				</SearchBar>
-
-				<ButtonsContainer>
-					<Button onClick={handleButtonClick} aria-label="Pesquisar prompt">
-						Pesquisar prompt
-					</Button>
-					<Link href="/ferramentas-uteis">
-						<Button aria-label="Ferramentas úteis">Ferramentas úteis</Button>
-					</Link>
-				</ButtonsContainer>
-			</HomeContainer>
+			<IndexMain
+				handleSearchInput={handleSearchInput}
+				handleKeyPress={handleKeyPress}
+				advancedSearchSelectRef={advancedSearchSelectRef}
+				handleButtonClick={handleButtonClick}
+			/>
 			<Footer />
 		</>
 	);

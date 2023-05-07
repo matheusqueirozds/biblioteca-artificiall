@@ -7,7 +7,7 @@ import {
 	ChevronButton,
 	CategoriesList,
 } from "./MainStyles";
-import ImageModal from "@/components/Midjourney/ImageModal/ImageModal";
+import ImageModal from "@/components/Midjourney/Prompt/ImageModal/ImageModal";
 import { useSearch } from "@/SearchContext";
 import Image from "next/image";
 import CategoryItem from "./CategoryItem";
