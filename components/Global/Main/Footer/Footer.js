@@ -18,14 +18,10 @@ const Footer = () => {
 					{/* Links à esquerda no rodapé */}
 					<FooterList>
 						<li>
-							<Link href="/sobre">
-								<span>Sobre</span>
-							</Link>
+							<Link href="/sobre">Sobre</Link>
 						</li>
 						<li>
-							<Link href="/como-funciona">
-								<span>Como funciona a plataforma</span>
-							</Link>
+							<Link href="/como-funciona">Como funciona a plataforma</Link>
 						</li>
 					</FooterList>
 				</LeftLinks>
@@ -33,19 +29,13 @@ const Footer = () => {
 					{/* Links à direita no rodapé */}
 					<FooterList>
 						<li>
-							<Link href="/privacidade">
-								<span>Privacidade</span>
-							</Link>
+							<Link href="/privacidade">Privacidade</Link>
 						</li>
 						<li>
-							<Link href="/termos">
-								<span>Termos</span>
-							</Link>
+							<Link href="/termos">Termos</Link>
 						</li>
 						<li>
-							<Link href="/configuracoes">
-								<span>Configurações</span>
-							</Link>
+							<Link href="/configuracoes">Configurações</Link>
 						</li>
 					</FooterList>
 				</RightLinks>

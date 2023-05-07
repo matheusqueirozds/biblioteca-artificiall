@@ -12,6 +12,7 @@ import TranslateButton from "./TranslateButton";
 import ResetTextButton from "./ResetTextButton";
 import ViewImageButton from "./ViewImageButton";
 import { translateText } from "./translationHelper";
+import Image from "next/image";
 
 // Componente que representa um prompt e suas ações relacionadas
 export default function Prompt({ prompt, onViewImageClick }) {
@@ -135,6 +136,7 @@ export default function Prompt({ prompt, onViewImageClick }) {
 				alt={image_alt}
 				onClick={handleViewImageClick}
 			/>
+
 			<ViewImageButton onClick={handleViewImageClick} />
 		</PromptContainer>
 	);

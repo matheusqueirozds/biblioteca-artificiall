@@ -11,6 +11,20 @@ export const IndexHeaderContainer = styled.header`
 	align-items: center;
 	background-color: #fff;
 
+	a {
+		font-size: 13px;
+		color: #5f6368;
+		text-decoration: none;
+		display: flex;
+		align-items: center;
+		transition: all 0.3s;
+		padding: 15px;
+
+		&:hover {
+			transform: translateY(-3px);
+		}
+	}
+
 	img {
 		margin-right: 5px;
 	}
@@ -21,23 +35,9 @@ export const Nav = styled.nav`
 	align-items: center;
 `;
 
-export const NavLink = styled.a`
-	font-size: 13px;
-	color: #000000;
-	margin-left: 1.5rem;
-	text-decoration: none;
-	display: flex;
-	align-items: center;
-	transition: all 0.3s;
-
-	&:hover {
-		transform: translateY(-3px);
-	}
-`;
-
 export const DarkModeToggle = styled.button`
 	background-color: transparent;
 	border: none;
-	color: #e21;
+	color: #5f6368;
 	cursor: pointer;
 `;

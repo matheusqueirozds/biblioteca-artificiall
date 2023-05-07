@@ -8,7 +8,8 @@ export const FooterWrapper = styled.footer`
 	z-index: 999;
 	background-color: #f2f2f2;
 	color: #70757a;
-	font-size: 15px;
+	font-size: 14px;
+	border-top: 1px solid #d0d7de;
 
 	@media screen and (max-width: 1024px) {
 		position: relative;
@@ -24,7 +25,7 @@ export const FooterContainer = styled.div`
 	padding: 10px 40px;
 
 	&:first-child {
-		border-bottom: 1px solid #dadce0;
+		border-bottom: 1px solid #d0d7de;
 	}
 
 	&:last-child {
@@ -39,9 +40,10 @@ export const FooterContainer = styled.div`
 
 export const FooterList = styled.ul`
 	display: flex;
-	gap: 30px;
 
-	@media screen and (max-width: 480px) {
+	a {
+		padding: 15px;
+		opacity: 1;
 	}
 `;
 

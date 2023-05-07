@@ -12,6 +12,7 @@ import {
 import Prompt from "@/components/Midjourney/Prompt/Prompt";
 import ImageModal from "@/components/Midjourney/ImageModal/ImageModal";
 import { useSearch } from "@/SearchContext";
+import Image from "next/image";
 
 export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 	const [categories, setCategories] = useState([]);
@@ -19,7 +20,6 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 	const [isModalOpen, setIsModalOpen] = useState(false);
 	const [modalImage, setModalImage] = useState({ url: "", alt: "" });
 	const { searchTerm } = useSearch();
-	const [sideMenuWidth, setSideMenuWidth] = useState(250);
 	const [collapsed, setCollapsed] = useState(false);
 
 	useEffect(() => {
@@ -100,16 +100,20 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 			<SideMenu collapsed={collapsed}>
 				<ChevronButton onClick={toggleSideMenu}>
 					<div>
-						<img
+						<Image
 							src="/chevron-right.svg"
 							alt="Ver menu lateral"
 							title="Ver menu lateral"
+							width={24}
+							height={24}
 							style={{ display: collapsed ? "block" : "none" }}
 						/>
-						<img
+						<Image
 							src="/chevron-left.svg"
 							alt="Ocultar menu lateral"
 							title="Ocultar menu lateral"
+							width={24}
+							height={24}
 							style={{ display: collapsed ? "none" : "block" }}
 						/>
 					</div>

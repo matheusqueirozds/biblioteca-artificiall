@@ -1,11 +1,7 @@
 import React from "react";
 import Image from "next/image";
-import {
-	IndexHeaderContainer,
-	Nav,
-	NavLink,
-	DarkModeToggle,
-} from "./IndexHeaderStyles";
+import { IndexHeaderContainer, Nav, DarkModeToggle } from "./IndexHeaderStyles";
+import Link from "next/link";
 
 // Componente do cabeçalho da página inicial
 const IndexHeader = ({ toggleTheme }) => {
@@ -13,7 +9,7 @@ const IndexHeader = ({ toggleTheme }) => {
 		<IndexHeaderContainer>
 			<Nav>
 				{/* Link para o Instagram */}
-				<NavLink
+				<Link
 					href="https://www.instagram.com/artificiall.ai"
 					target="_blank"
 					rel="noopener noreferrer"
@@ -25,10 +21,10 @@ const IndexHeader = ({ toggleTheme }) => {
 						width={20}
 						height={20}
 					/>
-					<span>Instagram</span>
-				</NavLink>
+					Instagram
+				</Link>
 				{/* Link para o Discord */}
-				<NavLink
+				<Link
 					href="https://discord.gg/84AfKn4a"
 					target="_blank"
 					rel="noopener noreferrer"
@@ -40,12 +36,18 @@ const IndexHeader = ({ toggleTheme }) => {
 						width={20}
 						height={20}
 					/>
-					<span>Discord</span>
-				</NavLink>
+					Discord
+				</Link>
 			</Nav>
 			{/* Botão para alternar o tema entre claro e escuro */}
 			<DarkModeToggle onClick={toggleTheme} aria-label="Alternar modo escuro">
-				Modo Escuro
+				<Image
+					src="/modo-escuro.svg"
+					width={18}
+					height={18}
+					alt="Ativar o modo escuro"
+					title="Ativar o modo escuro"
+				/>
 			</DarkModeToggle>
 		</IndexHeaderContainer>
 	);

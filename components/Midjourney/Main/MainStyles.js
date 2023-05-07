@@ -1,6 +1,10 @@
 import styled, { css } from "styled-components";
 
-const widthHeader = "64px";
+const widthHeader = "58px";
+const widthHeaderLarge = "122px";
+const widthHeaderMedium = "120px";
+const widthHeaderSmall = "167px";
+const widthHeaderSmaller = "182px";
 const widthFooter = "109px";
 
 export const MainContainer = styled.main`
@@ -44,7 +48,7 @@ export const SideMenu = styled.aside`
 	@media screen and (max-width: 1024px) {
 		display: flex;
 		align-items: center;
-		top: calc(140px - 0.8rem);
+		top: ${widthHeaderLarge};
 		height: auto;
 		padding: 0;
 		width: 100%;
@@ -63,12 +67,16 @@ export const SideMenu = styled.aside`
 				  `}
 	}
 
+	@media screen and (max-width: 768px) {
+		top: ${widthHeaderMedium};
+	}
+
 	@media screen and (max-width: 480px) {
-		top: calc(178px - 0.8rem);
+		top: ${widthHeaderSmall};
 	}
 
 	@media screen and (max-width: 375px) {
-		top: calc(218px - 0.8rem);
+		top: ${widthHeaderSmaller};
 	}
 `;
 
@@ -161,7 +169,7 @@ export const PromptsContainer = styled.div`
 			  `}
 
 	@media screen and (max-width: 1024px) {
-		margin-top: calc(140px + 5rem);
+		margin-top: calc(${widthHeaderLarge} + 6rem);
 		margin-left: 0;
 	}
 

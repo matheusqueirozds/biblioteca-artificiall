@@ -15,7 +15,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
     background-color: #fff;
     color: #888;
     line-height: 1.6;
@@ -43,7 +43,6 @@ text-decoration:underline;
   button {
     background-color: ${({ theme }) => theme.buttonBackground};
     color: ${({ theme }) => theme.buttonText};
-    transition: background-color 0.3s, color 0.3s;
 	  transition: all 0.3s ease;
     padding: 0.25rem 0.5rem;
 	  border: none;

@@ -47,11 +47,6 @@ export const LeftContainer = styled.div`
 	}
 `;
 
-export const Logo = styled.img`
-	width: 64px;
-	border-radius: 50%;
-`;
-
 export const SearchBar = styled.div`
 	position: relative;
 	display: flex;
@@ -152,11 +147,4 @@ export const DarkModeToggle = styled.button`
 	border: none;
 	color: #000;
 	cursor: pointer;
-`;
-
-export const SearchIcon = styled.img`
-	position: absolute;
-	left: 7.5rem;
-	width: 18px;
-	height: 18px;
 `;

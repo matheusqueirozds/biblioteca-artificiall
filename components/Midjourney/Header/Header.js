@@ -1,7 +1,6 @@
 import React from "react";
 import {
 	HeaderContainer,
-	Logo,
 	SearchBar,
 	SearchInput,
 	AdvancedSearch,
@@ -14,6 +13,7 @@ import {
 } from "./HeaderStyles";
 import { useSearch } from "@/SearchContext";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Header({ toggleTheme, onSearch, onResetCategory }) {
 	const { searchTerm, handleSearch } = useSearch();
@@ -32,7 +32,12 @@ export default function Header({ toggleTheme, onSearch, onResetCategory }) {
 			<HeaderWrapper>
 				<LeftContainer>
 					<Link href="/" style={{ textDecoration: "none", opacity: "1" }}>
-						<Logo src="./logo.webp" alt="Biblioteca Artificiall" />
+						<Image
+							src="/logo.webp"
+							alt="Biblioteca Artificiall"
+							width={64}
+							height={64}
+						/>
 					</Link>
 					<SearchBar>
 						<SearchInput
@@ -40,7 +45,6 @@ export default function Header({ toggleTheme, onSearch, onResetCategory }) {
 							placeholder="Pesquisar prompt"
 							value={searchTerm}
 							onChange={handleInputChange}
-							
 						/>
 						<AdvancedSearch>
 							<select id="searchType" name="searchType">
@@ -51,10 +55,12 @@ export default function Header({ toggleTheme, onSearch, onResetCategory }) {
 							</select>
 						</AdvancedSearch>
 
-						<SearchIcon
-							src="./search.svg"
+						<Image
+							src="/search.svg"
 							alt="Ícone de pesquisa"
-							style={{ left: "11rem" }}
+							width={18}
+							height={18}
+							style={{ position: "absolute", left: "11rem" }}
 						/>
 					</SearchBar>
 				</LeftContainer>
@@ -64,7 +70,18 @@ export default function Header({ toggleTheme, onSearch, onResetCategory }) {
 						<Link href="/">Início</Link>
 						<Link href="/midjourney">Midjourney</Link>
 						<Link href="/chatgpt">ChatGPT</Link>
-						<DarkModeToggle onClick={toggleTheme}>🌙</DarkModeToggle>
+						<DarkModeToggle
+							onClick={toggleTheme}
+							aria-label="Alternar modo escuro"
+						>
+							<Image
+								src="/modo-escuro.svg"
+								width={20}
+								height={20}
+								alt="Ativar o modo escuro"
+								title="Ativar o modo escuro"
+							/>
+						</DarkModeToggle>
 					</NavMenu>
 				</RightContainer>
 			</HeaderWrapper>

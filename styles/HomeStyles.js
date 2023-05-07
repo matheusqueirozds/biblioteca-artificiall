@@ -28,9 +28,11 @@ export const Button = styled.button`
 	border-radius: 4px;
 	transition: all 0.3s;
 	border: 1px solid #f8f9fa;
+	opacity: 1;
 
 	&:hover,
 	&:focus {
 		border-color: #dadce0;
+		transform: none;
 	}
 `;
