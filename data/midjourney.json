@@ -1,10 +1,10 @@
 {
 	"midjourney": {
 		"daily_prompt": {
-			"prompt_subcategories": "Fotografia Atmosférica",
-			"prompt_text": "/imagine prompt: A woman can be seen in the sunlight underwater, in the style of stark photography, ethereal dreamscapes, art of tonga, flickr, suspended hanging, lively movement portrayal, sunrays shine upon it --v 5.1 --ar 2:3 --s 1000",
-			"image_url": "https://media.discordapp.net/attachments/1094158542610636880/1105162825602703572/WhatsApp_Image_2023-05-07_at_20.38.06.jpg?width=436&height=655",
-			"image_alt": "Mulher submersa na água, iluminada por raios de sol, em um ambiente etéreo e de sonho, com movimentos vívidos e suspensos."
+			"prompt_subcategories": "Retratos e Fotografia de Pessoas",
+			"prompt_text": "/imagine prompt: A close-up portrait of a woman with striking green eyes, showcasing her captivating gaze. Capture the depth and intensity of her eyes using a Canon EOS 5D Mark IV with a 50mm f/1.2 lens for a shallow depth of field. Employ soft, diffused natural window light to emphasize her facial features and Rembrandt lighting for added drama. Edit the image for rich contrast and vibrant colors, optimizing for Instagram aesthetic. --ar 1:1 --q 2 --v 5.1",
+			"image_url": "https://media.discordapp.net/attachments/1094158542610636880/1105273609183821905/WhatsApp_Image_2023-05-08_at_18.04.38.jpg?width=655&height=655",
+			"image_alt": "Retrato aproximado de uma mulher com olhos verdes marcantes, destacando seu olhar cativante, iluminada suavemente por luz natural de janela e com cores vibrantes."
 		},
 		"categories": [
 			{
@@ -377,8 +377,14 @@
 				]
 			},
 			{
-				"name": "Fotografia",
+				"name": "Arte e Fotografia",
 				"prompts": [
+					{
+						"prompt_subcategories": "Fotografia Atmosférica",
+						"prompt_text": "/imagine prompt: A woman can be seen in the sunlight underwater, in the style of stark photography, ethereal dreamscapes, art of tonga, flickr, suspended hanging, lively movement portrayal, sunrays shine upon it --v 5.1 --ar 2:3 --s 1000",
+						"image_url": "https://media.discordapp.net/attachments/1094158542610636880/1105162825602703572/WhatsApp_Image_2023-05-07_at_20.38.06.jpg?width=436&height=655",
+						"image_alt": "Mulher submersa na água, iluminada por raios de sol, em um ambiente etéreo e de sonho, com movimentos vívidos e suspensos."
+					},
 					{
 						"prompt_subcategories": "Artistas/ Famosos",
 						"prompt_text": "/imagine prompt: Young, handsome Keanu reeves In a black long leather coat walking down the street in the rain --ar 2:3 --uplight --v 5",
@@ -409,31 +415,31 @@
 						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_Steve_Jobs_and_Steve_Wozniak_as_young_men_discussing_the__64c49997-db74-4f86-90cd-ed09aaa1f2b4-1024x574.webp"
 					},
 					{
-						"prompt_subcategories": "Pessoas comuns",
+						"prompt_subcategories": "Retratos e Fotografia de Pessoas",
 						"prompt_text": "/imagine prompt: 21years chinese girl, in school, beauty, long black hair, sun light，insane detail, smooth light, real photography fujifilm superia, full HD, taken on a Canon EOS R5 F1.2 ISO100 35MM --ar 4:3 --s 750 --q 2 --v 5",
 						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_18years_chinese_girlin_schoolbeautylong_black_hairperfect_5ae4278c-e216-413c-b80c-9759bc1f4c4a-1024x771.webp",
 						"image_alt": "Retrato de fotografia real de uma garota chinesa de 21 anos, na escola, bonita, com cabelos longos e pretos, sob a luz do sol."
 					},
 					{
-						"prompt_subcategories": "Pessoas comuns",
+						"prompt_subcategories": "Retratos e Fotografia de Pessoas",
 						"prompt_text": "/imagine prompt: elderly man with wrinkles and warm smile enjoying his morning coffee at a diner, portrait photography, beautiful, morning sunlight through blinds, smooth light, shot on kodak portra 200, film grain, nostalgic mood --ar 4:3 --chaos 10 --s 250 --v 5",
 						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_elderly_man_with_wrinkles_and_warm_smile_enjoying_his_mor_f7a2122e-1177-4ac8-b432-a64c7915050a.webp",
 						"image_alt": "Retrato de fotografia de um homem idoso com rugas e um sorriso caloroso, apreciando seu café da manhã em um restaurante, sob a luz da manhã filtrada por persianas."
 					},
 					{
-						"prompt_subcategories": "Pessoas comuns",
+						"prompt_subcategories": "Retratos e Fotografia de Pessoas",
 						"prompt_text": "/imagine prompt: scandinavian girl, by the sea, portrait photography, beautiful, sunlight, smooth light, real photography fujifilm superia, full HD, taken on a Canon EOS R5 F1.2 ISO100 35MM --ar 4:3 --s 750 --v 5",
 						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_scandinavian_girl_by_the_sea_portrait_photography_beautif_f7bbc33d-cd8f-430b-9fe5-a3252984f2fa-1.webp",
 						"image_alt": "Retrato de fotografia de uma garota escandinava, à beira-mar, sob a luz solar, em fotografia real em alta definição."
 					},
 					{
-						"prompt_subcategories": "Pessoas comuns",
+						"prompt_subcategories": "Retratos e Fotografia de Pessoas",
 						"prompt_text": "/imagine prompt: film photography portrait of beautiful hippie girl looking at the camera with salty hair and brown hair in the forest, moody rainy weather,machete wielding, shot on kodak portra 200, film grain, nostalgic mood she is covered with micro machines --ar 4:5 --q 2 --v 5",
 						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_film_photography_portrait_of_beautiful_hippie_girl_lookin_348104bc-4714-40dd-9852-b5451400e014.webp",
 						"image_alt": "Retrato de fotografia analógica de uma linda garota hippie com cabelos salgados e castanhos na floresta, em clima chuvoso e com uma machete nas mãos, em tom nostálgico com granulação de filme."
 					},
 					{
-						"prompt_subcategories": "Pessoas comuns",
+						"prompt_subcategories": "Retratos e Fotografia de Pessoas",
 						"prompt_text": "/imagine prompt: film photography portrait of young scottish prince looking at the camera, plate armor, hyperrealistic, late afternoon, overcast lighting, shot on kodak portra 200, film grain, nostalgic mood --ar 4:5 --q 2 --v 5",
 						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_film_photography_portrait_of_scottish_prince_looking_at_t_b46a550e-05dc-4d41-8082-aacc6dc6d809.webp",
 						"image_alt": "Retrato de fotografia analógica de um jovem príncipe escocês com armadura de placas, hiper-realista, sob a luz nublada da tarde, em tom nostálgico com granulação de filme."
@@ -686,4 +692,3 @@
 		]
 	}
 }
-
