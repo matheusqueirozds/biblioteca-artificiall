@@ -1,10 +1,10 @@
 {
 	"midjourney": {
 		"daily_prompt": {
-			"prompt_subcategories": "Action Figures",
-			"prompt_text": "/imagine prompt: Full-body portraits in 3D, shot straight ahead. A cartoon boy is walking in a downtown area, a few cute birds and butterflies circle around him, his shoes are covered with mud, the overall color is soft, gradient color, Unreal Engine 5 subsurface scattering, Pixar style, Disney style, 8k, the picture is well lit, large production --v 5.1 --ar 2:2 --s 600",
-			"image_url": "https://media.discordapp.net/attachments/1094158542610636880/1104773485269631076/WhatsApp_Image_2023-05-06_at_10.54.57.jpg?width=655&height=655",
-			"image_alt": "Imagem de uma miniatura de Saber do anime Fate/Stay Night"
+			"prompt_subcategories": "Fotografia Atmosférica",
+			"prompt_text": "/imagine prompt: A woman can be seen in the sunlight underwater, in the style of stark photography, ethereal dreamscapes, art of tonga, flickr, suspended hanging, lively movement portrayal, sunrays shine upon it --v 5.1 --ar 2:3 --s 1000",
+			"image_url": "https://media.discordapp.net/attachments/1094158542610636880/1105162825602703572/WhatsApp_Image_2023-05-07_at_20.38.06.jpg?width=436&height=655",
+			"image_alt": "Mulher submersa na água, iluminada por raios de sol, em um ambiente etéreo e de sonho, com movimentos vívidos e suspensos."
 		},
 		"categories": [
 			{
@@ -376,7 +376,23 @@
 					}
 				]
 			},
-
+			{
+				"name": "Fotografia",
+				"prompts": [
+					{
+						"prompt_subcategories": "Múltiplos Ângulos",
+						"prompt_text": "/imagine prompt: realistic portrait photography of beautiful girl, pale skin, golden earrings, summer golden hour, kodak portra 800, 105 mm f1. 8; image split into 2, different angles of the girl --ar 2:1 --v 5",
+						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_hyper_realistic_portrait_photography_of_beautiful_happy_g_572d14f3-9908-4235-8d44-6d0d084a1ada-1024x512.webp",
+						"image_alt": "Retrato realista em fotografia de uma bela garota de pele pálida, brincos dourados, horário dourado de verão, Kodak Portra 800, 105 mm f1.8; imagem dividida em 2, ângulos diferentes da garota"
+					},
+					{
+						"prompt_subcategories": "Fotografia Editorial",
+						"prompt_text": "/imagine prompt: photograph from 2018s China: a young couple in their 20s, dressed in white, stands in their home, displaying a range of emotions including laughter and tears. Behind them is a backdrop of a cluttered living space filled with white plastic trash bags and torn white paper rolls. Captured with a film camera, Fujifilm, and Kodak rolls, the image conveys a strong cinematic and grainy texture. This artwork uniquely documents the complex emotions and living conditions faced by the young people of that era. --ar 4:3 --v 5",
+						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_In_this_photograph_from_2018s_China_a_young_couple_in_the_cd92a292-0412-48df-956e-aee156bb6d1b-1024x771.webp",
+						"image_alt": "Fotografia de um jovem casal chinês vestido de branco, em sua casa, exibindo uma variedade de emoções, incluindo risos e lágrimas. Ao fundo, uma cena de uma sala de estar lotada com sacos plásticos brancos e rolos de papel branco rasgados. Capturada com uma câmera de filme Fujifilm e rolos Kodak, a imagem transmite uma forte textura cinematográfica e granulada. Esta obra documenta de forma única as complexas emoções e condições de vida enfrentadas pelos jovens daquela época."
+					}
+				]
+			},
 			{
 				"name": "Ilustrações",
 				"prompts": [
@@ -510,6 +526,12 @@
 			{
 				"name": "Personagens",
 				"prompts": [
+					{
+						"prompt_subcategories": "Desenho animado",
+						"prompt_text": "/imagine prompt: Full-body portraits in 3D, shot straight ahead. A cartoon boy is walking in a downtown area, a few cute birds and butterflies circle around him, his shoes are covered with mud, the overall color is soft, gradient color, Unreal Engine 5 subsurface scattering, Pixar style, Disney style, 8k, the picture is well lit, large production --v 5.1 --ar 2:2 --s 600",
+						"image_url": "https://media.discordapp.net/attachments/1094158542610636880/1104773485269631076/WhatsApp_Image_2023-05-06_at_10.54.57.jpg?width=655&height=655",
+						"image_alt": "Menino de desenho animado caminhando no centro da cidade, cercado por pássaros fofos e borboletas, com sapatos cobertos de lama e cores suaves em estilo Pixar e Disney."
+					},
 					{
 						"prompt_subcategories": "Design de Personagens",
 						"prompt_text": "/imagine prompt: mascot for a vegetable drink brand, super cute, 2d",
@@ -654,23 +676,7 @@
 					}
 				]
 			},
-			{
-				"name": "Técnicas de Fotografia",
-				"prompts": [
-					{
-						"prompt_subcategories": "Técnica: Múltiplos Ângulos",
-						"prompt_text": "/imagine prompt: realistic portrait photography of beautiful girl, pale skin, golden earrings, summer golden hour, kodak portra 800, 105 mm f1. 8; image split into 2, different angles of the girl --ar 2:1 --v 5",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_hyper_realistic_portrait_photography_of_beautiful_happy_g_572d14f3-9908-4235-8d44-6d0d084a1ada-1024x512.webp",
-						"image_alt": "Retrato realista em fotografia de uma bela garota de pele pálida, brincos dourados, horário dourado de verão, Kodak Portra 800, 105 mm f1.8; imagem dividida em 2, ângulos diferentes da garota"
-					},
-					{
-						"prompt_subcategories": "Fotografia Editorial",
-						"prompt_text": "/imagine prompt: photograph from 2018s China: a young couple in their 20s, dressed in white, stands in their home, displaying a range of emotions including laughter and tears. Behind them is a backdrop of a cluttered living space filled with white plastic trash bags and torn white paper rolls. Captured with a film camera, Fujifilm, and Kodak rolls, the image conveys a strong cinematic and grainy texture. This artwork uniquely documents the complex emotions and living conditions faced by the young people of that era. --ar 4:3 --v 5",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_In_this_photograph_from_2018s_China_a_young_couple_in_the_cd92a292-0412-48df-956e-aee156bb6d1b-1024x771.webp",
-						"image_alt": "Fotografia de um jovem casal chinês vestido de branco, em sua casa, exibindo uma variedade de emoções, incluindo risos e lágrimas. Ao fundo, uma cena de uma sala de estar lotada com sacos plásticos brancos e rolos de papel branco rasgados. Capturada com uma câmera de filme Fujifilm e rolos Kodak, a imagem transmite uma forte textura cinematográfica e granulada. Esta obra documenta de forma única as complexas emoções e condições de vida enfrentadas pelos jovens daquela época."
-					}
-				]
-			},
+
 			{
 				"name": "Web Design",
 				"prompts": [

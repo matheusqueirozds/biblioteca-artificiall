@@ -51,7 +51,7 @@ const ImageModal = ({ isOpen, onClose, imageUrl, imageAlt }) => {
 				>
 					Esc
 				</CloseButton>
-				<Image src={imageUrl} alt={imageAlt} />
+				<Image src={imageUrl} alt={imageAlt} title={imageAlt} />
 			</ModalContent>
 		</ModalOverlay>
 	);
