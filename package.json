@@ -6,8 +6,7 @@
 		"dev": "next dev",
 		"build": "next build",
 		"start": "next start",
-		"lint": "next lint",
-		"sort-json": "node ./utils/readJson.js"
+		"lint": "next lint"
 	},
 	"dependencies": {
 		"next": "13.3.2",

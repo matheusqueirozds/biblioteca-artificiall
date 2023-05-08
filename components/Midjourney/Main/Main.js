@@ -13,6 +13,7 @@ import Image from "next/image";
 import CategoryItem from "./CategoryItem";
 import SubcategoryItem from "./SubcategoryItem";
 import { NO_RESULTS_MESSAGE } from "./constants";
+import { sortMidjourneyData } from "../../../utils/sort_midjourney";
 
 export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 	const [categories, setCategories] = useState([]);
@@ -167,3 +168,5 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 		</MainContainer>
 	);
 }
+
+sortMidjourneyData();
