@@ -1,3 +1,4 @@
+import Analytics from "@/components/Analytics/Analytics";
 import Document, { Html, Head, Main, NextScript } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
@@ -35,6 +36,7 @@ class MyDocument extends Document {
 				<body>
 					<Main />
 					<NextScript />
+					<Analytics />
 				</body>
 			</Html>
 		);
