@@ -380,6 +380,107 @@
 				"name": "Fotografia",
 				"prompts": [
 					{
+						"prompt_subcategories": "Artistas/ Famosos",
+						"prompt_text": "/imagine prompt: Young, handsome Keanu reeves In a black long leather coat walking down the street in the rain --ar 2:3 --uplight --v 5",
+						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_Young_handsome_Keanu_reeves_In_a_black_long_leather_coat__32e9fc8f-f1b8-4821-84e6-f2b04e0661ec-1-683x1024.png",
+						"image_alt": "Retrato de Keanu Reeves jovem e bonito, vestindo um longo casaco de couro preto, andando na rua na chuva"
+					},
+					{
+						"prompt_subcategories": "Artistas/ Famosos",
+						"prompt_text": "/imagine prompt: Taylor Swift looking out the window wistfully, wearing a floral pastel linen blazer, natural afternoon light, side-angle view, 4k --ar 2:3 --s 1000 --v 5",
+						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_Taylor_Swift_looking_out_the_window_wistfully_wearing_a_p_30386431-f8ac-4e00-8c6d-a8b3f4f226f6-683x1024.png",
+						"image_alt": "Retrato de Taylor Swift olhando melancolicamente pela janela, vestindo um blazer de linho pastel floral, sob a luz natural da tarde, vista lateral"
+					},
+					{
+						"prompt_subcategories": "Artistas/ Famosos",
+						"prompt_text": "/imagine prompt: actor jason momoa dressed as khal drogo drinking a mimosa isolated on a transparent background --s 250 --v 5",
+						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_actor_jason_momoa_dressed_as_khal_drogo_drinking_a_mimosa_42bb1601-0152-4c91-87fb-566bd8d3dc30.webp",
+						"image_alt": "Retrato de Jason Momoa vestido como Khal Drogo bebendo uma mimosa em um fundo transparente"
+					},
+					{
+						"prompt_subcategories": "Artistas/ Famosos",
+						"prompt_text": "/imagine prompt: The Pope wearing a full length white down shiny puffy jacket, gold cross jewelry, gold rings --q 2 --v 5",
+						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_The_Pope_wearing_a_full_length_white_down_shiny_puffy_jac_9fc439c0-1efd-4c9f-a6a3-a3571b24e1ec.webp",
+						"image_alt": "Retrato do Papa vestindo um casaco branco brilhante acolchoado de comprimento total, joias de cruz douradas, anéis de ouro"
+					},
+					{
+						"prompt_subcategories": "Artistas/ Famosos",
+						"prompt_text": "/imagine prompt: Steve Jobs and Steve Wozniak as young men discussing the schematics of the Apple I in their garage, hyperrealistic, golden hour, kodak portra 800, 105 mm f1. 8 --ar 16:9 --q 2 --v 5",
+						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_Steve_Jobs_and_Steve_Wozniak_as_young_men_discussing_the__64c49997-db74-4f86-90cd-ed09aaa1f2b4-1024x574.webp"
+					},
+					{
+						"prompt_subcategories": "Pessoas comuns",
+						"prompt_text": "/imagine prompt: 21years chinese girl, in school, beauty, long black hair, sun light，insane detail, smooth light, real photography fujifilm superia, full HD, taken on a Canon EOS R5 F1.2 ISO100 35MM --ar 4:3 --s 750 --q 2 --v 5",
+						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_18years_chinese_girlin_schoolbeautylong_black_hairperfect_5ae4278c-e216-413c-b80c-9759bc1f4c4a-1024x771.webp",
+						"image_alt": "Retrato de fotografia real de uma garota chinesa de 21 anos, na escola, bonita, com cabelos longos e pretos, sob a luz do sol."
+					},
+					{
+						"prompt_subcategories": "Pessoas comuns",
+						"prompt_text": "/imagine prompt: elderly man with wrinkles and warm smile enjoying his morning coffee at a diner, portrait photography, beautiful, morning sunlight through blinds, smooth light, shot on kodak portra 200, film grain, nostalgic mood --ar 4:3 --chaos 10 --s 250 --v 5",
+						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_elderly_man_with_wrinkles_and_warm_smile_enjoying_his_mor_f7a2122e-1177-4ac8-b432-a64c7915050a.webp",
+						"image_alt": "Retrato de fotografia de um homem idoso com rugas e um sorriso caloroso, apreciando seu café da manhã em um restaurante, sob a luz da manhã filtrada por persianas."
+					},
+					{
+						"prompt_subcategories": "Pessoas comuns",
+						"prompt_text": "/imagine prompt: scandinavian girl, by the sea, portrait photography, beautiful, sunlight, smooth light, real photography fujifilm superia, full HD, taken on a Canon EOS R5 F1.2 ISO100 35MM --ar 4:3 --s 750 --v 5",
+						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_scandinavian_girl_by_the_sea_portrait_photography_beautif_f7bbc33d-cd8f-430b-9fe5-a3252984f2fa-1.webp",
+						"image_alt": "Retrato de fotografia de uma garota escandinava, à beira-mar, sob a luz solar, em fotografia real em alta definição."
+					},
+					{
+						"prompt_subcategories": "Pessoas comuns",
+						"prompt_text": "/imagine prompt: film photography portrait of beautiful hippie girl looking at the camera with salty hair and brown hair in the forest, moody rainy weather,machete wielding, shot on kodak portra 200, film grain, nostalgic mood she is covered with micro machines --ar 4:5 --q 2 --v 5",
+						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_film_photography_portrait_of_beautiful_hippie_girl_lookin_348104bc-4714-40dd-9852-b5451400e014.webp",
+						"image_alt": "Retrato de fotografia analógica de uma linda garota hippie com cabelos salgados e castanhos na floresta, em clima chuvoso e com uma machete nas mãos, em tom nostálgico com granulação de filme."
+					},
+					{
+						"prompt_subcategories": "Pessoas comuns",
+						"prompt_text": "/imagine prompt: film photography portrait of young scottish prince looking at the camera, plate armor, hyperrealistic, late afternoon, overcast lighting, shot on kodak portra 200, film grain, nostalgic mood --ar 4:5 --q 2 --v 5",
+						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_film_photography_portrait_of_scottish_prince_looking_at_t_b46a550e-05dc-4d41-8082-aacc6dc6d809.webp",
+						"image_alt": "Retrato de fotografia analógica de um jovem príncipe escocês com armadura de placas, hiper-realista, sob a luz nublada da tarde, em tom nostálgico com granulação de filme."
+					},
+					{
+						"prompt_subcategories": "Estilo Vintage",
+						"prompt_text": "/imagine prompt: blonde girl leaning on table and smiling at camera, detailed facial features, detailed eyes, polaroid, 1990",
+						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/01/aitu_blonde_girl_leaning_on_table_and_smiling_at_camera_detaile_12587f5e-7a07-4eed-8bf9-3ac92c2ea556.webp",
+						"image_alt": "Retrato de fotografia em Polaroid de uma garota loira sorrindo e apoiada em uma mesa, com características faciais e olhos detalhados, tirada em 1990."
+					},
+					{
+						"prompt_subcategories": "Estilo Vintage",
+						"prompt_text": "/imagine prompt: man sitting at breakfast table, detailed facial features, vintage photograph, fuji color film, 2000 --v 5",
+						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/02/image-22.png",
+						"image_alt": "Retrato de fotografia vintage de um homem sentado em uma mesa de café da manhã, com características faciais detalhadas, em fotografia de cor da Fuji, tirada em 2000."
+					},
+					{
+						"prompt_subcategories": "Estilo Vintage",
+						"prompt_text": "/imagine prompt: woman playing solitaire at a desk, fuji color film, polaroid, 1999 --v 5",
+						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/02/image-23.png",
+						"image_alt": "Retrato de fotografia Polaroid de uma mulher jogando paciência em uma escrivaninha, em fotografia de cor da Fuji, tirada em 1999."
+					},
+					{
+						"prompt_subcategories": "Estilo Vintage",
+						"prompt_text": "/imagine prompt: man wearing baseball cap walking his dog, full body, vintage photograph, fujicolor film, 2010 --v 5",
+						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/02/image-24.png",
+						"image_alt": "Retrato de fotografia vintage de um homem com boné de baseball, andando com seu cachorro, em fotografia em cor fujicolor, tirada em 2010."
+					},
+					{
+						"prompt_subcategories": "Estilo Vintage",
+						"prompt_text": "/imagine prompt: man and woman posing for a picture at Disneyworld, 2001, detailed face,detailed arms, full body portrait, photograph",
+						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/02/image-25.png",
+						"image_alt": "Homem e mulher posando para uma foto na Disneyworld em 2001, com rosto e braços detalhados, em um retrato de corpo inteiro, em fotografia."
+					},
+					{
+						"prompt_subcategories": "Estilo Vintage",
+						"prompt_text": "/imagine prompt: two men, brothers, one man has hair, arguing outside a house on a patio, 1980, realistic arms, vintage photograph, flash photography",
+						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/02/image-26.png",
+						"image_alt": "Dois irmãos discutindo do lado de fora de uma casa em um pátio em 1980, com braços realistas, em fotografia vintage com flash."
+					},
+					{
+						"prompt_subcategories": "Estilo Vintage",
+						"prompt_text": "/imagine prompt: two siblings sitting on deck in late afternoon, early 2000s, flash photography, polaroid",
+						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/02/image-27.png",
+						"image_alt": "Dois irmãos sentados em um deque no final da tarde, no início dos anos 2000, em fotografia Polaroid com flash."
+					},
+					{
 						"prompt_subcategories": "Múltiplos Ângulos",
 						"prompt_text": "/imagine prompt: realistic portrait photography of beautiful girl, pale skin, golden earrings, summer golden hour, kodak portra 800, 105 mm f1. 8; image split into 2, different angles of the girl --ar 2:1 --v 5",
 						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_hyper_realistic_portrait_photography_of_beautiful_happy_g_572d14f3-9908-4235-8d44-6d0d084a1ada-1024x512.webp",
@@ -523,160 +624,6 @@
 					}
 				]
 			},
-			{
-				"name": "Personagens",
-				"prompts": [
-					{
-						"prompt_subcategories": "Desenho animado",
-						"prompt_text": "/imagine prompt: Full-body portraits in 3D, shot straight ahead. A cartoon boy is walking in a downtown area, a few cute birds and butterflies circle around him, his shoes are covered with mud, the overall color is soft, gradient color, Unreal Engine 5 subsurface scattering, Pixar style, Disney style, 8k, the picture is well lit, large production --v 5.1 --ar 2:2 --s 600",
-						"image_url": "https://media.discordapp.net/attachments/1094158542610636880/1104773485269631076/WhatsApp_Image_2023-05-06_at_10.54.57.jpg?width=655&height=655",
-						"image_alt": "Menino de desenho animado caminhando no centro da cidade, cercado por pássaros fofos e borboletas, com sapatos cobertos de lama e cores suaves em estilo Pixar e Disney."
-					},
-					{
-						"prompt_subcategories": "Design de Personagens",
-						"prompt_text": "/imagine prompt: mascot for a vegetable drink brand, super cute, 2d",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/02/image-40.png",
-						"image_alt": "Mascote para marca de bebida de vegetais, super fofo, estilo 2D"
-					},
-					{
-						"prompt_subcategories": "Design de Personagens",
-						"prompt_text": "/imagine prompt: mascot for a dairy brand, clip art style, cute",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/02/image-41.png",
-						"image_alt": "Mascote para marca de laticínios, estilo clip art, fofo"
-					},
-					{
-						"prompt_subcategories": "Design de Personagens",
-						"prompt_text": "/imagine prompt: wizened old female fortuneteller, head, close up character design, multiple concept designs, concept design sheet, white background, style of Yoshitaka Amano",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/02/wizened-old-female-fortuneteller-head-close-up-character-design-multiple-concept-designs-concept-design-sheet-white-background-style-of-Yoshitaka-Amano.webp",
-						"image_alt": "Design de personagem de uma velha adivinha feminina, cabeça, close-up, com múltiplos conceitos de design em uma folha de design de conceito, fundo branco, estilo de Yoshitaka Amano"
-					},
-					{
-						"prompt_subcategories": "Design de Personagens",
-						"prompt_text": "/imagine prompt: space mercenary character design, concept design sheet, white background, style of yoji shinkawa",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/02/space-mercenary-character-design-concept-design-sheet-white-background-style-of-yoji-shinkawa.webp",
-						"image_alt": "Design de personagem de mercenário espacial, com uma folha de design de conceito em um fundo branco, estilo de Yoji Shinkawa"
-					},
-					{
-						"prompt_subcategories": "Personagens Fictícios",
-						"prompt_text": "/imagine prompt: Photorealism, beautiful Asuka Langley Soryu in sci-fi armor  in a futuristic city --ar 1:2 --q 2 --c 20 --s 750 --v 5",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/image-10.png",
-						"image_alt": "Imagem de Fotorealismo de Asuka Langley Soryu, bela em armadura sci-fi em uma cidade futurista"
-					},
-					{
-						"prompt_subcategories": "Personagens Fictícios",
-						"prompt_text": "/imagine prompt: photorealism, beautiful, Rei Ayanami in sci-fi armor in a futuristic city --ar 1:2 --q 2 --c 20 --s 750 --v 5",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_photorealism_beautiful_Rei_Ayanami_in_sci-fi_armor_in_a_f_440c34ae-2c0a-4521-8e99-124b4ca97ba2-1-512x1024.webp",
-						"image_alt": "Imagem de Fotorealismo de Rei Ayanami, bela em armadura sci-fi em uma cidade futurista"
-					}
-				]
-			},
-			{
-				"name": "Pessoas",
-				"prompts": [
-					{
-						"prompt_subcategories": "Artistas/ Famosos",
-						"prompt_text": "/imagine prompt: Young, handsome Keanu reeves In a black long leather coat walking down the street in the rain --ar 2:3 --uplight --v 5",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_Young_handsome_Keanu_reeves_In_a_black_long_leather_coat__32e9fc8f-f1b8-4821-84e6-f2b04e0661ec-1-683x1024.png",
-						"image_alt": "Retrato de Keanu Reeves jovem e bonito, vestindo um longo casaco de couro preto, andando na rua na chuva"
-					},
-					{
-						"prompt_subcategories": "Artistas/ Famosos",
-						"prompt_text": "/imagine prompt: Taylor Swift looking out the window wistfully, wearing a floral pastel linen blazer, natural afternoon light, side-angle view, 4k --ar 2:3 --s 1000 --v 5",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_Taylor_Swift_looking_out_the_window_wistfully_wearing_a_p_30386431-f8ac-4e00-8c6d-a8b3f4f226f6-683x1024.png",
-						"image_alt": "Retrato de Taylor Swift olhando melancolicamente pela janela, vestindo um blazer de linho pastel floral, sob a luz natural da tarde, vista lateral"
-					},
-					{
-						"prompt_subcategories": "Artistas/ Famosos",
-						"prompt_text": "/imagine prompt: actor jason momoa dressed as khal drogo drinking a mimosa isolated on a transparent background --s 250 --v 5",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_actor_jason_momoa_dressed_as_khal_drogo_drinking_a_mimosa_42bb1601-0152-4c91-87fb-566bd8d3dc30.webp",
-						"image_alt": "Retrato de Jason Momoa vestido como Khal Drogo bebendo uma mimosa em um fundo transparente"
-					},
-					{
-						"prompt_subcategories": "Artistas/ Famosos",
-						"prompt_text": "/imagine prompt: The Pope wearing a full length white down shiny puffy jacket, gold cross jewelry, gold rings --q 2 --v 5",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_The_Pope_wearing_a_full_length_white_down_shiny_puffy_jac_9fc439c0-1efd-4c9f-a6a3-a3571b24e1ec.webp",
-						"image_alt": "Retrato do Papa vestindo um casaco branco brilhante acolchoado de comprimento total, joias de cruz douradas, anéis de ouro"
-					},
-					{
-						"prompt_subcategories": "Artistas/ Famosos",
-						"prompt_text": "/imagine prompt: Steve Jobs and Steve Wozniak as young men discussing the schematics of the Apple I in their garage, hyperrealistic, golden hour, kodak portra 800, 105 mm f1. 8 --ar 16:9 --q 2 --v 5",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_Steve_Jobs_and_Steve_Wozniak_as_young_men_discussing_the__64c49997-db74-4f86-90cd-ed09aaa1f2b4-1024x574.webp"
-					},
-					{
-						"prompt_subcategories": "Pessoas comuns",
-						"prompt_text": "/imagine prompt: 21years chinese girl, in school, beauty, long black hair, sun light，insane detail, smooth light, real photography fujifilm superia, full HD, taken on a Canon EOS R5 F1.2 ISO100 35MM --ar 4:3 --s 750 --q 2 --v 5",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_18years_chinese_girlin_schoolbeautylong_black_hairperfect_5ae4278c-e216-413c-b80c-9759bc1f4c4a-1024x771.webp",
-						"image_alt": "Retrato de fotografia real de uma garota chinesa de 21 anos, na escola, bonita, com cabelos longos e pretos, sob a luz do sol."
-					},
-					{
-						"prompt_subcategories": "Pessoas comuns",
-						"prompt_text": "/imagine prompt: elderly man with wrinkles and warm smile enjoying his morning coffee at a diner, portrait photography, beautiful, morning sunlight through blinds, smooth light, shot on kodak portra 200, film grain, nostalgic mood --ar 4:3 --chaos 10 --s 250 --v 5",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_elderly_man_with_wrinkles_and_warm_smile_enjoying_his_mor_f7a2122e-1177-4ac8-b432-a64c7915050a.webp",
-						"image_alt": "Retrato de fotografia de um homem idoso com rugas e um sorriso caloroso, apreciando seu café da manhã em um restaurante, sob a luz da manhã filtrada por persianas."
-					},
-					{
-						"prompt_subcategories": "Pessoas comuns",
-						"prompt_text": "/imagine prompt: scandinavian girl, by the sea, portrait photography, beautiful, sunlight, smooth light, real photography fujifilm superia, full HD, taken on a Canon EOS R5 F1.2 ISO100 35MM --ar 4:3 --s 750 --v 5",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_scandinavian_girl_by_the_sea_portrait_photography_beautif_f7bbc33d-cd8f-430b-9fe5-a3252984f2fa-1.webp",
-						"image_alt": "Retrato de fotografia de uma garota escandinava, à beira-mar, sob a luz solar, em fotografia real em alta definição."
-					},
-					{
-						"prompt_subcategories": "Pessoas comuns",
-						"prompt_text": "/imagine prompt: film photography portrait of beautiful hippie girl looking at the camera with salty hair and brown hair in the forest, moody rainy weather,machete wielding, shot on kodak portra 200, film grain, nostalgic mood she is covered with micro machines --ar 4:5 --q 2 --v 5",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_film_photography_portrait_of_beautiful_hippie_girl_lookin_348104bc-4714-40dd-9852-b5451400e014.webp",
-						"image_alt": "Retrato de fotografia analógica de uma linda garota hippie com cabelos salgados e castanhos na floresta, em clima chuvoso e com uma machete nas mãos, em tom nostálgico com granulação de filme."
-					},
-					{
-						"prompt_subcategories": "Pessoas comuns",
-						"prompt_text": "/imagine prompt: film photography portrait of young scottish prince looking at the camera, plate armor, hyperrealistic, late afternoon, overcast lighting, shot on kodak portra 200, film grain, nostalgic mood --ar 4:5 --q 2 --v 5",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/03/yubin_film_photography_portrait_of_scottish_prince_looking_at_t_b46a550e-05dc-4d41-8082-aacc6dc6d809.webp",
-						"image_alt": "Retrato de fotografia analógica de um jovem príncipe escocês com armadura de placas, hiper-realista, sob a luz nublada da tarde, em tom nostálgico com granulação de filme."
-					},
-					{
-						"prompt_subcategories": "Estilo Vintage",
-						"prompt_text": "/imagine prompt: blonde girl leaning on table and smiling at camera, detailed facial features, detailed eyes, polaroid, 1990",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/01/aitu_blonde_girl_leaning_on_table_and_smiling_at_camera_detaile_12587f5e-7a07-4eed-8bf9-3ac92c2ea556.webp",
-						"image_alt": "Retrato de fotografia em Polaroid de uma garota loira sorrindo e apoiada em uma mesa, com características faciais e olhos detalhados, tirada em 1990."
-					},
-					{
-						"prompt_subcategories": "Estilo Vintage",
-						"prompt_text": "/imagine prompt: man sitting at breakfast table, detailed facial features, vintage photograph, fuji color film, 2000 --v 5",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/02/image-22.png",
-						"image_alt": "Retrato de fotografia vintage de um homem sentado em uma mesa de café da manhã, com características faciais detalhadas, em fotografia de cor da Fuji, tirada em 2000."
-					},
-					{
-						"prompt_subcategories": "Estilo Vintage",
-						"prompt_text": "/imagine prompt: woman playing solitaire at a desk, fuji color film, polaroid, 1999 --v 5",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/02/image-23.png",
-						"image_alt": "Retrato de fotografia Polaroid de uma mulher jogando paciência em uma escrivaninha, em fotografia de cor da Fuji, tirada em 1999."
-					},
-					{
-						"prompt_subcategories": "Estilo Vintage",
-						"prompt_text": "/imagine prompt: man wearing baseball cap walking his dog, full body, vintage photograph, fujicolor film, 2010 --v 5",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/02/image-24.png",
-						"image_alt": "Retrato de fotografia vintage de um homem com boné de baseball, andando com seu cachorro, em fotografia em cor fujicolor, tirada em 2010."
-					},
-					{
-						"prompt_subcategories": "Estilo Vintage",
-						"prompt_text": "/imagine prompt: man and woman posing for a picture at Disneyworld, 2001, detailed face,detailed arms, full body portrait, photograph",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/02/image-25.png",
-						"image_alt": "Homem e mulher posando para uma foto na Disneyworld em 2001, com rosto e braços detalhados, em um retrato de corpo inteiro, em fotografia."
-					},
-					{
-						"prompt_subcategories": "Estilo Vintage",
-						"prompt_text": "/imagine prompt: two men, brothers, one man has hair, arguing outside a house on a patio, 1980, realistic arms, vintage photograph, flash photography",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/02/image-26.png",
-						"image_alt": "Dois irmãos discutindo do lado de fora de uma casa em um pátio em 1980, com braços realistas, em fotografia vintage com flash."
-					},
-					{
-						"prompt_subcategories": "Estilo Vintage",
-						"prompt_text": "/imagine prompt: two siblings sitting on deck in late afternoon, early 2000s, flash photography, polaroid",
-						"image_url": "https://149868225.v2.pressablecdn.com/wp-content/uploads/2023/02/image-27.png",
-						"image_alt": "Dois irmãos sentados em um deque no final da tarde, no início dos anos 2000, em fotografia Polaroid com flash."
-					}
-				]
-			},
-
 			{
 				"name": "Web Design",
 				"prompts": [
