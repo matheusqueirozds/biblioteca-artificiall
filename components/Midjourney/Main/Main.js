@@ -24,8 +24,11 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 
 	useEffect(() => {
 		if (data && data.midjourney.categories) {
-			setCategories(data.midjourney.categories);
-			setActiveCategory(data.midjourney.categories[0]);
+			const sortedCategories = data.midjourney.categories.sort((a, b) =>
+				a.name.localeCompare(b.name)
+			);
+			setCategories(sortedCategories);
+			setActiveCategory(sortedCategories[0]);
 		}
 	}, [data]);
 
@@ -99,7 +102,15 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 			subcategories[prompt.prompt_subcategories].push(prompt);
 		});
 
-		return subcategories;
+		// Ordenar as chaves do objeto subcategories
+		const orderedSubcategories = {};
+		Object.keys(subcategories)
+			.sort((a, b) => a.localeCompare(b))
+			.forEach((key) => {
+				orderedSubcategories[key] = subcategories[key];
+			});
+
+		return orderedSubcategories;
 	};
 
 	const subcategories = getSubcategories();
