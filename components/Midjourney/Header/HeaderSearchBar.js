@@ -9,7 +9,6 @@ import {
 export default function HeaderSearchBar({
 	searchTerm,
 	handleInputChange,
-	handleSearchTypeChange,
 }) {
 	// Criar uma referência para o campo de pesquisa
 	const searchInputRef = useRef();

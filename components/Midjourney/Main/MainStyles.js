@@ -195,6 +195,15 @@ export const NoResultsContainer = styled.div`
 	@media screen and (max-width: 1024px) {
 		align-items: normal;
 		height: calc(100vh - 182px - 91px);
+		width: 70%;
+	}
+
+	@media screen and (max-width: 768px) {
+		width: 80%;
+	}
+
+	@media screen and (max-width: 480px) {
+		width: 100%;
 	}
 `;
 

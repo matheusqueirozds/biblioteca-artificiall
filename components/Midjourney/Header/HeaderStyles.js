@@ -77,11 +77,10 @@ export const SearchBarWrapper = styled.div`
 		padding: 0.125rem 0.625rem;
 		border: 1px solid #ccc;
 		border-radius: 4px;
+		cursor: default;
 
-		&:hover {
-			color: #aaa;
-			border-color: #aaa;
-			background-color: #f4f4f4;
+		@media screen and (max-width: 480px) {
+			display: none;
 		}
 	}
 
