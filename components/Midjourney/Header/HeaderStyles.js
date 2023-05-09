@@ -66,6 +66,7 @@ export const SearchBarWrapper = styled.div`
 	img {
 		position: absolute;
 		left: 11rem;
+		opacity: 0.8;
 	}
 
 	span {
@@ -106,6 +107,10 @@ export const SearchInput = styled.input`
 
 	@media screen and (max-width: 768px) {
 		width: 100%;
+	}
+
+	::placeholder {
+		opacity: 0.6;
 	}
 `;
 

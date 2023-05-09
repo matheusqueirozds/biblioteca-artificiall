@@ -42,6 +42,7 @@ export default function IndexSearchBar({
 				aria-label="Campo de pesquisa"
 				onChange={handleSearchInput}
 				onKeyPress={handleKeyPress}
+				placeholder="Digite alguma coisa..."
 			/>
 
 			{/* Seletor de tipo de pesquisa */}

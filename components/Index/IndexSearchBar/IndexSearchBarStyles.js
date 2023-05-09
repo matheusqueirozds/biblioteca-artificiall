@@ -19,6 +19,7 @@ export const IndexSearchBarWrapper = styled.div`
 	img {
 		position: absolute;
 		left: 7.5rem;
+		opacity: 0.8;
 	}
 
 	span {
@@ -55,6 +56,10 @@ export const IndexSearchInput = styled.input`
 
 	@media screen and (max-width: 768px) {
 		width: 100%;
+	}
+
+	::placeholder {
+		opacity: 0.6;
 	}
 `;
 

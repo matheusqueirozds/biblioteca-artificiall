@@ -39,7 +39,7 @@ export default function HeaderSearchBar({
 				type="text"
 				title="Pesquisar"
 				aria-label="Campo de pesquisa"
-				placeholder="Pesquisar prompt"
+				placeholder="Digite alguma coisa..."
 				value={searchTerm}
 				onChange={handleInputChange}
 			/>

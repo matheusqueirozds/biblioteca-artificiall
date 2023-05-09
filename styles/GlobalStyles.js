@@ -13,7 +13,7 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
 
-  
+    
   }
 
   body {
@@ -24,6 +24,8 @@ const GlobalStyles = createGlobalStyle`
     ::-webkit-scrollbar{
       display: none;
     }
+
+ 
   }
 
   ul {
