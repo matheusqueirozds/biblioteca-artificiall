@@ -2,9 +2,9 @@
 	"midjourney": {
 		"daily_prompt": {
 			"prompt_subcategories": "Retratos e Fotografia de Pessoas",
-			"prompt_text": "/imagine prompt: A close-up portrait of a woman with striking green eyes, showcasing her captivating gaze. Capture the depth and intensity of her eyes using a Canon EOS 5D Mark IV with a 50mm f/1.2 lens for a shallow depth of field. Employ soft, diffused natural window light to emphasize her facial features and Rembrandt lighting for added drama. Edit the image for rich contrast and vibrant colors, optimizing for Instagram aesthetic. --ar 1:1 --q 2 --v 5.1",
-			"image_url": "https://media.discordapp.net/attachments/1094158542610636880/1105273609183821905/WhatsApp_Image_2023-05-08_at_18.04.38.jpg?width=655&height=655",
-			"image_alt": "Retrato aproximado de uma mulher com olhos verdes marcantes, destacando seu olhar cativante, iluminada suavemente por luz natural de janela e com cores vibrantes."
+			"prompt_text": "/imagine prompt: A striking photo of a director and producer in show-business with realistic faces, bathed in vibrant blue, yellow, and fuchsia contour lighting. They stand amidst a backdrop of captivating neon lights, reflecting their influential status. Capture this image with a Canon 5D Mark IV and 24-70mm f/2.8 lens, ISO 200, aperture f/4, and shutter speed 1/125s. For Instagram: ar 1:1 --q 2 --v 5.1",
+			"image_url": "https://media.discordapp.net/attachments/1094158542610636880/1105532789832560640/WhatsApp_Image_2023-05-09_at_13.19.37.jpg?width=655&height=655",
+			"image_alt": "Duas personalidades influentes do mundo do espetáculo com rostos realistas, iluminadas por luzes de contorno azul, amarelo e fúcsia vibrantes, em meio a um cenário deslumbrante de luzes de néon."
 		},
 		"categories": [
 			{
@@ -379,6 +379,18 @@
 			{
 				"name": "Arte e Fotografia",
 				"prompts": [
+					{
+						"prompt_subcategories": "Retratos e Fotografia de Pessoas",
+						"prompt_text": "/imagine prompt: A striking photo of a director and producer in show-business with realistic faces, bathed in vibrant blue, yellow, and fuchsia contour lighting. They stand amidst a backdrop of captivating neon lights, reflecting their influential status. Capture this image with a Canon 5D Mark IV and 24-70mm f/2.8 lens, ISO 200, aperture f/4, and shutter speed 1/125s. For Instagram: ar 1:1 --q 2 --v 5.1",
+						"image_url": "https://media.discordapp.net/attachments/1094158542610636880/1105532789832560640/WhatsApp_Image_2023-05-09_at_13.19.37.jpg?width=655&height=655",
+						"image_alt": "Duas personalidades influentes do mundo do espetáculo com rostos realistas, iluminadas por luzes de contorno azul, amarelo e fúcsia vibrantes, em meio a um cenário deslumbrante de luzes de néon."
+					},
+					{
+						"prompt_subcategories": "Retratos e Fotografia de Pessoas",
+						"prompt_text": "/imagine prompt: A close-up portrait of a woman with striking green eyes, showcasing her captivating gaze. Capture the depth and intensity of her eyes using a Canon EOS 5D Mark IV with a 50mm f/1.2 lens for a shallow depth of field. Employ soft, diffused natural window light to emphasize her facial features and Rembrandt lighting for added drama. Edit the image for rich contrast and vibrant colors, optimizing for Instagram aesthetic. --ar 1:1 --q 2 --v 5.1",
+						"image_url": "https://media.discordapp.net/attachments/1094158542610636880/1105273609183821905/WhatsApp_Image_2023-05-08_at_18.04.38.jpg?width=655&height=655",
+						"image_alt": "Retrato aproximado de uma mulher com olhos verdes marcantes, destacando seu olhar cativante, iluminada suavemente por luz natural de janela e com cores vibrantes."
+					},
 					{
 						"prompt_subcategories": "Fotografia Atmosférica",
 						"prompt_text": "/imagine prompt: A woman can be seen in the sunlight underwater, in the style of stark photography, ethereal dreamscapes, art of tonga, flickr, suspended hanging, lively movement portrayal, sunrays shine upon it --v 5.1 --ar 2:3 --s 1000",

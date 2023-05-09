@@ -4,7 +4,6 @@ import {
 	ButtonsWrapper,
 	EditableText,
 	PromptImage,
-	TextAreaWrapper,
 	LeftColumn,
 	RightColumn,
 } from "./PromptStyles";
