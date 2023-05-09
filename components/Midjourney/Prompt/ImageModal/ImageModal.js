@@ -7,7 +7,7 @@ import {
 } from "./ImageModalStyles";
 
 // Componente para exibir uma imagem em um modal
-const ImageModal = ({ isOpen, onClose, imageUrl, imageAlt }) => {
+export default function ImageModal({ isOpen, onClose, imageUrl, imageAlt }) {
 	// Caso o modal não esteja aberto, não renderiza o componente
 	if (!isOpen) {
 		return null;
@@ -49,12 +49,10 @@ const ImageModal = ({ isOpen, onClose, imageUrl, imageAlt }) => {
 					aria-label="Fechar"
 					title="Aperte Esc para sair"
 				>
-					Esc
+					&times;
 				</CloseButton>
-				<Image src={imageUrl} alt={imageAlt} title={imageAlt} />
+				<Image src={imageUrl} alt={imageAlt} title="Aperte Esc para sair" />
 			</ModalContent>
 		</ModalOverlay>
 	);
-};
-
-export default ImageModal;
+}

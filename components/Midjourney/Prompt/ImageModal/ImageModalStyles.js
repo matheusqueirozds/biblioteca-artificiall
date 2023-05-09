@@ -35,8 +35,9 @@ export const CloseButton = styled.button`
 	font-size: 1.5rem;
 	background-color: #e74c3c;
 	color: #fff;
-	width: max-content;
+	width: 40px;
 	height: 40px;
+	opacity: 1;
 `;
 
 export const Image = styled.img`
