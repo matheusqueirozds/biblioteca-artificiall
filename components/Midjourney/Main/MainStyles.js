@@ -187,8 +187,10 @@ export const NoResultsContainer = styled.div`
 	align-items: center;
 	justify-content: center;
 	height: calc(100vh - ${widthHeader} - ${widthFooter});
-	width: 100%;
+	width: 50%;
 	overflow: hidden;
+	margin: 0 auto;
+	text-align: center;
 
 	@media screen and (max-width: 1024px) {
 		align-items: normal;
@@ -234,8 +236,6 @@ export const PromptsList = styled.ul`
 		display: flex;
 		margin-right: 0;
 	}
-
-	
 `;
 
 export const Subcategory = styled.div`

@@ -104,6 +104,11 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 
 	const subcategories = getSubcategories();
 
+	const handleSearchTypeChange = (value) => {
+		const searchTypeSelect = document.getElementById("searchType");
+		searchTypeSelect.value = value;
+	};
+
 	return (
 		<MainContainer>
 			<SideMenu collapsed={collapsed}>
@@ -136,7 +141,10 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 								<CategoryItem
 									category={category}
 									active={category === activeCategory}
-									onClick={() => handleCategoryClick(category)}
+									onClick={() => {
+										handleCategoryClick(category);
+										handleSearchTypeChange("simple");
+									}}
 								/>
 							))}
 						</CategoriesList>

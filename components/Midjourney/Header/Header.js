@@ -34,6 +34,7 @@ export default function Header({ toggleTheme, onSearch, onResetCategory }) {
 							alt="Biblioteca Artificiall"
 							width={64}
 							height={64}
+							title="Página inicial"
 						/>
 					</Link>
 					<SearchBar

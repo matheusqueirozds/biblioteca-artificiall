@@ -6,7 +6,11 @@ import {
 	SearchInput,
 } from "@/components/Midjourney/Header/HeaderStyles";
 
-export default function HeaderSearchBar({ searchTerm, handleInputChange }) {
+export default function HeaderSearchBar({
+	searchTerm,
+	handleInputChange,
+	handleSearchTypeChange,
+}) {
 	// Criar uma referência para o campo de pesquisa
 	const searchInputRef = useRef();
 
