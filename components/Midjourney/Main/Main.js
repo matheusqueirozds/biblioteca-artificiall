@@ -46,7 +46,7 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 		}
 	}, [searchTerm, activeCategory]);
 
-	// Filtra os prompts com base no termo de pesquisa
+	// Filtra os prompts com base no termo de pesquisa e no atributo "alt" das imagens
 	const filterPrompts = (term, promptsToFilter) => {
 		const searchType = document.getElementById("searchType").value;
 
@@ -58,8 +58,11 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 			promptsToFilter = activeCategory.prompts;
 		}
 
-		const filtered = promptsToFilter.filter((prompt) =>
-			prompt.prompt_text.toLowerCase().includes(term.toLowerCase())
+		const filtered = promptsToFilter.filter(
+			(prompt) =>
+				prompt.prompt_text.toLowerCase().includes(term.toLowerCase()) ||
+				(prompt.image_alt &&
+					prompt.image_alt.toLowerCase().includes(term.toLowerCase()))
 		);
 		return filtered;
 	};
@@ -167,4 +170,3 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 		</MainContainer>
 	);
 }
-

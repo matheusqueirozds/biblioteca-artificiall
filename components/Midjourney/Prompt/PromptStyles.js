@@ -6,7 +6,7 @@ export const PromptContainer = styled.li`
 	align-items: center;
 	padding: 18px;
 	height: 298px;
-	width: 100%;
+	max-width: 100%;
 	color: #888;
 	background: #fff;
 	border: 1px solid #eaeaea;
