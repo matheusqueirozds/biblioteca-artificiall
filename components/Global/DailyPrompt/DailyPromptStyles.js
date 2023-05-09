@@ -9,20 +9,19 @@ const fadeIn = keyframes`
   }
 `;
 
-export const PromptContainer = styled.div`
+export const PromptContainer = styled.li`
 	display: flex;
-	flex-direction: column;
-	gap: 16px;
+	gap: 15px;
 	align-items: center;
-	justify-content: space-between;
-	padding: 24px;
-	height: 380px;
-	width: 560px;
+	padding: 15px;
+	height: 298px;
+	width: 773px;
 	color: #888;
 	background: #fff;
-	border-radius: 8px;
 	border: 1px solid #eaeaea;
+	border-radius: 8px;
 	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.04);
+	transition: all 0.15s ease;
 	animation: ${fadeIn} 0.9s ease;
 
 	&:hover {
@@ -30,81 +29,78 @@ export const PromptContainer = styled.div`
 	}
 
 	@media screen and (max-width: 1024px) {
-		aspect-ratio: 4 / 4;
-		flex: 1;
 		max-width: 100%;
 	}
+
+	@media screen and (max-width: 700px) {
+		flex-direction: column;
+		max-width: 100%;
+		height: 100%;
+	}
 `;
 
-export const ButtonsWrapper = styled.div`
-	display: flex;
-	justify-content: space-between;
+export const LeftColumn = styled.div`
+	height: 100%;
 	width: 100%;
-`;
+	border-radius: 8px;
 
-export const Button = styled.button`
-	background-color: #3498db;
-	color: ${({ theme }) => theme.buttonText};
-	background-color: transparent;
-	transition: all 0.3s;
-
-	&:nth-child(1) {
-		background-color: #4caf50;
-	}
-
-	&:nth-child(2) {
-		background-color: #ff5722;
-	}
-
-	&:nth-child(3) {
-		background-color: #2196f3;
-	}
-
-	&:nth-child(4) {
-		background-color: #3498db;
-		width: 100%;
+	@media screen and (max-width: 700px) {
+		width: 50%;
 	}
 `;
 
-export const TextAreaWrapper = styled.div`
+export const PromptImage = styled.img`
+	object-fit: cover;
+	object-position: top;
+	cursor: pointer;
+	height: 100%;
+	width: 100%;
+	border-radius: 8px;
+`;
+
+export const RightColumn = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+	gap: 15px;
 	width: 100%;
-`;
-
-export const NonEditableText = styled.code`
-	font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, Courier,
-		monospace;
-	font-size: 0.875rem;
-	background-color: rgba(27, 31, 35, 0.2);
-	color: #666;
-	border-radius: 3px;
-	padding: 0.2rem 0.4rem;
-	margin-bottom: 0.5rem;
-	font-weight: bold;
-	cursor: default;
+	height: 100%;
 `;
 
 export const EditableText = styled.textarea`
 	resize: none;
-	border-color: rgba(187, 215, 233, 0.3);
-	border-radius: 5px;
+	border-radius: 8px;
 	outline: none;
 	font-family: inherit;
 	font-size: inherit;
 	line-height: inherit;
 	color: inherit;
 	background-color: #f6f6f6;
-	width: 100%;
-	height: 50px;
-	text-align: center;
+	width: 441px;
+	height: 187px;
 	transition: all 0.3s;
 	word-break: break-all;
-	padding: 0 1rem;
+	padding: 15px;
+	border: none;
+
+	::-webkit-scrollbar {
+		display: none;
+		width: 6px;
+		background-color: transparent;
+		transition: all 0.3s;
+	}
+
+	::-webkit-scrollbar-thumb {
+		border-radius: 4px;
+		background-color: #dadce0;
+	}
 
 	&:hover {
 		background-color: rgba(187, 215, 233, 0.3);
+
+		::-webkit-scrollbar {
+			display: block;
+		}
 	}
 
 	&:focus {
@@ -113,13 +109,46 @@ export const EditableText = styled.textarea`
 		border: 1px solid $primary-color;
 		border-radius: 3px;
 	}
+
+	@media screen and (max-width: 700px) {
+		height: 100px;
+		width: 100%;
+	}
 `;
 
-export const PromptImage = styled.img`
-	object-fit: cover;
-	object-position: top;
-	max-height: 40%;
+export const ButtonsWrapper = styled.div`
+	display: flex;
+	justify-content: center;
+	gap: 15px;
 	width: 100%;
-	border-radius: 5px;
-	cursor: pointer;
+
+	@media screen and (max-width: 809px) {
+		flex-direction: column;
+	}
+`;
+
+export const Button = styled.button`
+	background-color: #3498db;
+	color: ${({ theme }) => theme.buttonText};
+	background-color: transparent;
+	transition: all 0.3s;
+	padding: 10px 20px;
+	border: none;
+
+	&:nth-child(1) {
+		background-color: #4caf50;
+	}
+
+	&:nth-child(2) {
+		background-color: #2196f3;
+	}
+
+	&:nth-child(3) {
+		background-color: #ff5722;
+	}
+
+	@media screen and (max-width: 809px) {
+		padding: 10px;
+		width: 100%;
+	}
 `;

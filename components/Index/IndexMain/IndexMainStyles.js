@@ -7,11 +7,22 @@ export const IndexContainer = styled.div`
 	flex-direction: column;
 	padding: 2rem;
 	background-color: #fff;
-	min-height: calc(100vh - 174px);
 	text-align: center;
+	height: 100vh;
+	padding-bottom: 174px;
 
 	@media screen and (max-width: 1024px) {
 		min-height: 88.5vh;
+		padding-bottom: 100px;
+	}
+
+	@media screen and (max-width: 809px) {
+		min-height: 88.5vh;
+		padding-bottom: 100px;
+	}
+
+	@media screen and (max-width: 700px) {
+		height: 100%;
 	}
 `;
 
@@ -51,8 +62,7 @@ export const IndexButton = styled.button`
 
 	&.dailyPrompt {
 		width: 100%;
-		color: ${({ showDailyPrompt }) =>
-			showDailyPrompt ? "#fff" : "#3c4043"};
+		color: ${({ showDailyPrompt }) => (showDailyPrompt ? "#fff" : "#3c4043")};
 		background-color: ${({ showDailyPrompt }) =>
 			showDailyPrompt ? "#ff7f7f" : "#f8f9fa"};
 		border: ${({ showDailyPrompt }) =>

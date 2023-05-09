@@ -4,8 +4,8 @@ import {
 	ButtonsWrapper,
 	EditableText,
 	PromptImage,
-	TextAreaWrapper,
-	NonEditableText,
+	LeftColumn,
+	RightColumn,
 } from "./DailyPromptStyles";
 import CopyButton from "../../Midjourney/Prompt/CopyButton";
 import TranslateButton from "../../Midjourney/Prompt/TranslateButton";
@@ -15,24 +15,23 @@ import { translateText } from "../../Midjourney/Prompt/translationHelper";
 
 // Componente que representa um prompt e suas ações relacionadas
 export default function DailyPrompt({ prompt, onViewImageClick }) {
-	const nonEditablePart = "/imagine prompt: ";
-	const editablePart = prompt.prompt_text.substring(nonEditablePart.length);
+	const editablePart = prompt.prompt_text;
 
 	const { image_url, image_alt } = prompt;
 
 	// Estados locais para gerenciar os textos, cores e estados dos botões
 	const [copyButton, setCopyButton] = useState({
-		text: "Copiar",
+		text: "Copiar prompt",
 		color: "",
 		backgroundColor: "",
 	});
 	const [translateButton, setTranslateButton] = useState({
-		text: "Traduzir",
+		text: "Traduzir prompt",
 		color: "",
 		backgroundColor: "",
 	});
 	const [resetButton, setResetButton] = useState({
-		text: "Resetar texto",
+		text: "Resetar prompt",
 		color: "",
 		backgroundColor: "",
 	});
@@ -45,7 +44,7 @@ export default function DailyPrompt({ prompt, onViewImageClick }) {
 
 	// Função para lidar com a ação de copiar o texto
 	const handleCopyClick = () => {
-		const fullText = nonEditablePart + text;
+		const fullText = text;
 		navigator.clipboard.writeText(fullText);
 		setCopyButton({
 			text: "Copiado!",
@@ -54,7 +53,7 @@ export default function DailyPrompt({ prompt, onViewImageClick }) {
 		});
 		setTimeout(() => {
 			setCopyButton({
-				text: "Copiar",
+				text: "Copiar prompt",
 				color: "",
 				backgroundColor: "",
 			});
@@ -65,7 +64,7 @@ export default function DailyPrompt({ prompt, onViewImageClick }) {
 	const handleResetTextClick = () => {
 		setText(editablePart);
 		setTranslateButton({
-			text: "Traduzir",
+			text: "Traduzir prompt",
 			color: "",
 			backgroundColor: "",
 		});
@@ -77,7 +76,7 @@ export default function DailyPrompt({ prompt, onViewImageClick }) {
 		});
 		setTimeout(() => {
 			setResetButton({
-				text: "Resetar texto",
+				text: "Resetar prompt",
 				color: "",
 				backgroundColor: "",
 			});
@@ -99,7 +98,7 @@ export default function DailyPrompt({ prompt, onViewImageClick }) {
 			const translatedText = await translateText(text, "en");
 			setText(translatedText);
 			setTranslateButton({
-				text: "Traduzir",
+				text: "Traduzir prompt",
 				color: "",
 				backgroundColor: "",
 			});
@@ -120,40 +119,42 @@ export default function DailyPrompt({ prompt, onViewImageClick }) {
 
 	return (
 		<PromptContainer>
-			<ButtonsWrapper>
-				<CopyButton
-					onClick={handleCopyClick}
-					backgroundColor={copyButton.backgroundColor}
-					textColor={copyButton.color}
-					text={copyButton.text}
+			<LeftColumn>
+				<PromptImage
+					src={image_url}
+					alt={image_alt}
+					onClick={handleViewImageClick}
+					title="Clique aqui para ampliar a imagem"
 				/>
-				<ResetTextButton
-					onClick={handleResetTextClick}
-					backgroundColor={resetButton.backgroundColor}
-					textColor={resetButton.color}
-					text={resetButton.text}
-				/>
-				<TranslateButton
-					onClick={handleTranslateClick}
-					backgroundColor={translateButton.backgroundColor}
-					textColor={translateButton.color}
-					text={translateButton.text}
-				/>
-			</ButtonsWrapper>
-			<TextAreaWrapper>
-				<NonEditableText>{nonEditablePart}</NonEditableText>
+			</LeftColumn>
+
+			<RightColumn>
 				<EditableText
 					value={text}
 					onChange={handleTextChange}
 					title="Clique aqui para editar o texto"
 				/>
-			</TextAreaWrapper>
-			<PromptImage
-				src={image_url}
-				alt={image_alt}
-				onClick={handleViewImageClick}
-			/>
-			<ViewImageButton onClick={handleViewImageClick} />
+				<ButtonsWrapper>
+					<CopyButton
+						onClick={handleCopyClick}
+						backgroundColor={copyButton.backgroundColor}
+						textColor={copyButton.color}
+						text={copyButton.text}
+					/>
+					<TranslateButton
+						onClick={handleTranslateClick}
+						backgroundColor={translateButton.backgroundColor}
+						textColor={translateButton.color}
+						text={translateButton.text}
+					/>
+					<ResetTextButton
+						onClick={handleResetTextClick}
+						backgroundColor={resetButton.backgroundColor}
+						textColor={resetButton.color}
+						text={resetButton.text}
+					/>
+				</ButtonsWrapper>
+			</RightColumn>
 		</PromptContainer>
 	);
 }

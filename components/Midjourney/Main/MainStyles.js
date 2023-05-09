@@ -154,6 +154,7 @@ export const PromptsContainer = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin-top: calc(${widthHeader} + 1.9rem);
+	margin-right: 24px;
 	width: 100%;
 
 	${({ collapsed }) =>
@@ -196,32 +197,45 @@ export const NoResultsContainer = styled.div`
 `;
 
 export const PromptsList = styled.ul`
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	gap: 20px;
-	max-width: 100%;
-	border-radius: 20px;
+	display: flex;
+	gap: 24px;
 	padding: 20px;
-	overflow-y: auto;
-	margin-right: 1.5rem;
+	overflow-x: auto;
+	padding-right: 24px;
 
 	${({ collapsed }) =>
 		collapsed
 			? css`
-					grid-template-columns: repeat(4, 1fr);
+					max-width: 1814px;
 			  `
 			: css`
-					grid-template-columns: repeat(3, 1fr);
+					max-width: 1587px;
 			  `}
 
-	&::-webkit-scrollbar {
-		display: none;
+	::-webkit-scrollbar {
+		width: 4px;
+		background-color: transparent;
+		transition: all 0.3s;
+	}
+
+	::-webkit-scrollbar-thumb {
+		border-radius: 8px;
+		background-color: transparent;
+	}
+
+	&:hover {
+		::-webkit-scrollbar-thumb {
+			background-color: #ccc;
+			cursor: pointer;
+		}
 	}
 
 	@media screen and (max-width: 1024px) {
 		display: flex;
 		margin-right: 0;
 	}
+
+	
 `;
 
 export const Subcategory = styled.div`
@@ -229,7 +243,7 @@ export const Subcategory = styled.div`
 
 	h3 {
 		font-family: "Valorant", sans-serif;
-		font-size: 2rem;
+		font-size: 1.5rem;
 		text-align: center;
 		text-transform: uppercase;
 		margin-bottom: 0;
