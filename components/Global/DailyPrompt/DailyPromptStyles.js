@@ -11,9 +11,9 @@ const fadeIn = keyframes`
 
 export const PromptContainer = styled.li`
 	display: flex;
-	gap: 15px;
+	gap: 24px;
 	align-items: center;
-	padding: 15px;
+	padding: 24px;
 	height: 298px;
 	width: 773px;
 	color: #888;
@@ -62,7 +62,7 @@ export const RightColumn = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 15px;
+	gap: 24px;
 	width: 100%;
 	height: 100%;
 `;
@@ -80,7 +80,7 @@ export const EditableText = styled.textarea`
 	height: 187px;
 	transition: all 0.3s;
 	word-break: break-all;
-	padding: 15px;
+	padding: 24px;
 	border: none;
 
 	::-webkit-scrollbar {
@@ -119,7 +119,7 @@ export const EditableText = styled.textarea`
 export const ButtonsWrapper = styled.div`
 	display: flex;
 	justify-content: center;
-	gap: 15px;
+	gap: 24px;
 	width: 100%;
 
 	@media screen and (max-width: 809px) {

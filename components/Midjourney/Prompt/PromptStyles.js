@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const PromptContainer = styled.li`
 	display: flex;
-	gap: 18px;
+	gap: 24px;
 	align-items: center;
-	padding: 18px;
+	padding: 24px;
 	height: 298px;
-	max-width: 100%;
+	width: 773px;
 	color: #888;
 	background: #fff;
 	border: 1px solid #eaeaea;
@@ -29,6 +29,7 @@ export const PromptContainer = styled.li`
 `;
 
 export const LeftColumn = styled.div`
+	display: flex;
 	height: 250px;
 	width: 250px;
 	border-radius: 8px;
@@ -51,8 +52,11 @@ export const RightColumn = styled.div`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	gap: 18px;
-	width: 100%;
+	gap: 24px;
+
+	@media screen and (max-width: 809px) {
+		width: 100%;
+	}
 `;
 
 export const EditableText = styled.textarea`
@@ -68,7 +72,7 @@ export const EditableText = styled.textarea`
 	height: 187px;
 	transition: all 0.3s;
 	word-break: break-all;
-	padding: 18px;
+	padding: 24px;
 	border: none;
 
 	::-webkit-scrollbar {
@@ -107,7 +111,7 @@ export const EditableText = styled.textarea`
 export const ButtonsWrapper = styled.div`
 	display: flex;
 	justify-content: center;
-	gap: 18px;
+	gap: 24px;
 	width: 100%;
 
 	@media screen and (max-width: 809px) {
