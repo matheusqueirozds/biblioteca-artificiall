@@ -11,12 +11,7 @@ export default function Midjourney({ data }) {
 	return (
 		<>
 			<Head>
-				<title>Biblioteca Artificiall</title>
-				<meta
-					name="description"
-					content="Biblioteca de prompts para criação de conteúdo"
-				/>
-				<link rel="icon" href="/favicon.ico" />
+				<title>Midjourney | Bibioteca Artificiall</title>
 			</Head>
 			<Main
 				data={data}

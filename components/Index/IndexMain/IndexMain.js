@@ -55,6 +55,11 @@ export default function IndexMain({
 					>
 						Pesquisar prompt
 					</IndexButton>
+
+					<Link href="/criar-prompt" style={{ opacity: "1" }}>
+						<IndexButton aria-label="Criar prompt">Criar prompt</IndexButton>
+					</Link>
+
 					<Link href="/ferramentas-uteis" style={{ opacity: "1" }}>
 						<IndexButton aria-label="Ferramentas úteis">
 							Ferramentas úteis

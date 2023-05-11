@@ -6,9 +6,7 @@ export default function ChatGPT() {
 	return (
 		<>
 			<Head>
-				<title>Sobre o ChatGPT</title>
-				<meta name="description" content="Página sobre o ChatGPT" />
-				<link rel="icon" href="/favicon.ico" />
+				<title>ChatCPT | Bibioteca Artificiall</title>
 			</Head>
 			<h1>Sobre o ChatGPT</h1>
 			<Container />

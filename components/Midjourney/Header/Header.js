@@ -46,6 +46,7 @@ export default function Header({ toggleTheme, onSearch, onResetCategory }) {
 				<RightContainer>
 					<NavMenu>
 						<Link href="/">Início</Link>
+						<Link href="/criar-prompt">Criar prompt</Link>
 						<Link href="/midjourney">Midjourney</Link>
 						<Link href="/chatgpt">ChatGPT</Link>
 						<DarkModeToggle
