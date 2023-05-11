@@ -19,6 +19,7 @@ import {
 	RatioInput,
 	AddParameterButton,
 } from "@/components/CriarPrompts/CriarPromptsStyles";
+import { translateText } from "../components/Midjourney/Prompt/translationHelper";
 
 // Componente principal
 export default function CreatePrompt() {
@@ -30,6 +31,31 @@ export default function CreatePrompt() {
 		version: "add",
 		chaos: "add",
 		stylize: "add",
+	});
+	const [translatedWords, setTranslatedWords] = useState([]);
+	// Estado para controlar os parâmetros selecionados
+	const [selectedParameters, setSelectedParameters] = useState({
+		aspectRatio: {
+			show: false,
+			value1: 1,
+			value2: 1,
+			isParameterDefined: true,
+		},
+		version: {
+			show: false,
+			value: "5.1",
+			isParameterDefined: true,
+		},
+		chaos: {
+			show: false,
+			value: 0,
+			isParameterDefined: true,
+		},
+		stylize: {
+			show: false,
+			value: 100,
+			isParameterDefined: true,
+		},
 	});
 
 	// Manipula a mudança no campo de texto
@@ -65,18 +91,21 @@ export default function CreatePrompt() {
 			? `--s ${selectedParameters.stylize.value} `
 			: "";
 
-		const wordsWithSpace = words.length > 0 ? words.join(", ") + " " : "";
+		const wordsWithSpace =
+			translatedWords.length > 0 ? translatedWords.join(", ") + " " : "";
 
 		const text = `/imagine prompt: ${wordsWithSpace}${aspectRatioText}${versionText}${chaosText}${stylizeText}`;
 
 		navigator.clipboard.writeText(text);
-	}, [selectedParameters, words]);
+	}, [selectedParameters, translatedWords]);
 
-	// Adiciona uma palavra ao array de palavras
-	const handleAddWord = useCallback(() => {
+	// Adiciona uma palavra ao array de palavras e já deixa ela em inglês
+	const handleAddWord = useCallback(async () => {
+		const translation = await translateText(inputText, "en");
 		setWords([...words, inputText]);
+		setTranslatedWords([...translatedWords, translation]);
 		setInputText("");
-	}, [inputText, words]);
+	}, [inputText, words, translatedWords]);
 
 	// Remove a palavra do array de palavras
 	const handleDeleteWord = useCallback(
@@ -98,31 +127,6 @@ export default function CreatePrompt() {
 			[parameter]: "remove",
 		}));
 	}, []);
-
-	// Estado para controlar os parâmetros selecionados
-	const [selectedParameters, setSelectedParameters] = useState({
-		aspectRatio: {
-			show: false,
-			value1: 1,
-			value2: 1,
-			isParameterDefined: true,
-		},
-		version: {
-			show: false,
-			value: "5.1",
-			isParameterDefined: true,
-		},
-		chaos: {
-			show: false,
-			value: 0,
-			isParameterDefined: true,
-		},
-		stylize: {
-			show: false,
-			value: 100,
-			isParameterDefined: true,
-		},
-	});
 
 	// Atualiza os parâmetros selecionados
 	const handleParameterChange = useCallback(
@@ -208,7 +212,6 @@ export default function CreatePrompt() {
 				<AddWordButton
 					onClick={() => {
 						handleAddWord();
-						handleTranslateClick();
 					}}
 				>
 					+
@@ -221,12 +224,13 @@ export default function CreatePrompt() {
 						<span>/imagine prompt: </span>
 						{words.map((word, index) => (
 							<SingleWord key={index}>
-								{word}
+								{translatedWords[index]}
 								<CloseButton onClick={() => handleDeleteWord(index)}>
 									×
 								</CloseButton>
 							</SingleWord>
 						))}
+
 						{selectedParameters.aspectRatio.show &&
 							selectedParameters.aspectRatio.isParameterDefined && (
 								<SingleWord>
