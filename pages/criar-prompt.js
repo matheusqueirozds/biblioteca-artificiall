@@ -50,7 +50,7 @@ export default function CriarPrompts() {
 		stylize: false,
 		chaos: false,
 	});
-	const [imageLink, setImageLink] = useState("");
+	const [imageLinks, setImageLinks] = useState([]);
 	const [isClearClicked, setIsClearClicked] = useState(false);
 	const [isCopyClicked, setIsCopyClicked] = useState(false);
 	const [isIncludeClicked, setIsIncludeClicked] = useState(false);
@@ -100,7 +100,6 @@ export default function CriarPrompts() {
 			[field]: !prevState[field],
 		}));
 	};
-	
 
 	const handleInclude = () => {
 		if (input1.trim() !== "") {
@@ -168,7 +167,7 @@ export default function CriarPrompts() {
 			stylize: false,
 			chaos: false,
 		});
-		setImageLink("");
+		setImageLinks("");
 		setIsClearClicked(true);
 		setTimeout(() => setIsClearClicked(false), 1000);
 	};
@@ -185,7 +184,7 @@ export default function CriarPrompts() {
 				setIsAddLinkClicked(true);
 				setTimeout(() => setIsAddLinkClicked(false), 1000);
 
-				setImageLink(inputImage);
+				setImageLinks((prevLinks) => [...prevLinks, inputImage]);
 				setInputImage("");
 			} else {
 				alert("Por favor, insira um link válido.");
@@ -198,8 +197,9 @@ export default function CriarPrompts() {
 			<PromptContainer>
 				<span className="prompt-text">
 					/imagine prompt:{" "}
-					{imageLink +
-						(includeContent ? ", " + includeContent : "") +
+					{(imageLinks.length ? imageLinks.join(", ") : "") +
+						(imageLinks.length && includeContent ? ", " : "") +
+						(includeContent ? includeContent : "") +
 						(version ? " " + versionCommandMap[version] : "") +
 						(aspectRatio
 							? " --ar " + aspectRatio.num1 + ":" + aspectRatio.num2

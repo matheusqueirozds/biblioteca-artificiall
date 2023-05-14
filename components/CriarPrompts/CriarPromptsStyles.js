@@ -266,6 +266,9 @@ export const Button = styled.button`
 	gap: 5px;
 	position: absolute;
 	right: 20px;
+	&:hover {
+		transform: none;
+	}
 
 	&::before {
 		display: inline-block;
