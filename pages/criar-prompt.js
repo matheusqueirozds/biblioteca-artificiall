@@ -33,30 +33,39 @@ function TabPanel({ children, value, index }) {
 }
 
 export default function CriarPrompts() {
-	const [input1, setInput1] = useState("");
-	const [input2, setInput2] = useState("");
-	const [inputImage, setInputImage] = useState("");
-	const [version, setVersion] = useState("version 5.1");
-	const [aspectRatio, setAspectRatio] = useState({ num1: 1, num2: 1 });
-	const [stylize, setStylize] = useState(100);
-	const [chaos, setChaos] = useState(0);
-	const [currentTab, setCurrentTab] = useState("Texto");
-	const [commandContent, setCommandContent] = useState("");
-	const [isFirstExclusion, setIsFirstExclusion] = useState(true);
-	const [includeContent, setIncludeContent] = useState("");
-	const [excludeContent, setExcludeContent] = useState("");
-	const [activeFields, setActiveFields] = useState({
-		version: false,
-		aspectRatio: false,
-		stylize: false,
-		chaos: false,
+	const [state, setState] = useState({
+		input1: "",
+		input2: "",
+		inputImage: "",
+		version: "version 5.1",
+		aspectRatio: { num1: 1, num2: 1 },
+		stylize: 100,
+		chaos: 0,
+		currentTab: "Texto",
+		commandContent: "",
+		isFirstExclusion: true,
+		includeContent: "",
+		excludeContent: "",
+		activeFields: {
+			version: false,
+			aspectRatio: false,
+			stylize: false,
+			chaos: false,
+		},
+		imageLinks: [],
+		isClearClicked: false,
+		isCopyClicked: false,
+		isIncludeClicked: false,
+		isExcludeClicked: false,
+		isAddLinkClicked: false,
 	});
-	const [imageLinks, setImageLinks] = useState([]);
-	const [isClearClicked, setIsClearClicked] = useState(false);
-	const [isCopyClicked, setIsCopyClicked] = useState(false);
-	const [isIncludeClicked, setIsIncludeClicked] = useState(false);
-	const [isExcludeClicked, setIsExcludeClicked] = useState(false);
-	const [isAddLinkClicked, setIsAddLinkClicked] = useState(false);
+
+	const setCurrentTab = (tabName) => {
+		setState((prevState) => ({
+			...prevState,
+			currentTab: tabName,
+		}));
+	};
 
 	const versionOptions = [
 		"version 5.1",
@@ -77,77 +86,103 @@ export default function CriarPrompts() {
 	const aspectRatioOptions = Array.from({ length: 16 }, (_, i) => i + 1);
 
 	const handleAspectRatioChange = (value, position) => {
-		setAspectRatio((prevState) => {
+		setState((prevState) => {
 			const newAspectRatio = {
-				...prevState,
+				...prevState.aspectRatio,
 				[position]: value,
 			};
-			setCommandContent(
-				(prevContent) =>
-					prevContent +
-					`, aspect ratio: ${newAspectRatio.num1}:${newAspectRatio.num2}`
-			);
-			return newAspectRatio;
+			setState((prevState) => ({
+				...prevState,
+				aspectRatio: newAspectRatio,
+				commandContent:
+					prevState.commandContent +
+					`, aspect ratio: ${newAspectRatio.num1}:${newAspectRatio.num2}`,
+			}));
+			return prevState;
 		});
 	};
 
 	const handleVersionChange = (e) => {
-		setVersion(e.target.value);
+		setState((prevState) => ({
+			...prevState,
+			version: e.target.value,
+		}));
 	};
 
 	const toggleFieldActive = (field) => {
-		setActiveFields((prevState) => ({
+		setState((prevState) => ({
 			...prevState,
-			[field]: !prevState[field],
+			activeFields: {
+				...prevState.activeFields,
+				[field]: !prevState.activeFields[field],
+			},
 		}));
 	};
 
 	const handleInclude = async () => {
-		if (input1.trim() !== "") {
+		if (state.input1.trim() !== "") {
 			// Verifica se input1 não está vazio
-			setIsIncludeClicked(true);
-			setTimeout(() => setIsIncludeClicked(false), 1000);
+			setState((prevState) => ({
+				...prevState,
+				isIncludeClicked: true,
+			}));
+			setTimeout(() => {
+				setState((prevState) => ({
+					...prevState,
+					isIncludeClicked: false,
+				}));
+			}, 1000);
 
 			// Translate input1 content
-			const translatedInput1 = await translateText(input1, "en");
+			const translatedInput1 = await translateText(state.input1, "en");
 
-			setIncludeContent((prevContent) =>
-				prevContent.length > 0
-					? prevContent + ", " + translatedInput1
-					: prevContent + translatedInput1
-			);
-			setInput1("");
+			setState((prevState) => ({
+				...prevState,
+				includeContent:
+					prevState.includeContent.length > 0
+						? prevState.includeContent + ", " + translatedInput1
+						: prevState.includeContent + translatedInput1,
+				input1: "",
+			}));
 		}
 	};
 
 	const handleExclude = async () => {
-		if (input2.trim() !== "") {
-			// Verifica se input2 não está vazio
-			setIsExcludeClicked(true);
-			setTimeout(() => setIsExcludeClicked(false), 1000);
+		if (state.input2.trim() !== "") {
+			setState((prevState) => ({
+				...prevState,
+				isExcludeClicked: true,
+			}));
+			setTimeout(() => {
+				setState((prevState) => ({
+					...prevState,
+					isExcludeClicked: false,
+				}));
+			}, 1000);
 
-			// Translate input2 content
-			const translatedInput2 = await translateText(input2, "en");
+			const translatedInput2 = await translateText(state.input2, "en");
 
-			setExcludeContent((prevContent) => {
-				if (isFirstExclusion) {
-					setIsFirstExclusion(false);
-					return prevContent.length > 0
-						? prevContent + ", --no " + translatedInput2
-						: prevContent + "--no " + translatedInput2;
-				} else {
-					return prevContent.length > 0
-						? prevContent + ", " + translatedInput2
-						: prevContent + translatedInput2;
-				}
-			});
-			setInput2("");
+			setState((prevState) => ({
+				...prevState,
+				excludeContent: prevState.isFirstExclusion
+					? prevState.excludeContent.length > 0
+						? prevState.excludeContent + ", --no " + translatedInput2
+						: prevState.excludeContent + "--no " + translatedInput2
+					: prevState.excludeContent.length > 0
+					? prevState.excludeContent + ", " + translatedInput2
+					: prevState.excludeContent + translatedInput2,
+				isFirstExclusion: false,
+				input2: "",
+			}));
 		}
 	};
 
 	const handleCopy = () => {
-		setIsCopyClicked(true);
-		setTimeout(() => setIsCopyClicked(false), 1000);
+		setState((prevState) => ({ ...prevState, isCopyClicked: true }));
+		setTimeout(
+			() => setState((prevState) => ({ ...prevState, isCopyClicked: false })),
+			1000
+		);
 
 		const promptText = document.querySelector(".prompt-text").textContent;
 		navigator.clipboard
@@ -156,27 +191,38 @@ export default function CriarPrompts() {
 	};
 
 	const handleClear = () => {
-		setInput1("");
-		setInput2("");
-		setInputImage("");
-		setVersion("version 5.1");
-		setAspectRatio({ num1: 1, num2: 1 });
-		setStylize(100);
-		setChaos(0);
-		setCurrentTab("Texto");
-		setCommandContent("");
-		setIsFirstExclusion(true);
-		setIncludeContent("");
-		setExcludeContent("");
-		setActiveFields({
-			version: false,
-			aspectRatio: false,
-			stylize: false,
-			chaos: false,
+		setState({
+			input1: "",
+			input2: "",
+			inputImage: "",
+			version: "version 5.1",
+			aspectRatio: { num1: 1, num2: 1 },
+			stylize: 100,
+			chaos: 0,
+			currentTab: "Texto",
+			commandContent: "",
+			isFirstExclusion: true,
+			includeContent: "",
+			excludeContent: "",
+			activeFields: {
+				version: false,
+				aspectRatio: false,
+				stylize: false,
+				chaos: false,
+			},
+			imageLinks: [],
+			isClearClicked: true,
+			isCopyClicked: false,
+			isIncludeClicked: false,
+			isExcludeClicked: false,
+			isAddLinkClicked: false,
 		});
-		setImageLinks("");
-		setIsClearClicked(true);
-		setTimeout(() => setIsClearClicked(false), 1000);
+		setTimeout(() => {
+			setState((prevState) => ({
+				...prevState,
+				isClearClicked: false,
+			}));
+		}, 1000);
 	};
 
 	function isValidUrl(string) {
@@ -185,14 +231,20 @@ export default function CriarPrompts() {
 	}
 
 	const handleAddLink = () => {
-		if (inputImage.trim() !== "") {
-			// Verifica se inputImage não está vazio
-			if (isValidUrl(inputImage.trim())) {
-				setIsAddLinkClicked(true);
-				setTimeout(() => setIsAddLinkClicked(false), 1000);
-
-				setImageLinks((prevLinks) => [...prevLinks, inputImage]);
-				setInputImage("");
+		if (state.inputImage.trim() !== "") {
+			if (isValidUrl(state.inputImage.trim())) {
+				setState((prevState) => ({
+					...prevState,
+					isAddLinkClicked: true,
+					imageLinks: [...prevState.imageLinks, state.inputImage],
+					inputImage: "",
+				}));
+				setTimeout(() => {
+					setState((prevState) => ({
+						...prevState,
+						isAddLinkClicked: false,
+					}));
+				}, 1000);
 			} else {
 				alert("Por favor, insira um link válido.");
 			}
@@ -204,66 +256,71 @@ export default function CriarPrompts() {
 			<PromptContainer>
 				<span className="prompt-text">
 					/imagine prompt:{" "}
-					{(imageLinks.length ? imageLinks.join(", ") : "") +
-						(imageLinks.length && includeContent ? ", " : "") +
-						(includeContent ? includeContent : "") +
-						(version ? " " + versionCommandMap[version] : "") +
-						(aspectRatio
-							? " --ar " + aspectRatio.num1 + ":" + aspectRatio.num2
+					{(state.imageLinks.length ? state.imageLinks.join(", ") : "") +
+						(state.imageLinks.length && state.includeContent ? ", " : "") +
+						(state.includeContent ? state.includeContent : "") +
+						(state.version ? " " + versionCommandMap[state.version] : "") +
+						(state.aspectRatio
+							? " --ar " + state.aspectRatio.num1 + ":" + state.aspectRatio.num2
 							: "") +
-						(activeFields.stylize ? " --stylize " + stylize : "") +
-						(activeFields.chaos ? " --chaos " + chaos : "") +
-						(excludeContent ? ", " + excludeContent : "")}
+						(state.activeFields.stylize ? " --stylize " + state.stylize : "") +
+						(state.activeFields.chaos ? " --chaos " + state.chaos : "") +
+						(state.excludeContent ? ", " + state.excludeContent : "")}
 				</span>
 
 				<ButtonsWrapper>
 					<Button
 						onClick={handleClear}
-						className={isClearClicked ? "clearClicked" : "clear"}
+						className={state.isClearClicked ? "clearClicked" : "clear"}
 					>
-						{isClearClicked ? "Apagado!" : "Apagar tudo"}
+						{state.isClearClicked ? "Apagado!" : "Apagar tudo"}
 					</Button>
 
 					<Button
 						onClick={handleCopy}
-						className={isCopyClicked ? "copyClicked" : "copy"}
+						className={state.isCopyClicked ? "copyClicked" : "copy"}
 					>
-						{isCopyClicked ? "Copiado!" : "Copiar prompt"}
+						{state.isCopyClicked ? "Copiado!" : "Copiar prompt"}
 					</Button>
 				</ButtonsWrapper>
 			</PromptContainer>
 
 			<TabContainer>
 				<Tab
-					active={currentTab === "Texto"}
+					active={state.currentTab === "Texto"}
 					onClick={() => setCurrentTab("Texto")}
 					className="texto"
 				>
 					Texto
 				</Tab>
 				<Tab
-					active={currentTab === "Parâmetros"}
+					active={state.currentTab === "Parâmetros"}
 					onClick={() => setCurrentTab("Parâmetros")}
 					className="parametros"
 				>
 					Parâmetros
 				</Tab>
 				<Tab
-					active={currentTab === "Imagens"}
+					active={state.currentTab === "Imagens"}
 					onClick={() => setCurrentTab("Imagens")}
 					className="imagens"
 				>
 					Imagens
 				</Tab>
 			</TabContainer>
-			{currentTab === "Texto" && (
-				<TabPanel value={currentTab} index="Texto">
+			{state.currentTab === "Texto" && (
+				<TabPanel value={state.currentTab} index="Texto">
 					<TextoDiv>
 						<InputField>
 							<input
 								type="text"
-								value={input1}
-								onChange={(e) => setInput1(e.target.value)}
+								value={state.input1}
+								onChange={(e) =>
+									setState((prevState) => ({
+										...prevState,
+										input1: e.target.value,
+									}))
+								}
 								onKeyDown={(e) => {
 									if (e.key === "Enter") {
 										handleInclude();
@@ -275,16 +332,23 @@ export default function CriarPrompts() {
 							<Button
 								color="#197ef4"
 								onClick={handleInclude}
-								className={isIncludeClicked ? "includeClicked" : "include"}
+								className={
+									state.isIncludeClicked ? "includeClicked" : "include"
+								}
 							>
-								{isIncludeClicked ? "Incluído!" : "Incluir no prompt"}
+								{state.isIncludeClicked ? "Incluído!" : "Incluir no prompt"}
 							</Button>
 						</InputField>
 						<InputField>
 							<input
 								type="text"
-								value={input2}
-								onChange={(e) => setInput2(e.target.value)}
+								value={state.input2}
+								onChange={(e) =>
+									setState((prevState) => ({
+										...prevState,
+										input2: e.target.value,
+									}))
+								}
 								onKeyDown={(e) => {
 									if (e.key === "Enter") {
 										handleExclude();
@@ -296,25 +360,29 @@ export default function CriarPrompts() {
 							<Button
 								color="#dc2626"
 								onClick={handleExclude}
-								className={isExcludeClicked ? "excludeClicked" : "exclude"}
+								className={
+									state.isExcludeClicked ? "excludeClicked" : "exclude"
+								}
 							>
-								{isExcludeClicked ? "Excluído!" : "Excluir do prompt"}
+								{state.isExcludeClicked ? "Excluído!" : "Excluir do prompt"}
 							</Button>
 						</InputField>
 					</TextoDiv>
 				</TabPanel>
 			)}
 
-			{currentTab === "Parâmetros" && (
-				<TabPanel value={currentTab} index="Parâmetros">
+			{state.currentTab === "Parâmetros" && (
+				<TabPanel value={state.currentTab} index="Parâmetros">
 					<ParametrosDiv>
 						{/* Version */}
 						<SelectField
-							className={`version ${activeFields.version ? "active" : ""}`}
+							className={`version ${
+								state.activeFields.version ? "active" : ""
+							}`}
 							onClick={() => toggleFieldActive("version")}
 						>
 							<label>Version</label>
-							{activeFields.version && (
+							{state.activeFields.version && (
 								<div>
 									<select
 										onChange={handleVersionChange}
@@ -333,12 +401,12 @@ export default function CriarPrompts() {
 						{/* Aspect Ratio */}
 						<SliderField
 							className={`aspectRatio ${
-								activeFields.aspectRatio ? "active" : ""
+								state.activeFields.aspectRatio ? "active" : ""
 							}`}
 							onClick={() => toggleFieldActive("aspectRatio")}
 						>
 							<label>Aspect Ratio</label>
-							{activeFields.aspectRatio && (
+							{state.activeFields.aspectRatio && (
 								<div>
 									<select
 										onChange={(e) =>
@@ -371,42 +439,49 @@ export default function CriarPrompts() {
 
 						{/* Stylize */}
 						<SelectField
-							className={`stylize ${activeFields.stylize ? "active" : ""}`}
+							className={`stylize ${
+								state.activeFields.stylize ? "active" : ""
+							}`}
 							onClick={() => toggleFieldActive("stylize")}
 						>
 							<label>Stylize</label>
-							{activeFields.stylize && (
+							{state.activeFields.stylize && (
 								<div>
 									<input
 										type="range"
 										min="0"
 										max="1000"
-										value={stylize}
-										onChange={(e) => setStylize(e.target.value)}
+										value={state.stylize}
+										onChange={(e) =>
+											setState({ ...state, stylize: e.target.value })
+										}
 										onClick={(e) => e.stopPropagation()}
 									/>
-									<span>{stylize}</span>
+									<span>{state.stylize}</span>
 								</div>
 							)}
 						</SelectField>
 
 						{/* Chaos */}
 						<SliderField
-							className={`chaos ${activeFields.chaos ? "active" : ""}`}
+							className={`chaos ${state.activeFields.chaos ? "active" : ""}`}
 							onClick={() => toggleFieldActive("chaos")}
 						>
 							<label>Chaos</label>
-							{activeFields.chaos && (
+							{state.activeFields.chaos && (
 								<div>
 									<input
 										type="range"
 										min="1"
 										max="100"
-										value={chaos}
-										onChange={(e) => setChaos(e.target.value)}
+										value={state.chaos}
+										onChange={(e) =>
+											setState({ ...state, chaos: e.target.value })
+										}
 										onClick={(e) => e.stopPropagation()}
 									/>
-									<span>{chaos}</span> {/* Exibir o valor atual de chaos */}
+									<span>{state.chaos}</span>{" "}
+									{/* Exibir o valor atual de chaos */}
 								</div>
 							)}
 						</SliderField>
@@ -414,14 +489,16 @@ export default function CriarPrompts() {
 				</TabPanel>
 			)}
 
-			{currentTab === "Imagens" && (
-				<TabPanel value={currentTab} index="Imagens">
+			{state.currentTab === "Imagens" && (
+				<TabPanel value={state.currentTab} index="Imagens">
 					<ImagensDiv>
 						<InputField>
 							<input
 								type="text"
-								value={inputImage}
-								onChange={(e) => setInputImage(e.target.value)}
+								value={state.inputImage}
+								onChange={(e) =>
+									setState({ ...state, inputImage: e.target.value })
+								}
 								onKeyDown={(e) => {
 									if (e.key === "Enter") {
 										handleAddLink();
@@ -432,9 +509,11 @@ export default function CriarPrompts() {
 							/>
 							<Button
 								onClick={handleAddLink}
-								className={isAddLinkClicked ? "addLinkClicked" : "addLink"}
+								className={
+									state.isAddLinkClicked ? "addLinkClicked" : "addLink"
+								}
 							>
-								{isAddLinkClicked ? "Adicionado!" : "Adicionar link"}
+								{state.isAddLinkClicked ? "Adicionado!" : "Adicionar link"}
 							</Button>
 						</InputField>
 					</ImagensDiv>
