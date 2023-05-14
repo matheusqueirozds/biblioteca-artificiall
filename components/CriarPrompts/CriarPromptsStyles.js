@@ -1,166 +1,347 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
-export const CreatePromptContainer = styled.div`
+const BaseDiv = css`
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+	padding: 40px;
+	background-color: #e9e9e9;
+	border-radius: 8px;
+	min-height: 272px;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+`;
+
+const BASE_COLOR = "#e9e9e9";
+const HOVER_COLOR = "#bcbcbc";
+const FIELD_BASE = css`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	background-color: #d3d3d3;
+	height: max-content;
+	padding: 20px;
+	border-radius: 4px;
+	position: relative;
+	cursor: pointer;
+	transition: all 0.2s;
+	opacity: 0.9;
+
+	input {
+		background-color: red;
+	}
+
+	&:hover {
+		opacity: 1;
+	}
+
+	&.active {
+		background-color: ${HOVER_COLOR};
+		color: #5e5e5e;
+		opacity: 1;
+	}
+
+	label {
+		display: flex;
+		align-items: center;
+		gap: 5px;
+		cursor: pointer;
+
+		&::before {
+			display: inline-block;
+			content: "";
+			width: 20px;
+			height: 20px;
+		}
+	}
+
+	div {
+		display: none;
+		transition: all 0.3s;
+	}
+
+	&.active {
+		div {
+			display: block;
+			position: absolute;
+			bottom: -50px;
+			left: 0;
+			border-radius: 4px;
+			width: 100%;
+		}
+	}
+
+	select {
+		height: 100%;
+		padding: 10px;
+		width: 100%;
+		border: none;
+		border-radius: 4px;
+		background-color: #d3d3d3;
+	}
+
+	input {
+		position: absolute;
+		bottom: 25px;
+		background-color: #d3d3d3;
+		height: 100%;
+		width: 100%;
+	}
+
+	&.version {
+		label::before {
+			background: url("./version.svg") no-repeat;
+		}
+	}
+
+	&.aspectRatio {
+		label::before {
+			background: url("./aspect-ratio.svg") no-repeat;
+		}
+
+		div {
+			display: flex;
+			align-items: center;
+			gap: 5px;
+			select {
+				width: 100%;
+			}
+		}
+	}
+
+	&.stylize {
+		label::before {
+			background: url("./stylize.svg") no-repeat;
+		}
+	}
+
+	&.chaos {
+		label::before {
+			background: url("./chaos.svg") no-repeat;
+		}
+	}
+`;
+
+const BaseInput = css`
+	outline: none;
+	border: none;
+	width: 100%;
+	padding: 33px 20px;
+	border-radius: 8px;
+	border: 1px solid #e9e9e9;
+	font-size: 16px;
+	background-color: #fff;
+
+	&::placeholder {
+		font-size: 16px;
+		opacity: 0.6;
+	}
+
+	&.blue {
+		&:focus {
+			background-color: #e3eef9;
+			outline: 1px solid #197ef4;
+			border-color: #89bcf7;
+
+			&::placeholder {
+				color: #197ef4;
+			}
+		}
+	}
+
+	&.red {
+		&:focus {
+			background-color: #f7e5e5;
+			outline: 1px solid #dc2626;
+			border-color: #eb9090;
+
+			&::placeholder {
+				color: #dc2626;
+			}
+		}
+	}
+`;
+
+export const MainDiv = styled.div`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
-	min-height: 100vh;
-	width: max-content;
+	max-width: 1024px;
+	height: 100vh;
 	margin: 0 auto;
 `;
 
-export const Heading = styled.h1`
-	font-size: 2rem;
-`;
-
-export const TextInputWrapper = styled.div`
-	display: flex;
-	align-items: center;
-	margin-bottom: 2rem;
-`;
-
-export const PromptInput = styled.input`
-	border: 1px solid #ccc;
-	border-radius: 8px;
-	padding: 0.5rem;
-	font-size: 1rem;
-	margin-right: 1rem;
-	width: 100%;
-	flex-grow: 1;
-
-	::placeholder {
-		opacity: 0.7;
-	}
-`;
-
-export const AddWordButton = styled.button`
-	background-color: #0070f3;
-	border: none;
-	border-radius: 8px;
-	color: #fff;
-	padding: 0.5rem 1rem;
-	font-size: 1rem;
-	cursor: pointer;
-`;
-
-export const PromptsInfoContainer = styled.div`
-	display: flex;
-	align-items: center;
-	gap: 48px;
-	height: 100%;
-`;
-
-export const PromptWords = styled.div`
+export const PromptContainer = styled.div`
 	display: flex;
 	flex-direction: column;
-	background-color: #f0f0f0;
-	gap: 24px;
-	padding: 24px;
+	width: 100%;
+	background-color: #fff;
+	padding: 0 20px 20px;
 	border-radius: 8px;
-	width: 705px;
-	max-width: 100%;
-	height: 100%;
-`;
+	border: 1px solid #eaeaea;
+	box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+	color: #7d7d7d;
+	margin-bottom: 40px;
 
-export const PromptWrapper = styled.div`
-	display: flex;
-	align-items: center;
-	flex-wrap: wrap;
 	span {
-		font-family: "Courier New", Courier, monospace;
-		font-weight: 600;
-		margin-right: .5rem;
+		margin: 40px 20px;
+		word-wrap: break-word;
 	}
-`;
-
-export const SingleWord = styled.div`
-	display: flex;
-	align-items: center;
-	margin-left: 0.25rem;
-	background-color: #e0e0e0;
-	border-radius: 4px;
-	padding: 0.25rem 0.5rem;
-`;
-
-export const CloseButton = styled.button`
-	background-color: transparent;
-	border: none;
-	color: #444;
-	font-size: 0.8rem;
-	margin-left: 0.5rem;
-	cursor: pointer;
 `;
 
 export const ButtonsWrapper = styled.div`
 	display: flex;
 	justify-content: space-between;
-	width: 100%;
+
+	button {
+		position: initial;
+	}
 `;
 
-export const ActionButton = styled.button`
-	background-color: #0070f3;
-	border: none;
-	border-radius: 4px;
-	color: #fff;
-	padding: 0.5rem 1rem;
-	font-size: 1rem;
-	cursor: pointer;
-	margin: 0 0.5rem;
-`;
-
-export const PromptParameters = styled.ul`
+export const TabContainer = styled.div`
 	display: flex;
-	flex-direction: column;
-	gap: 1rem;
-	margin: 1rem 0;
+	margin-left: 60px;
 `;
 
-export const ParameterWrapper = styled.li`
+export const Tab = styled.div`
+	padding: 10px 20px;
+	border-radius: 8px 8px 0 0;
+	cursor: pointer;
+	background-color: ${({ active }) => (active ? BASE_COLOR : "transparent")};
 	display: flex;
 	align-items: center;
-	gap: 0.5rem;
-`;
+	justify-content: center;
+	gap: 5px;
 
-export const Select = styled.select`
-	border: 1px solid #ccc;
-	border-radius: 8px;
-	padding: 0.5rem;
-	font-size: 1rem;
-	margin-left: 0.5rem;
-	width: 60px;
-`;
-
-export const RatioInput = styled.input`
-	padding: 0.25rem 0.5rem;
-	border: 1px solid #ccc;
-	border-radius: 4px;
-	font-size: 1rem;
-	text-align: center;
-`;
-
-export const AddParameterButton = styled.button`
-	background-color: #4caf50;
-	border: none;
-	color: white;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 16px;
-	margin: 4px 2px;
-	cursor: pointer;
-	border-radius: 50%;
-	width: 30px;
-	height: 30px;
-	line-height: 30px;
-	padding: 0;
-	transition: background-color 0.3s;
-
-	&:hover {
-		background-color: #45a049;
+	&::before {
+		display: inline-block;
+		content: "";
+		width: 20px;
+		height: 20px;
 	}
 
-	&:disabled {
-		background-color: #ccc;
-		cursor: not-allowed;
+	&.texto {
+		&::before {
+			background: url("./text.svg") no-repeat;
+			background-position: center;
+		}
 	}
+
+	&.parametros {
+		&::before {
+			background: url("./parameters.svg") no-repeat;
+			background-position: center;
+		}
+	}
+
+	&.imagens {
+		&::before {
+			background: url("./images.svg") no-repeat;
+			background-position: center;
+		}
+	}
+`;
+
+export const TextoDiv = styled.div`
+	${BaseDiv}
+`;
+
+export const InputField = styled.div`
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	position: relative;
+
+	input {
+		${BaseInput}
+	}
+`;
+
+export const Button = styled.button`
+	background-color: ${(props) => props.color};
+	color: #fff;
+	padding: 11px 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 5px;
+	position: absolute;
+	right: 20px;
+
+	&::before {
+		display: inline-block;
+		content: "";
+		width: 20px;
+		height: 20px;
+	}
+
+	&.clear,
+	&.clearClicked {
+		background-color: #dc2626;
+
+		&::before {
+			background: url("./trash.svg");
+		}
+	}
+
+	&.copy,
+	&.copyClicked {
+		background-color: #197ef4;
+
+		&::before {
+			background: url("./copy-alt.svg");
+		}
+	}
+
+	&.include,
+	&.includeClicked {
+		background-color: #197ef4;
+
+		&::before {
+			background: url("./add.svg");
+		}
+	}
+
+	&.exclude,
+	&.excludeClicked {
+		background-color: #dc2626;
+
+		&::before {
+			background: url("./del.svg");
+		}
+	}
+
+	&.addLink,
+	&.addLinkClicked {
+		background-color: #197ef4;
+
+		&::before {
+			background: url("./add.svg");
+		}
+	}
+
+	&.clearClicked::before,
+	&.copyClicked::before,
+	&.includeClicked::before,
+	&.excludeClicked::before,
+	&.addLinkClicked::before {
+		background: url("./check.svg");
+		background-position: center;
+	}
+`;
+
+export const ParametrosDiv = styled.div`
+	${BaseDiv}
+	flex-direction: row;
+`;
+
+export const SelectField = styled.div`
+	${FIELD_BASE}
+`;
+
+export const SliderField = styled.div`
+	${FIELD_BASE}
+`;
+
+export const ImagensDiv = styled.div`
+	${BaseDiv}
 `;

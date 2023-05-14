@@ -1,428 +1,438 @@
-import React, { useCallback, useRef, useState } from "react";
-import Head from "next/head";
+import { useState } from "react";
 import {
-	CreatePromptContainer,
-	Heading,
-	TextInputWrapper,
-	PromptInput,
-	AddWordButton,
-	PromptsInfoContainer,
-	PromptWords,
-	PromptWrapper,
-	SingleWord,
-	CloseButton,
+	Button,
 	ButtonsWrapper,
-	ActionButton,
-	PromptParameters,
-	ParameterWrapper,
-	Select,
-	RatioInput,
-	AddParameterButton,
+	ImagensDiv,
+	InputField,
+	MainDiv,
+	ParametrosDiv,
+	PromptContainer,
+	SelectField,
+	SliderField,
+	Tab,
+	TabContainer,
+	TextoDiv,
 } from "@/components/CriarPrompts/CriarPromptsStyles";
-import { translateText } from "../components/Midjourney/Prompt/translationHelper";
 
-// Componente principal
-export default function CreatePrompt() {
-	const [inputText, setInputText] = useState("");
-	const [words, setWords] = useState([]);
-	const promptContainerRef = useRef(null);
-	const [parameterButtons, setParameterButtons] = useState({
-		aspectRatio: "add",
-		version: "add",
-		chaos: "add",
-		stylize: "add",
+// Criação do novo componente TabPanel
+function TabPanel({ children, value, index }) {
+	if (value !== index) {
+		return null;
+	}
+
+	return (
+		<div
+			role="tabpanel"
+			id={`tabpanel-${index}`}
+			aria-labelledby={`tab-${index}`}
+		>
+			<div>{children}</div>
+		</div>
+	);
+}
+
+export default function CriarPrompts() {
+	const [input1, setInput1] = useState("");
+	const [input2, setInput2] = useState("");
+	const [inputImage, setInputImage] = useState("");
+	const [version, setVersion] = useState("version 5.1");
+	const [aspectRatio, setAspectRatio] = useState({ num1: 1, num2: 1 });
+	const [stylize, setStylize] = useState(100);
+	const [chaos, setChaos] = useState(0);
+	const [currentTab, setCurrentTab] = useState("Texto");
+	const [commandContent, setCommandContent] = useState("");
+	const [isFirstExclusion, setIsFirstExclusion] = useState(true);
+	const [includeContent, setIncludeContent] = useState("");
+	const [excludeContent, setExcludeContent] = useState("");
+	const [activeFields, setActiveFields] = useState({
+		version: false,
+		aspectRatio: false,
+		stylize: false,
+		chaos: false,
 	});
-	const [translatedWords, setTranslatedWords] = useState([]);
-	// Estado para controlar os parâmetros selecionados
-	const [selectedParameters, setSelectedParameters] = useState({
-		aspectRatio: {
-			show: false,
-			value1: 1,
-			value2: 1,
-			isParameterDefined: true,
-		},
-		version: {
-			show: false,
-			value: "5.1",
-			isParameterDefined: true,
-		},
-		chaos: {
-			show: false,
-			value: 0,
-			isParameterDefined: true,
-		},
-		stylize: {
-			show: false,
-			value: 100,
-			isParameterDefined: true,
-		},
-	});
+	const [imageLink, setImageLink] = useState("");
+	const [isClearClicked, setIsClearClicked] = useState(false);
+	const [isCopyClicked, setIsCopyClicked] = useState(false);
+	const [isIncludeClicked, setIsIncludeClicked] = useState(false);
+	const [isExcludeClicked, setIsExcludeClicked] = useState(false);
+	const [isAddLinkClicked, setIsAddLinkClicked] = useState(false);
 
-	// Manipula a mudança no campo de texto
-	const handleInputChange = useCallback((e) => {
-		setInputText(e.target.value);
-	}, []);
+	const versionOptions = [
+		"version 5.1",
+		"niji 5",
+		"version 5",
+		"niji",
+		"version 4",
+	];
 
-	// Adiciona a palavra ao pressionar 'Enter'
-	const handleKeyPress = (e) => {
-		if (e.key === "Enter") {
-			handleAddWord();
+	const versionCommandMap = {
+		"version 5.1": "--v 5.1",
+		"niji 5": "--niji 5",
+		"version 5": "--v 5",
+		niji: "--niji",
+		"version 4": "--v 4",
+	};
+
+	const aspectRatioOptions = Array.from({ length: 16 }, (_, i) => i + 1);
+
+	const handleAspectRatioChange = (value, position) => {
+		setAspectRatio((prevState) => {
+			const newAspectRatio = {
+				...prevState,
+				[position]: value,
+			};
+			setCommandContent(
+				(prevContent) =>
+					prevContent +
+					`, aspect ratio: ${newAspectRatio.num1}:${newAspectRatio.num2}`
+			);
+			return newAspectRatio;
+		});
+	};
+
+	const handleVersionChange = (e) => {
+		setVersion(e.target.value);
+	};
+
+	const toggleFieldActive = (field) => {
+		setActiveFields((prevState) => ({
+			...prevState,
+			[field]: !prevState[field],
+		}));
+	};
+	
+
+	const handleInclude = () => {
+		if (input1.trim() !== "") {
+			// Verifica se input1 não está vazio
+			setIsIncludeClicked(true);
+			setTimeout(() => setIsIncludeClicked(false), 1000);
+
+			setIncludeContent((prevContent) =>
+				prevContent.length > 0
+					? prevContent + ", " + input1
+					: prevContent + input1
+			);
+			setInput1("");
 		}
 	};
 
-	// Copia o texto do prompt para a área de transferência
-	const handleCopyText = useCallback(() => {
-		const aspectRatioText =
-			selectedParameters.aspectRatio.show &&
-			selectedParameters.aspectRatio.value1 &&
-			selectedParameters.aspectRatio.value2
-				? `--ar ${selectedParameters.aspectRatio.value1}:${selectedParameters.aspectRatio.value2} `
-				: "";
+	const handleExclude = () => {
+		if (input2.trim() !== "") {
+			// Verifica se input2 não está vazio
+			setIsExcludeClicked(true);
+			setTimeout(() => setIsExcludeClicked(false), 1000);
 
-		const versionText = selectedParameters.version.show
-			? `--v ${selectedParameters.version.value} `
-			: "";
-
-		const chaosText = selectedParameters.chaos.show
-			? `--c ${selectedParameters.chaos.value} `
-			: "";
-
-		const stylizeText = selectedParameters.stylize.show
-			? `--s ${selectedParameters.stylize.value} `
-			: "";
-
-		const wordsWithSpace =
-			translatedWords.length > 0 ? translatedWords.join(", ") + " " : "";
-
-		const text = `/imagine prompt: ${wordsWithSpace}${aspectRatioText}${versionText}${chaosText}${stylizeText}`;
-
-		navigator.clipboard.writeText(text);
-	}, [selectedParameters, translatedWords]);
-
-	// Adiciona uma palavra ao array de palavras e já deixa ela em inglês
-	const handleAddWord = useCallback(async () => {
-		const translation = await translateText(inputText, "en");
-		setWords([...words, inputText]);
-		setTranslatedWords([...translatedWords, translation]);
-		setInputText("");
-	}, [inputText, words, translatedWords]);
-
-	// Remove a palavra do array de palavras
-	const handleDeleteWord = useCallback(
-		(indexToDelete) => {
-			setWords(words.filter((_, index) => index !== indexToDelete));
-		},
-		[words]
-	);
-
-	// Adiciona o parâmetro selecionado
-	const handleAddParameter = useCallback((parameter) => {
-		if (!selectedParameters[parameter].isParameterDefined) return;
-		setSelectedParameters((prevSelectedParameters) => ({
-			...prevSelectedParameters,
-			[parameter]: { ...prevSelectedParameters[parameter], show: true },
-		}));
-		setParameterButtons((prevParameterButtons) => ({
-			...prevParameterButtons,
-			[parameter]: "remove",
-		}));
-	}, []);
-
-	// Atualiza os parâmetros selecionados
-	const handleParameterChange = useCallback(
-		(parameter, value) => {
-			setSelectedParameters({
-				...selectedParameters,
-				[parameter]: {
-					...selectedParameters[parameter],
-					...value,
-					isParameterDefined: true,
-				},
+			setExcludeContent((prevContent) => {
+				if (isFirstExclusion) {
+					setIsFirstExclusion(false);
+					return prevContent.length > 0
+						? prevContent + ", --no " + input2
+						: prevContent + "--no " + input2;
+				} else {
+					return prevContent.length > 0
+						? prevContent + ", " + input2
+						: prevContent + input2;
+				}
 			});
-		},
-		[selectedParameters]
-	);
-
-	// Remove o parâmetro selecionado
-	const handleDeleteParameter = useCallback((parameter) => {
-		switch (parameter) {
-			case "aspectRatio":
-				handleParameterChange(parameter, {
-					show: false,
-					value1: 1,
-					value2: 1,
-				});
-				break;
-			case "version":
-				handleParameterChange(parameter, { show: false, value: "5.1" });
-				break;
-			case "chaos":
-				handleParameterChange(parameter, { show: false, value: 0 });
-				break;
-			case "stylize":
-				handleParameterChange(parameter, { show: false, value: 100 });
-				break;
-			default:
-				break;
+			setInput2("");
 		}
-		setParameterButtons((prevParameterButtons) => ({
-			...prevParameterButtons,
-			[parameter]: "add",
-		}));
-	}, []);
+	};
 
-	// Limpa todos os parâmetros e palavras
-	const handleClearAll = useCallback(() => {
-		if (confirm("Tem certeza de que deseja apagar tudo?")) {
-			setWords([]);
-			setSelectedParameters({
-				aspectRatio: { show: false, value1: "1", value2: "1" },
-				version: { show: false, value: "5.1" },
-				chaos: { show: false, value: "0" },
-				stylize: { show: false, value: "100" },
-			});
-			setParameterButtons({
-				aspectRatio: "add",
-				version: "add",
-				chaos: "add",
-				stylize: "add",
-			});
-			alert("Tudo apagado com sucesso!");
+	const handleCopy = () => {
+		setIsCopyClicked(true);
+		setTimeout(() => setIsCopyClicked(false), 1000);
+
+		const promptText = document.querySelector(".prompt-text").textContent;
+		navigator.clipboard
+			.writeText(promptText)
+			.catch(() => alert("Falha ao copiar texto"));
+	};
+
+	const handleClear = () => {
+		setInput1("");
+		setInput2("");
+		setInputImage("");
+		setVersion("version 5.1");
+		setAspectRatio({ num1: 1, num2: 1 });
+		setStylize(100);
+		setChaos(0);
+		setCurrentTab("Texto");
+		setCommandContent("");
+		setIsFirstExclusion(true);
+		setIncludeContent("");
+		setExcludeContent("");
+		setActiveFields({
+			version: false,
+			aspectRatio: false,
+			stylize: false,
+			chaos: false,
+		});
+		setImageLink("");
+		setIsClearClicked(true);
+		setTimeout(() => setIsClearClicked(false), 1000);
+	};
+
+	function isValidUrl(string) {
+		var regex = /^(ftp|http|https):\/\/[^ "]+$/;
+		return regex.test(string);
+	}
+
+	const handleAddLink = () => {
+		if (inputImage.trim() !== "") {
+			// Verifica se inputImage não está vazio
+			if (isValidUrl(inputImage.trim())) {
+				setIsAddLinkClicked(true);
+				setTimeout(() => setIsAddLinkClicked(false), 1000);
+
+				setImageLink(inputImage);
+				setInputImage("");
+			} else {
+				alert("Por favor, insira um link válido.");
+			}
 		}
-	}, []);
+	};
 
 	return (
-		<CreatePromptContainer>
-			<Head>
-				<title>Criar prompt | Bibioteca Artificiall</title>
-			</Head>
+		<MainDiv>
+			<PromptContainer>
+				<span className="prompt-text">
+					/imagine prompt:{" "}
+					{imageLink +
+						(includeContent ? ", " + includeContent : "") +
+						(version ? " " + versionCommandMap[version] : "") +
+						(aspectRatio
+							? " --ar " + aspectRatio.num1 + ":" + aspectRatio.num2
+							: "") +
+						(activeFields.stylize ? " --stylize " + stylize : "") +
+						(activeFields.chaos ? " --chaos " + chaos : "") +
+						(excludeContent ? ", " + excludeContent : "")}
+				</span>
 
-			<Heading>Criar Prompt</Heading>
+				<ButtonsWrapper>
+					<Button
+						onClick={handleClear}
+						className={isClearClicked ? "clearClicked" : "clear"}
+					>
+						{isClearClicked ? "Apagado!" : "Apagar tudo"}
+					</Button>
 
-			<TextInputWrapper>
-				<PromptInput
-					type="text"
-					value={inputText}
-					onChange={handleInputChange}
-					onKeyPress={handleKeyPress}
-					placeholder="Digite uma palavra"
-					role="textbox"
-					aria-placeholder="Digite uma palavra"
-				/>
-				<AddWordButton
-					onClick={() => {
-						handleAddWord();
-					}}
+					<Button
+						onClick={handleCopy}
+						className={isCopyClicked ? "copyClicked" : "copy"}
+					>
+						{isCopyClicked ? "Copiado!" : "Copiar prompt"}
+					</Button>
+				</ButtonsWrapper>
+			</PromptContainer>
+
+			<TabContainer>
+				<Tab
+					active={currentTab === "Texto"}
+					onClick={() => setCurrentTab("Texto")}
+					className="texto"
 				>
-					+
-				</AddWordButton>
-			</TextInputWrapper>
+					Texto
+				</Tab>
+				<Tab
+					active={currentTab === "Parâmetros"}
+					onClick={() => setCurrentTab("Parâmetros")}
+					className="parametros"
+				>
+					Parâmetros
+				</Tab>
+				<Tab
+					active={currentTab === "Imagens"}
+					onClick={() => setCurrentTab("Imagens")}
+					className="imagens"
+				>
+					Imagens
+				</Tab>
+			</TabContainer>
+			{currentTab === "Texto" && (
+				<TabPanel value={currentTab} index="Texto">
+					<TextoDiv>
+						<InputField>
+							<input
+								type="text"
+								value={input1}
+								onChange={(e) => setInput1(e.target.value)}
+								onKeyDown={(e) => {
+									if (e.key === "Enter") {
+										handleInclude();
+									}
+								}}
+								placeholder="Adicione palavras ou frases que você quer que apareçam no prompt"
+								className="blue"
+							/>
+							<Button
+								color="#197ef4"
+								onClick={handleInclude}
+								className={isIncludeClicked ? "includeClicked" : "include"}
+							>
+								{isIncludeClicked ? "Incluído!" : "Incluir no prompt"}
+							</Button>
+						</InputField>
+						<InputField>
+							<input
+								type="text"
+								value={input2}
+								onChange={(e) => setInput2(e.target.value)}
+								onKeyDown={(e) => {
+									if (e.key === "Enter") {
+										handleExclude();
+									}
+								}}
+								placeholder="Adicione palavras ou frases que você NÃO quer que apareçam no prompt"
+								className="red"
+							/>
+							<Button
+								color="#dc2626"
+								onClick={handleExclude}
+								className={isExcludeClicked ? "excludeClicked" : "exclude"}
+							>
+								{isExcludeClicked ? "Excluído!" : "Excluir do prompt"}
+							</Button>
+						</InputField>
+					</TextoDiv>
+				</TabPanel>
+			)}
 
-			<PromptsInfoContainer>
-				<PromptWords>
-					<PromptWrapper ref={promptContainerRef}>
-						<span>/imagine prompt: </span>
-						{words.map((word, index) => (
-							<SingleWord key={index}>
-								{translatedWords[index]}
-								<CloseButton onClick={() => handleDeleteWord(index)}>
-									×
-								</CloseButton>
-							</SingleWord>
-						))}
-
-						{selectedParameters.aspectRatio.show &&
-							selectedParameters.aspectRatio.isParameterDefined && (
-								<SingleWord>
-									--ar {selectedParameters.aspectRatio.value1}:
-									{selectedParameters.aspectRatio.value2}
-									<CloseButton
-										onClick={() => handleDeleteParameter("aspectRatio")}
+			{currentTab === "Parâmetros" && (
+				<TabPanel value={currentTab} index="Parâmetros">
+					<ParametrosDiv>
+						{/* Version */}
+						<SelectField
+							className={`version ${activeFields.version ? "active" : ""}`}
+							onClick={() => toggleFieldActive("version")}
+						>
+							<label>Version</label>
+							{activeFields.version && (
+								<div>
+									<select
+										onChange={handleVersionChange}
+										onClick={(e) => e.stopPropagation()}
 									>
-										×
-									</CloseButton>
-								</SingleWord>
+										{versionOptions.map((option, index) => (
+											<option value={option} key={index}>
+												{option}
+											</option>
+										))}
+									</select>
+								</div>
 							)}
-						{selectedParameters.version.show &&
-							selectedParameters.version.isParameterDefined && (
-								<SingleWord>
-									--v {selectedParameters.version.value}
-									<CloseButton onClick={() => handleDeleteParameter("version")}>
-										×
-									</CloseButton>
-								</SingleWord>
+						</SelectField>
+
+						{/* Aspect Ratio */}
+						<SliderField
+							className={`aspectRatio ${
+								activeFields.aspectRatio ? "active" : ""
+							}`}
+							onClick={() => toggleFieldActive("aspectRatio")}
+						>
+							<label>Aspect Ratio</label>
+							{activeFields.aspectRatio && (
+								<div>
+									<select
+										onChange={(e) =>
+											handleAspectRatioChange(e.target.value, "num1")
+										}
+										onClick={(e) => e.stopPropagation()}
+									>
+										{aspectRatioOptions.map((option, index) => (
+											<option value={option} key={index}>
+												{option}
+											</option>
+										))}
+									</select>
+									<span>:</span>
+									<select
+										onChange={(e) =>
+											handleAspectRatioChange(e.target.value, "num2")
+										}
+										onClick={(e) => e.stopPropagation()}
+									>
+										{aspectRatioOptions.map((option, index) => (
+											<option value={option} key={index}>
+												{option}
+											</option>
+										))}
+									</select>
+								</div>
 							)}
-						{selectedParameters.chaos.show &&
-							selectedParameters.chaos.isParameterDefined && (
-								<SingleWord>
-									--c {selectedParameters.chaos.value}
-									<CloseButton onClick={() => handleDeleteParameter("chaos")}>
-										×
-									</CloseButton>
-								</SingleWord>
+						</SliderField>
+
+						{/* Stylize */}
+						<SelectField
+							className={`stylize ${activeFields.stylize ? "active" : ""}`}
+							onClick={() => toggleFieldActive("stylize")}
+						>
+							<label>Stylize</label>
+							{activeFields.stylize && (
+								<div>
+									<input
+										type="range"
+										min="0"
+										max="1000"
+										value={stylize}
+										onChange={(e) => setStylize(e.target.value)}
+										onClick={(e) => e.stopPropagation()}
+									/>
+									<span>{stylize}</span>
+								</div>
 							)}
-						{selectedParameters.stylize.show &&
-							selectedParameters.stylize.isParameterDefined && (
-								<SingleWord>
-									--s {selectedParameters.stylize.value}
-									<CloseButton onClick={() => handleDeleteParameter("stylize")}>
-										×
-									</CloseButton>
-								</SingleWord>
+						</SelectField>
+
+						{/* Chaos */}
+						<SliderField
+							className={`chaos ${activeFields.chaos ? "active" : ""}`}
+							onClick={() => toggleFieldActive("chaos")}
+						>
+							<label>Chaos</label>
+							{activeFields.chaos && (
+								<div>
+									<input
+										type="range"
+										min="1"
+										max="100"
+										value={chaos}
+										onChange={(e) => setChaos(e.target.value)}
+										onClick={(e) => e.stopPropagation()}
+									/>
+									<span>{chaos}</span> {/* Exibir o valor atual de chaos */}
+								</div>
 							)}
-					</PromptWrapper>
-					<ButtonsWrapper>
-						<ActionButton onClick={handleCopyText}>Copiar prompt</ActionButton>
-						<ActionButton onClick={handleClearAll}>Apagar tudo</ActionButton>
-					</ButtonsWrapper>
-				</PromptWords>
+						</SliderField>
+					</ParametrosDiv>
+				</TabPanel>
+			)}
 
-				<PromptParameters>
-					<ParameterWrapper>
-						Proporção:
-						<Select
-							value={selectedParameters.aspectRatio.value1}
-							onChange={(e) =>
-								handleParameterChange("aspectRatio", {
-									...selectedParameters.aspectRatio,
-									value1: e.target.value,
-								})
-							}
-						>
-							{[...Array(16).keys()].map((num) => (
-								<option key={num + 1} value={num + 1}>
-									{num + 1}
-								</option>
-							))}
-						</Select>
-						<span>:</span>
-						<Select
-							value={selectedParameters.aspectRatio.value2}
-							onChange={(e) =>
-								handleParameterChange("aspectRatio", {
-									...selectedParameters.aspectRatio,
-									value2: e.target.value,
-								})
-							}
-						>
-							{[...Array(16).keys()].map((num) => (
-								<option key={num + 1} value={num + 1}>
-									{num + 1}
-								</option>
-							))}
-						</Select>
-						<AddParameterButton
-							style={
-								parameterButtons.aspectRatio === "add"
-									? {}
-									: { color: "#FFFFFF", backgroundColor: "#FF8A65" }
-							}
-							onClick={
-								parameterButtons.aspectRatio === "add"
-									? () => handleAddParameter("aspectRatio")
-									: () => handleDeleteParameter("aspectRatio")
-							}
-						>
-							{parameterButtons.aspectRatio === "add" ? "+" : "×"}
-						</AddParameterButton>
-					</ParameterWrapper>
-
-					<ParameterWrapper>
-						Versão:
-						<Select
-							value={selectedParameters.version.value}
-							onChange={(e) =>
-								handleParameterChange("version", {
-									...selectedParameters.version,
-									value: e.target.value,
-								})
-							}
-						>
-							<option value="5.1">5.1</option>
-							<option value="5">5</option>
-							<option value="4">4</option>
-						</Select>
-						<AddParameterButton
-							style={
-								parameterButtons.version === "add"
-									? {}
-									: { color: "#FFFFFF", backgroundColor: "#FF8A65" }
-							}
-							onClick={
-								parameterButtons.version === "add"
-									? () => handleAddParameter("version")
-									: () => handleDeleteParameter("version")
-							}
-						>
-							{parameterButtons.version === "add" ? "+" : "×"}
-						</AddParameterButton>
-					</ParameterWrapper>
-
-					<ParameterWrapper>
-						Chaos:
-						<RatioInput
-							type="number"
-							placeholder="0 - 100"
-							min="0"
-							max="100"
-							step="1"
-							value={selectedParameters.chaos.value}
-							onChange={(e) =>
-								handleParameterChange("chaos", {
-									...selectedParameters.chaos,
-									value: e.target.value,
-								})
-							}
-						/>
-						<AddParameterButton
-							style={
-								parameterButtons.chaos === "add"
-									? {}
-									: { color: "#FFFFFF", backgroundColor: "#FF8A65" }
-							}
-							onClick={
-								parameterButtons.chaos === "add"
-									? () => handleAddParameter("chaos")
-									: () => handleDeleteParameter("chaos")
-							}
-						>
-							{parameterButtons.chaos === "add" ? "+" : "×"}
-						</AddParameterButton>
-					</ParameterWrapper>
-
-					<ParameterWrapper>
-						Stylize:
-						<RatioInput
-							type="number"
-							placeholder="0 - 1000"
-							min="0"
-							max="1000"
-							step="1"
-							value={selectedParameters.stylize.value}
-							onChange={(e) =>
-								handleParameterChange("stylize", {
-									...selectedParameters.stylize,
-									value: e.target.value,
-								})
-							}
-						/>
-						<AddParameterButton
-							style={
-								parameterButtons.stylize === "add"
-									? {}
-									: { color: "#FFFFFF", backgroundColor: "#FF8A65" }
-							}
-							onClick={
-								parameterButtons.stylize === "add"
-									? () => handleAddParameter("stylize")
-									: () => handleDeleteParameter("stylize")
-							}
-						>
-							{parameterButtons.stylize === "add" ? "+" : "×"}
-						</AddParameterButton>
-					</ParameterWrapper>
-				</PromptParameters>
-			</PromptsInfoContainer>
-		</CreatePromptContainer>
+			{currentTab === "Imagens" && (
+				<TabPanel value={currentTab} index="Imagens">
+					<ImagensDiv>
+						<InputField>
+							<input
+								type="text"
+								value={inputImage}
+								onChange={(e) => setInputImage(e.target.value)}
+								onKeyDown={(e) => {
+									if (e.key === "Enter") {
+										handleAddLink();
+									}
+								}}
+								placeholder="Cole o link da imagem que você deseja adicionar ao prompt"
+								className="blue"
+							/>
+							<Button
+								onClick={handleAddLink}
+								className={isAddLinkClicked ? "addLinkClicked" : "addLink"}
+							>
+								{isAddLinkClicked ? "Adicionado!" : "Adicionar link"}
+							</Button>
+						</InputField>
+					</ImagensDiv>
+				</TabPanel>
+			)}
+		</MainDiv>
 	);
 }
