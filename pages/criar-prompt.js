@@ -254,9 +254,9 @@ export default function CriarPrompts() {
 
 		if (aspectRatio) prompt += ` --ar ${aspectRatio.num1}:${aspectRatio.num2}`;
 
-		if (activeFields.stylize) prompt += ` --stylize ${stylize}`;
+		if (activeFields.stylize) prompt += ` --s ${stylize}`;
 
-		if (activeFields.chaos) prompt += ` --chaos ${chaos}`;
+		if (activeFields.chaos) prompt += ` --c ${chaos}`;
 
 		if (excludeContent) prompt += `, ${excludeContent}`;
 		return prompt;
