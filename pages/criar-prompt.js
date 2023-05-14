@@ -13,6 +13,7 @@ import {
 	TabContainer,
 	TextoDiv,
 } from "@/components/CriarPrompts/CriarPromptsStyles";
+import { translateText } from "../components/Midjourney/Prompt/translationHelper";
 
 // Criação do novo componente TabPanel
 function TabPanel({ children, value, index }) {
@@ -101,37 +102,43 @@ export default function CriarPrompts() {
 		}));
 	};
 
-	const handleInclude = () => {
+	const handleInclude = async () => {
 		if (input1.trim() !== "") {
 			// Verifica se input1 não está vazio
 			setIsIncludeClicked(true);
 			setTimeout(() => setIsIncludeClicked(false), 1000);
 
+			// Translate input1 content
+			const translatedInput1 = await translateText(input1, "en");
+
 			setIncludeContent((prevContent) =>
 				prevContent.length > 0
-					? prevContent + ", " + input1
-					: prevContent + input1
+					? prevContent + ", " + translatedInput1
+					: prevContent + translatedInput1
 			);
 			setInput1("");
 		}
 	};
 
-	const handleExclude = () => {
+	const handleExclude = async () => {
 		if (input2.trim() !== "") {
 			// Verifica se input2 não está vazio
 			setIsExcludeClicked(true);
 			setTimeout(() => setIsExcludeClicked(false), 1000);
 
+			// Translate input2 content
+			const translatedInput2 = await translateText(input2, "en");
+
 			setExcludeContent((prevContent) => {
 				if (isFirstExclusion) {
 					setIsFirstExclusion(false);
 					return prevContent.length > 0
-						? prevContent + ", --no " + input2
-						: prevContent + "--no " + input2;
+						? prevContent + ", --no " + translatedInput2
+						: prevContent + "--no " + translatedInput2;
 				} else {
 					return prevContent.length > 0
-						? prevContent + ", " + input2
-						: prevContent + input2;
+						? prevContent + ", " + translatedInput2
+						: prevContent + translatedInput2;
 				}
 			});
 			setInput2("");
