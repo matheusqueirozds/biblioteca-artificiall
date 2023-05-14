@@ -15,11 +15,8 @@ import {
 } from "@/components/CriarPrompts/CriarPromptsStyles";
 import { translateText } from "../components/Midjourney/Prompt/translationHelper";
 
-// Criação do novo componente TabPanel
 function TabPanel({ children, value, index }) {
-	if (value !== index) {
-		return null;
-	}
+	if (value !== index) return null;
 
 	return (
 		<div
@@ -27,13 +24,15 @@ function TabPanel({ children, value, index }) {
 			id={`tabpanel-${index}`}
 			aria-labelledby={`tab-${index}`}
 		>
-			<div>{children}</div>
+			{children}
 		</div>
 	);
 }
 
+const urlRegex = /^(ftp|http|https):\/\/[^ "]+$/;
+
 export default function CriarPrompts() {
-	const [state, setState] = useState({
+	const initialState = {
 		input1: "",
 		input2: "",
 		inputImage: "",
@@ -58,24 +57,9 @@ export default function CriarPrompts() {
 		isIncludeClicked: false,
 		isExcludeClicked: false,
 		isAddLinkClicked: false,
-	});
-
-	const setCurrentTab = (tabName) => {
-		setState((prevState) => ({
-			...prevState,
-			currentTab: tabName,
-		}));
 	};
 
-	const versionCommandMap = {
-		"version 5.1": "--v 5.1",
-		"niji 5": "--niji 5",
-		"version 5": "--v 5",
-		"niji": "--niji",
-		"version 4": "--v 4",
-	};
-
-	const versionOptions = Object.keys(versionCommandMap);
+	const [state, setState] = useState(initialState);
 
 	const aspectRatioOptions = Array.from({ length: 16 }, (_, i) => i + 1);
 
@@ -85,22 +69,38 @@ export default function CriarPrompts() {
 				...prevState.aspectRatio,
 				[position]: value,
 			};
-			setState((prevState) => ({
+
+			const newCommandContent =
+				prevState.commandContent +
+				`, aspect ratio: ${newAspectRatio.num1}:${newAspectRatio.num2}`;
+
+			return {
 				...prevState,
 				aspectRatio: newAspectRatio,
-				commandContent:
-					prevState.commandContent +
-					`, aspect ratio: ${newAspectRatio.num1}:${newAspectRatio.num2}`,
-			}));
-			return prevState;
+				commandContent: newCommandContent,
+			};
 		});
 	};
 
-	const handleVersionChange = (e) => {
+	const versionCommandMap = {
+		"version 5.1": "--v 5.1",
+		"niji 5": "--niji 5",
+		"version 5": "--v 5",
+		niji: "--niji",
+		"version 4": "--v 4",
+	};
+
+	const versionOptions = Object.keys(versionCommandMap);
+
+	const updateVersion = (version) => {
 		setState((prevState) => ({
 			...prevState,
-			version: e.target.value,
+			version,
 		}));
+	};
+
+	const handleVersionChange = (e) => {
+		updateVersion(e.target.value);
 	};
 
 	const toggleFieldActive = (field) => {
@@ -108,7 +108,7 @@ export default function CriarPrompts() {
 			...prevState,
 			activeFields: {
 				...prevState.activeFields,
-				[field]: !prevState.activeFields[field],
+				[field]: !Boolean(prevState.activeFields[field]),
 			},
 		}));
 	};
@@ -140,30 +140,38 @@ export default function CriarPrompts() {
 		}
 	};
 
+	const updateExcludeClicked = (value) => {
+		setState((prevState) => ({
+			...prevState,
+			isExcludeClicked: value,
+		}));
+	};
+
+	const resetExcludeClicked = () => {
+		setTimeout(() => {
+			updateExcludeClicked(false);
+		}, 1000);
+	};
+
+	const buildExcludeContent = (content, isFirstExclusion) => {
+		const prefix = isFirstExclusion ? ", --no " : ", ";
+		return content.length > 0 ? content + prefix : content;
+	};
+
 	const handleExclude = async () => {
 		if (state.input2.trim() !== "") {
-			setState((prevState) => ({
-				...prevState,
-				isExcludeClicked: true,
-			}));
-			setTimeout(() => {
-				setState((prevState) => ({
-					...prevState,
-					isExcludeClicked: false,
-				}));
-			}, 1000);
+			updateExcludeClicked(true);
+			resetExcludeClicked();
 
 			const translatedInput2 = await translateText(state.input2, "en");
 
 			setState((prevState) => ({
 				...prevState,
-				excludeContent: prevState.isFirstExclusion
-					? prevState.excludeContent.length > 0
-						? prevState.excludeContent + ", --no " + translatedInput2
-						: prevState.excludeContent + "--no " + translatedInput2
-					: prevState.excludeContent.length > 0
-					? prevState.excludeContent + ", " + translatedInput2
-					: prevState.excludeContent + translatedInput2,
+				excludeContent:
+					buildExcludeContent(
+						prevState.excludeContent,
+						prevState.isFirstExclusion
+					) + translatedInput2,
 				isFirstExclusion: false,
 				input2: "",
 			}));
@@ -185,30 +193,8 @@ export default function CriarPrompts() {
 
 	const handleClear = () => {
 		setState({
-			input1: "",
-			input2: "",
-			inputImage: "",
-			version: "version 5.1",
-			aspectRatio: { num1: 1, num2: 1 },
-			stylize: 100,
-			chaos: 0,
-			currentTab: "Texto",
-			commandContent: "",
-			isFirstExclusion: true,
-			includeContent: "",
-			excludeContent: "",
-			activeFields: {
-				version: false,
-				aspectRatio: false,
-				stylize: false,
-				chaos: false,
-			},
-			imageLinks: [],
+			...initialState,
 			isClearClicked: true,
-			isCopyClicked: false,
-			isIncludeClicked: false,
-			isExcludeClicked: false,
-			isAddLinkClicked: false,
 		});
 		setTimeout(() => {
 			setState((prevState) => ({
@@ -219,47 +205,73 @@ export default function CriarPrompts() {
 	};
 
 	function isValidUrl(string) {
-		var regex = /^(ftp|http|https):\/\/[^ "]+$/;
-		return regex.test(string);
+		return urlRegex.test(string);
 	}
 
 	const handleAddLink = () => {
-		if (state.inputImage.trim() !== "") {
-			if (isValidUrl(state.inputImage.trim())) {
-				setState((prevState) => ({
-					...prevState,
-					isAddLinkClicked: true,
-					imageLinks: [...prevState.imageLinks, state.inputImage],
-					inputImage: "",
-				}));
-				setTimeout(() => {
-					setState((prevState) => ({
-						...prevState,
-						isAddLinkClicked: false,
-					}));
-				}, 1000);
-			} else {
-				alert("Por favor, insira um link válido.");
-			}
+		const trimmedInput = state.inputImage.trim();
+		if (trimmedInput === "" || !isValidUrl(trimmedInput)) {
+			alert("Por favor, insira um link válido.");
+			return;
 		}
+
+		setState((prevState) => ({
+			...prevState,
+			isAddLinkClicked: true,
+			imageLinks: [...prevState.imageLinks, trimmedInput],
+			inputImage: "",
+		}));
+
+		setTimeout(() => {
+			setState((prevState) => ({
+				...prevState,
+				isAddLinkClicked: false,
+			}));
+		}, 1000);
 	};
+
+	const createPromptText = (state) => {
+		const {
+			imageLinks,
+			includeContent,
+			version,
+			aspectRatio,
+			activeFields,
+			stylize,
+			chaos,
+			excludeContent,
+		} = state;
+		let prompt = "/imagine prompt: ";
+
+		if (imageLinks.length) {
+			prompt += imageLinks.join(", ");
+			if (includeContent) prompt += ", ";
+		}
+
+		if (includeContent) prompt += includeContent;
+
+		if (version) prompt += " " + versionCommandMap[version];
+
+		if (aspectRatio) prompt += ` --ar ${aspectRatio.num1}:${aspectRatio.num2}`;
+
+		if (activeFields.stylize) prompt += ` --stylize ${stylize}`;
+
+		if (activeFields.chaos) prompt += ` --chaos ${chaos}`;
+
+		if (excludeContent) prompt += `, ${excludeContent}`;
+		return prompt;
+	};
+
+	const tabs = [
+		{ title: "Texto", className: "texto" },
+		{ title: "Parâmetros", className: "parametros" },
+		{ title: "Imagens", className: "imagens" },
+	];
 
 	return (
 		<MainDiv>
 			<PromptContainer>
-				<span className="prompt-text">
-					/imagine prompt:{" "}
-					{(state.imageLinks.length ? state.imageLinks.join(", ") : "") +
-						(state.imageLinks.length && state.includeContent ? ", " : "") +
-						(state.includeContent ? state.includeContent : "") +
-						(state.version ? " " + versionCommandMap[state.version] : "") +
-						(state.aspectRatio
-							? " --ar " + state.aspectRatio.num1 + ":" + state.aspectRatio.num2
-							: "") +
-						(state.activeFields.stylize ? " --stylize " + state.stylize : "") +
-						(state.activeFields.chaos ? " --chaos " + state.chaos : "") +
-						(state.excludeContent ? ", " + state.excludeContent : "")}
-				</span>
+				<span className="prompt-text">{createPromptText(state)}</span>
 
 				<ButtonsWrapper>
 					<Button
@@ -279,28 +291,20 @@ export default function CriarPrompts() {
 			</PromptContainer>
 
 			<TabContainer>
-				<Tab
-					active={state.currentTab === "Texto"}
-					onClick={() => setCurrentTab("Texto")}
-					className="texto"
-				>
-					Texto
-				</Tab>
-				<Tab
-					active={state.currentTab === "Parâmetros"}
-					onClick={() => setCurrentTab("Parâmetros")}
-					className="parametros"
-				>
-					Parâmetros
-				</Tab>
-				<Tab
-					active={state.currentTab === "Imagens"}
-					onClick={() => setCurrentTab("Imagens")}
-					className="imagens"
-				>
-					Imagens
-				</Tab>
+				{tabs.map((tab, index) => (
+					<Tab
+						key={index}
+						active={state.currentTab === tab.title}
+						onClick={() =>
+							setState((prevState) => ({ ...prevState, currentTab: tab.title }))
+						}
+						className={tab.className}
+					>
+						{tab.title}
+					</Tab>
+				))}
 			</TabContainer>
+
 			{state.currentTab === "Texto" && (
 				<TabPanel value={state.currentTab} index="Texto">
 					<TextoDiv>
@@ -332,6 +336,7 @@ export default function CriarPrompts() {
 								{state.isIncludeClicked ? "Incluído!" : "Incluir no prompt"}
 							</Button>
 						</InputField>
+
 						<InputField>
 							<input
 								type="text"
