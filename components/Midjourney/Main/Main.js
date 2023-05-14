@@ -24,9 +24,17 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 
 	useEffect(() => {
 		if (data && data.midjourney.categories) {
-			const sortedCategories = data.midjourney.categories.sort((a, b) =>
-				a.name.localeCompare(b.name)
-			);
+			const sortedCategories = [
+				{
+					name: "Todas as categorias",
+					prompts: data.midjourney.categories.flatMap(
+						(category) => category.prompts
+					),
+				},
+				...data.midjourney.categories.sort((a, b) =>
+					a.name.localeCompare(b.name)
+				),
+			];
 			setCategories(sortedCategories);
 			setActiveCategory(sortedCategories[0]);
 		}
@@ -41,10 +49,18 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 			const filtered = filterPrompts(searchTerm, promptsToFilter);
 			setFilteredPrompts(filtered);
 		} else {
-			if (activeCategory) {
-				setFilteredPrompts(activeCategory.prompts);
+			const searchType = document.getElementById("searchType").value;
+			if (searchType === "advanced") {
+				const allPrompts = data.midjourney.categories.flatMap(
+					(category) => category.prompts
+				);
+				setFilteredPrompts(allPrompts);
 			} else {
-				setActiveCategory(data.midjourney.categories[0]);
+				if (activeCategory) {
+					setFilteredPrompts(activeCategory.prompts);
+				} else {
+					setActiveCategory(data.midjourney.categories[0]);
+				}
 			}
 		}
 	}, [searchTerm, activeCategory]);
@@ -154,7 +170,11 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 									active={category === activeCategory}
 									onClick={() => {
 										handleCategoryClick(category);
-										handleSearchTypeChange("simple");
+										handleSearchTypeChange(
+											category.name === "Todas as categorias"
+												? "advanced"
+												: "simple"
+										);
 									}}
 								/>
 							))}
