@@ -128,7 +128,7 @@ export default function Home({ theme, toggleTheme }) {
 				handleButtonClick={handleButtonClick}
 			/>
 
-			<GlobalFooter />
+CriarPrompts
 		</>
 	);
 }

@@ -14,6 +14,7 @@ import {
 	TextoDiv,
 } from "@/components/CriarPrompts/CriarPromptsStyles";
 import { translateText } from "../components/Midjourney/Prompt/translationHelper";
+import GlobalFooter from "@/components/Global/GlobalFooter/GlobalFooter";
 
 function TabPanel({ children, value, index }) {
 	if (value !== index) return null;
@@ -269,254 +270,261 @@ export default function CriarPrompts() {
 	];
 
 	return (
-		<MainDiv>
-			<PromptContainer>
-				<span className="prompt-text">{createPromptText(state)}</span>
+		<>
+			<MainDiv>
+				<PromptContainer>
+					<span className="prompt-text">{createPromptText(state)}</span>
 
-				<ButtonsWrapper>
-					<Button
-						onClick={handleClear}
-						className={state.isClearClicked ? "clearClicked" : "clear"}
-					>
-						{state.isClearClicked ? "Apagado!" : "Apagar tudo"}
-					</Button>
+					<ButtonsWrapper>
+						<Button
+							onClick={handleClear}
+							className={state.isClearClicked ? "clearClicked" : "clear"}
+						>
+							{state.isClearClicked ? "Apagado!" : "Apagar tudo"}
+						</Button>
 
-					<Button
-						onClick={handleCopy}
-						className={state.isCopyClicked ? "copyClicked" : "copy"}
-					>
-						{state.isCopyClicked ? "Copiado!" : "Copiar prompt"}
-					</Button>
-				</ButtonsWrapper>
-			</PromptContainer>
+						<Button
+							onClick={handleCopy}
+							className={state.isCopyClicked ? "copyClicked" : "copy"}
+						>
+							{state.isCopyClicked ? "Copiado!" : "Copiar prompt"}
+						</Button>
+					</ButtonsWrapper>
+				</PromptContainer>
 
-			<TabContainer>
-				{tabs.map((tab, index) => (
-					<Tab
-						key={index}
-						active={state.currentTab === tab.title}
-						onClick={() =>
-							setState((prevState) => ({ ...prevState, currentTab: tab.title }))
-						}
-						className={tab.className}
-					>
-						{tab.title}
-					</Tab>
-				))}
-			</TabContainer>
+				<TabContainer>
+					{tabs.map((tab, index) => (
+						<Tab
+							key={index}
+							active={state.currentTab === tab.title}
+							onClick={() =>
+								setState((prevState) => ({
+									...prevState,
+									currentTab: tab.title,
+								}))
+							}
+							className={tab.className}
+						>
+							{tab.title}
+						</Tab>
+					))}
+				</TabContainer>
 
-			{state.currentTab === "Texto" && (
-				<TabPanel value={state.currentTab} index="Texto">
-					<TextoDiv>
-						<InputField>
-							<input
-								type="text"
-								value={state.input1}
-								onChange={(e) =>
-									setState((prevState) => ({
-										...prevState,
-										input1: e.target.value,
-									}))
-								}
-								onKeyDown={(e) => {
-									if (e.key === "Enter") {
-										handleInclude();
+				{state.currentTab === "Texto" && (
+					<TabPanel value={state.currentTab} index="Texto">
+						<TextoDiv>
+							<InputField>
+								<input
+									type="text"
+									value={state.input1}
+									onChange={(e) =>
+										setState((prevState) => ({
+											...prevState,
+											input1: e.target.value,
+										}))
 									}
-								}}
-								placeholder="Adicione palavras ou frases que você quer que apareçam no prompt"
-								className="blue"
-							/>
-							<Button
-								color="#197ef4"
-								onClick={handleInclude}
-								className={
-									state.isIncludeClicked ? "includeClicked" : "include"
-								}
-							>
-								{state.isIncludeClicked ? "Incluído!" : "Incluir no prompt"}
-							</Button>
-						</InputField>
-
-						<InputField>
-							<input
-								type="text"
-								value={state.input2}
-								onChange={(e) =>
-									setState((prevState) => ({
-										...prevState,
-										input2: e.target.value,
-									}))
-								}
-								onKeyDown={(e) => {
-									if (e.key === "Enter") {
-										handleExclude();
+									onKeyDown={(e) => {
+										if (e.key === "Enter") {
+											handleInclude();
+										}
+									}}
+									placeholder="Adicione palavras ou frases que você quer que apareçam no prompt"
+									className="blue"
+								/>
+								<Button
+									color="#197ef4"
+									onClick={handleInclude}
+									className={
+										state.isIncludeClicked ? "includeClicked" : "include"
 									}
-								}}
-								placeholder="Adicione palavras ou frases que você NÃO quer que apareçam no prompt"
-								className="red"
-							/>
-							<Button
-								color="#dc2626"
-								onClick={handleExclude}
-								className={
-									state.isExcludeClicked ? "excludeClicked" : "exclude"
-								}
-							>
-								{state.isExcludeClicked ? "Excluído!" : "Excluir do prompt"}
-							</Button>
-						</InputField>
-					</TextoDiv>
-				</TabPanel>
-			)}
+								>
+									{state.isIncludeClicked ? "Incluído!" : "Incluir no prompt"}
+								</Button>
+							</InputField>
 
-			{state.currentTab === "Parâmetros" && (
-				<TabPanel value={state.currentTab} index="Parâmetros">
-					<ParametrosDiv>
-						{/* Version */}
-						<SelectField
-							className={`version ${
-								state.activeFields.version ? "active" : ""
-							}`}
-							onClick={() => toggleFieldActive("version")}
-						>
-							<label>Version</label>
-							{state.activeFields.version && (
-								<div>
-									<select
-										onChange={handleVersionChange}
-										onClick={(e) => e.stopPropagation()}
-									>
-										{versionOptions.map((option, index) => (
-											<option value={option} key={index}>
-												{option}
-											</option>
-										))}
-									</select>
-								</div>
-							)}
-						</SelectField>
-
-						{/* Aspect Ratio */}
-						<SliderField
-							className={`aspectRatio ${
-								state.activeFields.aspectRatio ? "active" : ""
-							}`}
-							onClick={() => toggleFieldActive("aspectRatio")}
-						>
-							<label>Aspect Ratio</label>
-							{state.activeFields.aspectRatio && (
-								<div>
-									<select
-										onChange={(e) =>
-											handleAspectRatioChange(e.target.value, "num1")
-										}
-										onClick={(e) => e.stopPropagation()}
-									>
-										{aspectRatioOptions.map((option, index) => (
-											<option value={option} key={index}>
-												{option}
-											</option>
-										))}
-									</select>
-									<span>:</span>
-									<select
-										onChange={(e) =>
-											handleAspectRatioChange(e.target.value, "num2")
-										}
-										onClick={(e) => e.stopPropagation()}
-									>
-										{aspectRatioOptions.map((option, index) => (
-											<option value={option} key={index}>
-												{option}
-											</option>
-										))}
-									</select>
-								</div>
-							)}
-						</SliderField>
-
-						{/* Stylize */}
-						<SelectField
-							className={`stylize ${
-								state.activeFields.stylize ? "active" : ""
-							}`}
-							onClick={() => toggleFieldActive("stylize")}
-						>
-							<label>Stylize</label>
-							{state.activeFields.stylize && (
-								<div>
-									<input
-										type="range"
-										min="0"
-										max="1000"
-										value={state.stylize}
-										onChange={(e) =>
-											setState({ ...state, stylize: e.target.value })
-										}
-										onClick={(e) => e.stopPropagation()}
-									/>
-									<span>{state.stylize}</span>
-								</div>
-							)}
-						</SelectField>
-
-						{/* Chaos */}
-						<SliderField
-							className={`chaos ${state.activeFields.chaos ? "active" : ""}`}
-							onClick={() => toggleFieldActive("chaos")}
-						>
-							<label>Chaos</label>
-							{state.activeFields.chaos && (
-								<div>
-									<input
-										type="range"
-										min="1"
-										max="100"
-										value={state.chaos}
-										onChange={(e) =>
-											setState({ ...state, chaos: e.target.value })
-										}
-										onClick={(e) => e.stopPropagation()}
-									/>
-									<span>{state.chaos}</span>{" "}
-									{/* Exibir o valor atual de chaos */}
-								</div>
-							)}
-						</SliderField>
-					</ParametrosDiv>
-				</TabPanel>
-			)}
-
-			{state.currentTab === "Imagens" && (
-				<TabPanel value={state.currentTab} index="Imagens">
-					<ImagensDiv>
-						<InputField>
-							<input
-								type="text"
-								value={state.inputImage}
-								onChange={(e) =>
-									setState({ ...state, inputImage: e.target.value })
-								}
-								onKeyDown={(e) => {
-									if (e.key === "Enter") {
-										handleAddLink();
+							<InputField>
+								<input
+									type="text"
+									value={state.input2}
+									onChange={(e) =>
+										setState((prevState) => ({
+											...prevState,
+											input2: e.target.value,
+										}))
 									}
-								}}
-								placeholder="Cole o link da imagem que você deseja adicionar ao prompt"
-								className="blue"
-							/>
-							<Button
-								onClick={handleAddLink}
-								className={
-									state.isAddLinkClicked ? "addLinkClicked" : "addLink"
-								}
+									onKeyDown={(e) => {
+										if (e.key === "Enter") {
+											handleExclude();
+										}
+									}}
+									placeholder="Adicione palavras ou frases que você NÃO quer que apareçam no prompt"
+									className="red"
+								/>
+								<Button
+									color="#dc2626"
+									onClick={handleExclude}
+									className={
+										state.isExcludeClicked ? "excludeClicked" : "exclude"
+									}
+								>
+									{state.isExcludeClicked ? "Excluído!" : "Excluir do prompt"}
+								</Button>
+							</InputField>
+						</TextoDiv>
+					</TabPanel>
+				)}
+
+				{state.currentTab === "Parâmetros" && (
+					<TabPanel value={state.currentTab} index="Parâmetros">
+						<ParametrosDiv>
+							{/* Version */}
+							<SelectField
+								className={`version ${
+									state.activeFields.version ? "active" : ""
+								}`}
+								onClick={() => toggleFieldActive("version")}
 							>
-								{state.isAddLinkClicked ? "Adicionado!" : "Adicionar link"}
-							</Button>
-						</InputField>
-					</ImagensDiv>
-				</TabPanel>
-			)}
-		</MainDiv>
+								<label>Version</label>
+								{state.activeFields.version && (
+									<div>
+										<select
+											onChange={handleVersionChange}
+											onClick={(e) => e.stopPropagation()}
+										>
+											{versionOptions.map((option, index) => (
+												<option value={option} key={index}>
+													{option}
+												</option>
+											))}
+										</select>
+									</div>
+								)}
+							</SelectField>
+
+							{/* Aspect Ratio */}
+							<SliderField
+								className={`aspectRatio ${
+									state.activeFields.aspectRatio ? "active" : ""
+								}`}
+								onClick={() => toggleFieldActive("aspectRatio")}
+							>
+								<label>Aspect Ratio</label>
+								{state.activeFields.aspectRatio && (
+									<div>
+										<select
+											onChange={(e) =>
+												handleAspectRatioChange(e.target.value, "num1")
+											}
+											onClick={(e) => e.stopPropagation()}
+										>
+											{aspectRatioOptions.map((option, index) => (
+												<option value={option} key={index}>
+													{option}
+												</option>
+											))}
+										</select>
+										<span>:</span>
+										<select
+											onChange={(e) =>
+												handleAspectRatioChange(e.target.value, "num2")
+											}
+											onClick={(e) => e.stopPropagation()}
+										>
+											{aspectRatioOptions.map((option, index) => (
+												<option value={option} key={index}>
+													{option}
+												</option>
+											))}
+										</select>
+									</div>
+								)}
+							</SliderField>
+
+							{/* Stylize */}
+							<SelectField
+								className={`stylize ${
+									state.activeFields.stylize ? "active" : ""
+								}`}
+								onClick={() => toggleFieldActive("stylize")}
+							>
+								<label>Stylize</label>
+								{state.activeFields.stylize && (
+									<div>
+										<input
+											type="range"
+											min="0"
+											max="1000"
+											value={state.stylize}
+											onChange={(e) =>
+												setState({ ...state, stylize: e.target.value })
+											}
+											onClick={(e) => e.stopPropagation()}
+										/>
+										<span>{state.stylize}</span>
+									</div>
+								)}
+							</SelectField>
+
+							{/* Chaos */}
+							<SliderField
+								className={`chaos ${state.activeFields.chaos ? "active" : ""}`}
+								onClick={() => toggleFieldActive("chaos")}
+							>
+								<label>Chaos</label>
+								{state.activeFields.chaos && (
+									<div>
+										<input
+											type="range"
+											min="1"
+											max="100"
+											value={state.chaos}
+											onChange={(e) =>
+												setState({ ...state, chaos: e.target.value })
+											}
+											onClick={(e) => e.stopPropagation()}
+										/>
+										<span>{state.chaos}</span>{" "}
+										{/* Exibir o valor atual de chaos */}
+									</div>
+								)}
+							</SliderField>
+						</ParametrosDiv>
+					</TabPanel>
+				)}
+
+				{state.currentTab === "Imagens" && (
+					<TabPanel value={state.currentTab} index="Imagens">
+						<ImagensDiv>
+							<InputField>
+								<input
+									type="text"
+									value={state.inputImage}
+									onChange={(e) =>
+										setState({ ...state, inputImage: e.target.value })
+									}
+									onKeyDown={(e) => {
+										if (e.key === "Enter") {
+											handleAddLink();
+										}
+									}}
+									placeholder="Cole o link da imagem que você deseja adicionar ao prompt"
+									className="blue"
+								/>
+								<Button
+									onClick={handleAddLink}
+									className={
+										state.isAddLinkClicked ? "addLinkClicked" : "addLink"
+									}
+								>
+									{state.isAddLinkClicked ? "Adicionado!" : "Adicionar link"}
+								</Button>
+							</InputField>
+						</ImagensDiv>
+					</TabPanel>
+				)}
+			</MainDiv>
+
+			<GlobalFooter />
+		</>
 	);
 }

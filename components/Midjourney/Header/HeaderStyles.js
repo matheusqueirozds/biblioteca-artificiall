@@ -165,7 +165,26 @@ export const RightContainer = styled.div`
 export const NavMenu = styled.nav`
 	display: flex;
 	align-items: center;
-	gap: 30px;
+
+	a {
+		padding: 15px;
+		border-radius: 5px;
+		transition: none;
+
+		&:hover {
+			text-decoration: none;
+		}
+
+		&.active {
+			&::after {
+				display: block;
+				content: "";
+				width: 100%;
+				height: 2px;
+				background-color: #197ef4;
+			}
+		}
+	}
 `;
 
 export const DarkModeToggle = styled.button`
