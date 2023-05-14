@@ -89,6 +89,7 @@ export default function Main({ data, filteredPrompts, setFilteredPrompts }) {
 	// Alterna a categoria ativa
 	const handleCategoryClick = (category) => {
 		setActiveCategory(category);
+		window.scrollTo(0, 0);
 	};
 
 	// Abre o modal da imagem
