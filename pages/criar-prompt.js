@@ -67,21 +67,15 @@ export default function CriarPrompts() {
 		}));
 	};
 
-	const versionOptions = [
-		"version 5.1",
-		"niji 5",
-		"version 5",
-		"niji",
-		"version 4",
-	];
-
 	const versionCommandMap = {
 		"version 5.1": "--v 5.1",
 		"niji 5": "--niji 5",
 		"version 5": "--v 5",
-		niji: "--niji",
+		"niji": "--niji",
 		"version 4": "--v 4",
 	};
+
+	const versionOptions = Object.keys(versionCommandMap);
 
 	const aspectRatioOptions = Array.from({ length: 16 }, (_, i) => i + 1);
 
@@ -121,29 +115,28 @@ export default function CriarPrompts() {
 
 	const handleInclude = async () => {
 		if (state.input1.trim() !== "") {
-			// Verifica se input1 não está vazio
-			setState((prevState) => ({
-				...prevState,
-				isIncludeClicked: true,
-			}));
+			const translatedInput1 = await translateText(state.input1, "en");
+
+			setState((prevState) => {
+				const newIncludeContent =
+					prevState.includeContent.length > 0
+						? prevState.includeContent + ", " + translatedInput1
+						: prevState.includeContent + translatedInput1;
+
+				return {
+					...prevState,
+					isIncludeClicked: true,
+					includeContent: newIncludeContent,
+					input1: "",
+				};
+			});
+
 			setTimeout(() => {
 				setState((prevState) => ({
 					...prevState,
 					isIncludeClicked: false,
 				}));
 			}, 1000);
-
-			// Translate input1 content
-			const translatedInput1 = await translateText(state.input1, "en");
-
-			setState((prevState) => ({
-				...prevState,
-				includeContent:
-					prevState.includeContent.length > 0
-						? prevState.includeContent + ", " + translatedInput1
-						: prevState.includeContent + translatedInput1,
-				input1: "",
-			}));
 		}
 	};
 
