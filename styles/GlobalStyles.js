@@ -56,7 +56,6 @@ text-decoration:underline;
     opacity: .9;
 
     &:hover {
-		transform: translateY(-3px);
     opacity: 1;
   }}
 

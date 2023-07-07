@@ -76,7 +76,6 @@ export const EditableText = styled.textarea`
 	border: none;
 
 	::-webkit-scrollbar {
-		display: none;
 		width: 6px;
 		background-color: transparent;
 		transition: all 0.3s;
@@ -89,10 +88,6 @@ export const EditableText = styled.textarea`
 
 	&:hover {
 		background-color: rgba(187, 215, 233, 0.3);
-
-		::-webkit-scrollbar {
-			display: block;
-		}
 	}
 
 	&:focus {

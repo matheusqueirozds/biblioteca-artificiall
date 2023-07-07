@@ -34,11 +34,12 @@ export const IndexButtonsContainer = styled.div`
 	flex-wrap: wrap;
 	gap: 12px;
 	margin-bottom: 1rem;
+	max-width: 560px;
 
 	div {
 		display: flex;
 		align-items: center;
-		justify-content: center;
+		justify-content: space-between;
 		flex-wrap: wrap;
 		gap: 12px;
 	}
@@ -53,7 +54,8 @@ export const IndexButton = styled.button`
 	transition: all 0.3s;
 	border: 1px solid #f8f9fa;
 	opacity: 1;
-
+	width: 274px;
+	
 	&:hover,
 	&:focus {
 		border-color: #dadce0;
