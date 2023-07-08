@@ -46,16 +46,10 @@ export default function IndexMain({
 				handleSearchInput={handleSearchInput}
 				handleKeyPress={handleKeyPress}
 				advancedSearchSelectRef={advancedSearchSelectRef}
+				handleButtonClick={handleButtonClick}
 			/>
 			<IndexButtonsContainer>
 				<div>
-					<IndexButton
-						onClick={handleButtonClick}
-						aria-label="Pesquisar prompt"
-					>
-						Pesquisar prompt
-					</IndexButton>
-
 					<Link href="/midjourney">
 						<IndexButton aria-label="Acessar biblioteca de prompts">
 							Acessar biblioteca de prompts

@@ -5,11 +5,13 @@ import {
 	IndexSearchBarWrapper,
 	IndexSearchInput,
 } from "./IndexSearchBarStyles";
+import { IndexButton } from "../IndexMain/IndexMainStyles";
 
 export default function IndexSearchBar({
 	handleSearchInput,
 	handleKeyPress,
 	advancedSearchSelectRef,
+	handleButtonClick,
 }) {
 	// Criar uma referência para o campo de pesquisa
 	const searchInputRef = useRef();
@@ -59,10 +61,25 @@ export default function IndexSearchBar({
 				</select>
 			</IndexAdvancedSearch>
 
-			{/* Ícone de pesquisa */}
-			<Image src="/search.svg" alt="Ícone de pesquisa" width={18} height={18} />
-
 			<span title="Aperte a tecla / para pesquisar">/</span>
+
+		{/* Botão de pesquisa */}
+		<IndexButton
+				onClick={handleButtonClick}
+				aria-label="Pesquisar prompt"
+				className="searchBar"
+			>
+				<Image
+					src="/search.svg"
+					alt="Ícone de pesquisa"
+					width={18}
+					height={18}
+				/>
+			</IndexButton>
+
+			
+
+			
 		</IndexSearchBarWrapper>
 	);
 }

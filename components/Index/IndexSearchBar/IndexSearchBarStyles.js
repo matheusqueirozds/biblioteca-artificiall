@@ -8,7 +8,7 @@ export const IndexSearchBarWrapper = styled.div`
 	background-color: #fff;
 	transition: all 0.3s;
 	border-radius: 24px;
-	margin-bottom: 30px;
+	margin-bottom: 1rem;
 
 	&:hover,
 	&:focus {
@@ -16,15 +16,7 @@ export const IndexSearchBarWrapper = styled.div`
 		border-color: rgba(223, 225, 229, 0);
 	}
 
-	img {
-		position: absolute;
-		left: 7.5rem;
-		opacity: 0.8;
-	}
-
 	span {
-		position: absolute;
-		right: 1rem;
 		font-family: monospace;
 		background-color: inherit;
 		color: #ccc;
@@ -32,6 +24,7 @@ export const IndexSearchBarWrapper = styled.div`
 		border: 1px solid #ccc;
 		border-radius: 4px;
 		cursor: default;
+		margin-right: 5px;
 
 		@media screen and (max-width: 480px) {
 			display: none;
@@ -46,13 +39,11 @@ export const IndexSearchBarWrapper = styled.div`
 export const IndexSearchInput = styled.input`
 	font-size: inherit;
 	border: none;
-	border-radius: 5px;
-	padding-left: calc(101px + 3.3rem);
-	height: 40px;
+	padding-left: calc(101px + 1.3rem);
 	outline: none;
 	background-color: none;
-	border-radius: 24px;
-	width: 560px;
+	border-radius: 24px 0 0 24px;
+	width: 474px;
 
 	@media screen and (max-width: 768px) {
 		width: 100%;

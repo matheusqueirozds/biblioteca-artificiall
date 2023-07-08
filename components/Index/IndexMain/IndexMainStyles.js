@@ -36,6 +36,7 @@ export const IndexButtonsContainer = styled.div`
 	margin-bottom: 1rem;
 	max-width: 560px;
 
+
 	div {
 		display: flex;
 		align-items: center;
@@ -54,8 +55,7 @@ export const IndexButton = styled.button`
 	transition: all 0.3s;
 	border: 1px solid #f8f9fa;
 	opacity: 1;
-	width: 274px;
-	
+
 	&:hover,
 	&:focus {
 		border-color: #dadce0;
@@ -75,5 +75,12 @@ export const IndexButton = styled.button`
 			border-color: ${({ showDailyPrompt }) =>
 				showDailyPrompt ? "#ff4d4d" : "#dadce0"};
 		}
+	}
+
+	&.searchBar {
+		background: #f2f2f2;
+		border-radius: 0 24px 24px 0;
+		border: none;
+		width: max-content;
 	}
 `;
